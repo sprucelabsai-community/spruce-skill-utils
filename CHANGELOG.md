@@ -1,3 +1,10 @@
+# 1.0.0 (2020-10-06)
+
+
+### Features
+
+* moved out of monorepo ([607d229](https://github.com/sprucelabsai/spruce-skill-utils/commit/607d229))
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
