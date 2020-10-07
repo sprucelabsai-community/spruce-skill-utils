@@ -11,7 +11,7 @@
 		"build/**/*",
 		"tsconfig.json"
 	],
-	"description": "Loosely coupled classes and functions to make skill development faster!",
+	"description": "Loosely coupled classes and functions to make skill development faster! 🏎",
 	"keywords": [
 		"node",
 		"sprucelabs"
