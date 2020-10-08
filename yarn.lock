@@ -1413,10 +1413,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.438":
-  version "2.2.438"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.438.tgz#182902c8457f2a04fc7a275692d5dfe3cecee3c2"
-  integrity sha512-PXrwKpxH59kgT6hH6b4rqybbt9epEPH2Ej/rUgs4PT4EWBOX5os7jpNwzmTVXjO81ZjEsKx/CoJppm9BIQs4Gw==
+"@sprucelabs/error@^2.2.439":
+  version "2.2.439"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.439.tgz#f05b168eadd05bb4fbd1fc9d6bced93775061e8a"
+  integrity sha512-sVEmJW6k1qDiGkiaoAOhdIt+KySruLMaQnqt8DTyM4MyZ/43lshSRPB4d9iSexHiKSrEV2icVstA+zFwm3dOIQ==
 
 "@sprucelabs/semantic-release@^4.0.4":
   version "4.0.5"
@@ -1428,10 +1428,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.118":
-  version "7.0.118"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.118.tgz#49c9eda1ef68e20f8c6d1ebc90c9f0b58cceaa36"
-  integrity sha512-VB3LV0g3zF5e4jZAOa5eoWgVV4vhN7fkEWpg/EjNMe1eMCVTeyTomZNraohgAKE7r2nT32tojVfwDxnDV2o0sQ==
+"@sprucelabs/test@^7.0.119":
+  version "7.0.119"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.119.tgz#8c63e4d6bd5c217a8e960d641cbcc3cc76c7236b"
+  integrity sha512-D1eNW0wrD2BhGKQ5etUBPImLlUsU4qJnygGUqMSrIXYHJfmP5VUdfMSDqpZco1Wd4tzfA6ehO7FqpeJ7FPVAtw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1574,10 +1574,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
-"@types/node@*", "@types/node@>= 8", "@types/node@^14.11.5":
-  version "14.11.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.5.tgz#fecad41c041cae7f2404ad4b2d0742fdb628b305"
-  integrity sha512-jVFzDV6NTbrLMxm4xDSIW/gKnk8rQLF9wAzLWIOg+5nU6ACrIMndeBdXci0FGtqJbP9tQvm6V39eshc96TO2wQ==
+"@types/node@*", "@types/node@>= 8", "@types/node@^14.11.6":
+  version "14.11.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.6.tgz#a332341dc32dd896d55c6c1a64a3105701bccd67"
+  integrity sha512-1/AVlPLmRzzTDc+T28H3AaA12Be1X74mqYDaecFFCo5r5aw3Lqj+PAqAE06nefV33otTl5JLfiIp5HgRrpu4SA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
