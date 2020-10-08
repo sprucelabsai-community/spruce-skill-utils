@@ -40,7 +40,7 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.2.435",
+		"@sprucelabs/error": "^2.2.436",
 		"fs-extra": "^9.0.1",
 		"inflection": "^1.12.0",
 		"lodash": "^4.17.20",
