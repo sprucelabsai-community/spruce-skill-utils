@@ -59,7 +59,7 @@
 		"@sprucelabs/test": "^7.0.132",
 		"@types/fs-extra": "^9.0.1",
 		"@types/inflection": "^1.5.28",
-		"@types/lodash": "^4.14.161",
+		"@types/lodash": "^4.14.162",
 		"@types/node": "^14.11.8",
 		"@types/uuid": "^8.3.0",
 		"arkit": "^1.6.4",
