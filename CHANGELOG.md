@@ -1,3 +1,10 @@
+# [11.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v10.31.155...v11.0.0) (2020-10-15)
+
+
+### Breaking Changes
+
+* async plugin/addon. addon accepts options ([7a3de12](https://github.com/sprucelabsai/spruce-skill-utils/commit/7a3de12))
+
 ## [10.31.155](https://github.com/sprucelabsai/spruce-skill-utils/compare/v10.31.154...v10.31.155) (2020-10-12)
 
 ## [10.31.154](https://github.com/sprucelabsai/spruce-skill-utils/compare/v10.31.153...v10.31.154) (2020-10-12)
