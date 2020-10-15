@@ -1,3 +1,10 @@
+# [11.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.0.0...v11.1.0) (2020-10-15)
+
+
+### Features
+
+* added importSync ([94793cd](https://github.com/sprucelabsai/spruce-skill-utils/commit/94793cd))
+
 # [11.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v10.31.155...v11.0.0) (2020-10-15)
 
 
