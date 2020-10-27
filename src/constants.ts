@@ -13,6 +13,7 @@ export const CORE_NAMESPACE = 'Spruce' as const
 export const TEST_JEST_PASSED = 'passed' as const
 export const TEST_JEST_FAILED = 'failed' as const
 export const HEALTH_DIVIDER = '###### HEALTH REPORT ######' as const
+export const ERROR_DIVIDER = '###### ERROR DIVIDER ######' as const
 
 export const SCHEMA_VERSION_FALLBACK = '__latest'
 export const DEFAULT_NAMESPACE_PREFIX = 'SpruceSchemas'
