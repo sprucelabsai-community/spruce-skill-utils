@@ -1,3 +1,10 @@
+# [11.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.1.1...v11.2.0) (2020-10-27)
+
+
+### Features
+
+* error divider const ([62fd3a5](https://github.com/sprucelabsai/spruce-skill-utils/commit/62fd3a5))
+
 ## [11.1.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.1.0...v11.1.1) (2020-10-19)
 
 # [11.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.0.0...v11.1.0) (2020-10-15)
