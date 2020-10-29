@@ -24,6 +24,14 @@ export interface SchemaHealthCheckItem extends HealthCheckItem {
 	}[]
 }
 
+export interface ErrorHealthCheckItem extends HealthCheckItem {
+	errorSchemas: {
+		id: string
+		name: string
+		description?: string
+	}[]
+}
+
 export interface EventHealthCheckItem extends HealthCheckItem {
 	listeners: Omit<IEventFeatureListener, 'callback'>[]
 }
@@ -31,6 +39,7 @@ export interface EventHealthCheckItem extends HealthCheckItem {
 export interface HealthCheckResults {
 	skill: HealthCheckItem
 	schema?: SchemaHealthCheckItem
+	error?: ErrorHealthCheckItem
 	event?: EventHealthCheckItem
 	mercury?: HealthCheckItem
 }
