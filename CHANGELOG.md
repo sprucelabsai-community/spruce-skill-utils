@@ -1,3 +1,10 @@
+# [12.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.3.2...v12.0.0) (2020-11-24)
+
+
+### Breaking Changes
+
+* removed I from interfaces ([82ec603](https://github.com/sprucelabsai/spruce-skill-utils/commit/82ec603))
+
 ## [11.3.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.3.1...v11.3.2) (2020-11-20)
 
 ## [11.3.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.3.0...v11.3.1) (2020-11-11)
