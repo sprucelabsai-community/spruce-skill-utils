@@ -1,14 +1,14 @@
 import AbstractSpruceError from '@sprucelabs/error'
 
-export interface ISkill {
+export interface Skill {
 	rootDir: string
 	/** Source or build depending on running with .local */
 	activeDir: string
 	hashSpruceDir: string
-	registerFeature: (code: string, feature: ISkillFeature) => void
+	registerFeature: (code: string, feature: SkillFeature) => void
 }
 
-export interface ISkillFeature {
+export interface SkillFeature {
 	execute: () => Promise<void>
 	checkHealth: () => Promise<HealthCheckItem>
 	isInstalled: () => Promise<boolean>
@@ -33,7 +33,7 @@ export interface ErrorHealthCheckItem extends HealthCheckItem {
 }
 
 export interface EventHealthCheckItem extends HealthCheckItem {
-	listeners: Omit<IEventFeatureListener, 'callback'>[]
+	listeners: Omit<EventFeatureListener, 'callback'>[]
 }
 
 export interface HealthCheckResults {
@@ -49,9 +49,9 @@ export interface HealthCheckItem {
 	errors?: AbstractSpruceError<any>[]
 }
 
-export interface IEventFeatureListener {
+export interface EventFeatureListener {
 	eventName: string
 	eventNamespace: string
 	version: string
-	callback: (skill: ISkill) => Promise<void>
+	callback: (skill: Skill) => Promise<void>
 }
