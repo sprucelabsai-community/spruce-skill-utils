@@ -5,7 +5,7 @@ import fs from 'fs-extra'
 import * as uuid from 'uuid'
 import { HASH_SPRUCE_DIR } from './constants'
 
-export interface ICreateFile {
+export interface CreateFile {
 	/** The relative path from the cwd, without a leading forward slash */
 	relativePath: string
 	/** The file contents, built with the template data */
