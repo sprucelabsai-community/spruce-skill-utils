@@ -1,9 +1,14 @@
-import AbstractSpruceError, { ISpruceErrorOptions } from '@sprucelabs/error'
+import AbstractSpruceError, {
+	SpruceErrorOptions,
+	ErrorOptions as IErrorOptions,
+} from '@sprucelabs/error'
 
-export type ErrorOptions = {
+interface FailedToLoadPluginErrorOptions extends IErrorOptions {
 	code: 'FAILED_TO_LOAD_PLUGIN'
 	file: string
-} & ISpruceErrorOptions
+}
+
+export type ErrorOptions = FailedToLoadPluginErrorOptions | SpruceErrorOptions
 
 export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 	public friendlyMessage() {
