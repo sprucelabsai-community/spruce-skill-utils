@@ -1,10 +1,12 @@
-import AbstractSpruceError, { SpruceErrorOptions ,ErrorOptions as IErrorOptions} from '@sprucelabs/error'
+import AbstractSpruceError, {
+	SpruceErrorOptions,
+	ErrorOptions as IErrorOptions,
+} from '@sprucelabs/error'
 
 interface FailedToLoadPluginErrorOptions extends IErrorOptions {
-		code: 'FAILED_TO_LOAD_PLUGIN'
-		file: string
+	code: 'FAILED_TO_LOAD_PLUGIN'
+	file: string
 }
-
 
 export type ErrorOptions = FailedToLoadPluginErrorOptions | SpruceErrorOptions
 
