@@ -34,6 +34,7 @@ export interface ErrorHealthCheckItem extends HealthCheckItem {
 
 export interface EventHealthCheckItem extends HealthCheckItem {
 	listeners: Omit<EventFeatureListener, 'callback'>[]
+	contracts: { eventNameWithOptionalNamespace: string }[]
 }
 
 export interface HealthCheckResults {
@@ -41,7 +42,6 @@ export interface HealthCheckResults {
 	schema?: SchemaHealthCheckItem
 	error?: ErrorHealthCheckItem
 	event?: EventHealthCheckItem
-	mercury?: HealthCheckItem
 }
 
 export interface HealthCheckItem {
