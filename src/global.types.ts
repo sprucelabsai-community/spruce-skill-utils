@@ -5,13 +5,13 @@ export interface Skill {
 	/** Source or build depending on running with .local */
 	activeDir: string
 	hashSpruceDir: string
-	registerFeature: (code: string, feature: SkillFeature) => void
+	registerFeature(code: string, feature: SkillFeature): void
 }
 
 export interface SkillFeature {
-	execute: () => Promise<void>
-	checkHealth: () => Promise<HealthCheckItem>
-	isInstalled: () => Promise<boolean>
+	execute(): Promise<void>
+	checkHealth(): Promise<HealthCheckItem>
+	isInstalled(): Promise<boolean>
 }
 
 export interface SchemaHealthCheckItem extends HealthCheckItem {
@@ -53,5 +53,5 @@ export interface EventFeatureListener {
 	eventName: string
 	eventNamespace: string
 	version: string
-	callback: (skill: Skill) => Promise<void>
+	callback(skill: Skill): Promise<void>
 }
