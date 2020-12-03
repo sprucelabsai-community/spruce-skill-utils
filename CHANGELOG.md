@@ -1,3 +1,10 @@
+# [12.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.0.1...v12.1.0) (2020-12-03)
+
+
+### Features
+
+* add list of contract names to eventHealthCheckItem ([1b84bf8](https://github.com/sprucelabsai/spruce-skill-utils/commit/1b84bf8))
+
 ## [12.0.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.0.0...v12.0.1) (2020-11-26)
 
 # [12.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v11.3.2...v12.0.0) (2020-11-24)
