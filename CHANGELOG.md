@@ -1,3 +1,10 @@
+# [12.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.2.1...v12.3.0) (2020-12-08)
+
+
+### Features
+
+* mercury_api_namespace ([cb38593](https://github.com/sprucelabsai/spruce-skill-utils/commit/cb38593))
+
 ## [12.2.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.2.0...v12.2.1) (2020-12-03)
 
 # [12.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.1.1...v12.2.0) (2020-12-03)
