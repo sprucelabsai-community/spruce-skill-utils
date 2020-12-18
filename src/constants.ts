@@ -19,4 +19,5 @@ export const ERROR_DIVIDER = '###### ERROR DIVIDER ######' as const
 export const SCHEMA_VERSION_FALLBACK = '__latest'
 export const DEFAULT_GLOBAL_SCHEMA_NAMESPACE = 'SpruceSchemas'
 export const DEFAULT_BUILDER_FUNCTION = 'buildSchema'
-export const DEFAULT_TYPES_FILE = '@sprucelabs/spruce-core-schemas'
+export const DEFAULT_SCHEMA_TYPES_FILE = '@sprucelabs/spruce-core-schemas'
+export const DEFAULT_SCHEMA_TYPES_FILENAME = 'schemas.types.ts'
