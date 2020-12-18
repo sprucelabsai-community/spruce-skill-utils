@@ -1,3 +1,10 @@
+# [13.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.3.1...v13.0.0) (2020-12-18)
+
+
+### Breaking Changes
+
+* schema namepsace rename ([8d15853](https://github.com/sprucelabsai/spruce-skill-utils/commit/8d15853))
+
 ## [12.3.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.3.0...v12.3.1) (2020-12-18)
 
 # [12.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.2.1...v12.3.0) (2020-12-08)
