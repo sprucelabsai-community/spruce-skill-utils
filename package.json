@@ -3,7 +3,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"version": "13.0.0",
+	"version": "13.1.2",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"license": "MIT",
@@ -68,8 +68,8 @@
 		"chokidar-cli": "^2.1.0",
 		"concurrently": "^5.3.0",
 		"conventional-changelog-sprucelabs": "^1.1.2",
-		"eslint": "^7.15.0",
-		"eslint-config-spruce": "^10.9.122",
+		"eslint": "^7.16.0",
+		"eslint-config-spruce": "^10.9.124",
 		"jest": "^26.6.3",
 		"jest-circus": "^26.6.3",
 		"prettier": "^2.2.1",

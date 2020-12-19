@@ -1,3 +1,14 @@
+## [13.1.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.1.1...v13.1.2) (2020-12-19)
+
+## [13.1.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.1.0...v13.1.1) (2020-12-18)
+
+# [13.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.0.0...v13.1.0) (2020-12-18)
+
+
+### Features
+
+* export const DEFAULT_SCHEMA_TYPES_FILENAME ([1b0ae0d](https://github.com/sprucelabsai/spruce-skill-utils/commit/1b0ae0d))
+
 # [13.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v12.3.1...v13.0.0) (2020-12-18)
 
 
