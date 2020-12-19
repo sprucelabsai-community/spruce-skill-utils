@@ -1,3 +1,10 @@
+# [13.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.1.2...v13.2.0) (2020-12-19)
+
+
+### Features
+
+* settings service enhancements ([42609ba](https://github.com/sprucelabsai/spruce-skill-utils/commit/42609ba))
+
 ## [13.1.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.1.1...v13.1.2) (2020-12-19)
 
 ## [13.1.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.1.0...v13.1.1) (2020-12-18)
