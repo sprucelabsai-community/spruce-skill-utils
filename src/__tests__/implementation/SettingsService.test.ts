@@ -43,4 +43,20 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		actual = this.service.isMarkedAsPermanentlySkipped('feature')
 		assert.isTrue(actual)
 	}
+
+	@test()
+	protected static canSetAndGetArbitrarySettings() {
+		this.service.set('test', true)
+		assert.isTrue(this.service.get('test'))
+
+		this.service.set('test2', 'hello')
+		assert.isEqual(this.service.get('test2'), 'hello')
+	}
+
+	@test()
+	protected static canUnsetArbitrarySetting() {
+		this.service.set('test', true)
+		this.service.unset('test')
+		assert.isUndefined(this.service.get('test'))
+	}
 }

@@ -4,6 +4,7 @@ import diskUtil from '../disk.utility'
 export interface Settings<FeatureCode extends string = string> {
 	installed?: FeatureCode[]
 	skipped?: FeatureCode[]
+	[key: string]: any
 }
 
 export default class SettingsService<FeatureCode extends string = string> {
@@ -46,6 +47,22 @@ export default class SettingsService<FeatureCode extends string = string> {
 	public isMarkedAsPermanentlySkipped(code: FeatureCode): boolean {
 		const settings = this.loadSettings()
 		return !!settings.skipped?.find((c) => c === code)
+	}
+
+	public get(key: string): any {
+		return this.loadSettings()[key]
+	}
+
+	public set(key: string, value: any) {
+		const settings = this.loadSettings()
+		settings[key] = value
+		this.saveSettings(settings)
+	}
+
+	public unset(key: string) {
+		const settings = this.loadSettings()
+		delete settings[key]
+		this.saveSettings(settings)
 	}
 
 	private loadSettings(): Settings {
