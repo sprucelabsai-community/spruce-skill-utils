@@ -3,6 +3,8 @@ export { default as diskUtil } from './disk.utility'
 export { default as namesUtil } from './names.utility'
 export { default as addonUtil } from './addon.utility'
 export { default as pluginUtil } from './plugin.utility'
+export { default as log } from './log.utility'
+export * from './log.utility'
 
 export { ErrorOptions as UtilErrorOptions } from './SpruceError'
 export * from './constants'
