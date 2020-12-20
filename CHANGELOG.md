@@ -1,3 +1,10 @@
+# [13.5.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.4.1...v13.5.0) (2020-12-20)
+
+
+### Features
+
+* skill object can build types ([a5760a5](https://github.com/sprucelabsai/spruce-skill-utils/commit/a5760a5))
+
 ## [13.4.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.4.0...v13.4.1) (2020-12-20)
 
 # [13.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.3.0...v13.4.0) (2020-12-20)
