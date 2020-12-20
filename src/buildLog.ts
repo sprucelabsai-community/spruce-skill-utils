@@ -1,6 +1,6 @@
 import chalk, { Chalk } from 'chalk'
 
-interface LogOptions {
+export interface LogOptions {
 	log?: (...args: any[]) => void
 	useColors?: boolean
 	colors?: {

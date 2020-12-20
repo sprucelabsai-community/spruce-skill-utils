@@ -1,4 +1,5 @@
 import AbstractSpruceError from '@sprucelabs/error'
+import { Log, LogOptions } from './buildLog'
 
 export interface Skill {
 	rootDir: string
@@ -6,6 +7,7 @@ export interface Skill {
 	activeDir: string
 	hashSpruceDir: string
 	registerFeature(code: string, feature: SkillFeature): void
+	buildLog(prefix?: string, options?: LogOptions): Log
 }
 
 export interface SkillFeature {
