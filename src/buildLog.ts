@@ -68,7 +68,7 @@ export const mockLogUtil: Log = {
 	info() {},
 	error() {},
 	prefix: '',
-	buildLog(prefix: string | undefined = undefined, options?: LogOptions) {
-		return buildLog(prefix, options)
+	buildLog() {
+		return mockLogUtil
 	},
 }

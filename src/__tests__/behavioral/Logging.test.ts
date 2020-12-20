@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import chalk from 'chalk'
-import buildLog from '../../buildLog'
+import buildLog, { mockLogUtil } from '../../buildLog'
 
 const ROOT_PREFIX = 'root prefix'
 
@@ -89,5 +89,11 @@ export default class LoggingTest extends AbstractSpruceTest {
 			m,
 			'(INFO) root prefix :: second level prefix :: information logged'
 		)
+	}
+
+	@test()
+	protected static mockLogsBuildMockLogs() {
+		const log = mockLogUtil.buildLog('')
+		assert.isEqual(log, mockLogUtil)
 	}
 }
