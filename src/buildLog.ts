@@ -32,27 +32,35 @@ export default function buildLog(
 		prefix,
 
 		info(...args: string[]) {
-			const level = 'INFO'
-			write('italic', args, level)
+			//@ts-ignore
+			write(chalk.italic[info], args, 'INFO')
 		},
 
 		error(...args: string[]) {
-			useColors
-				? log((chalk[error] as typeof chalk).bold(pre, ...args))
-				: log(`(ERROR)${pre ? ` ${pre}` : ''}`, ...args)
+			//@ts-ignore
+			write(chalk.bold[error], args, 'ERROR')
 		},
 
 		buildLog(prefix: string | undefined = undefined, options?: LogOptions) {
-			return buildLog(`${pre ? `${pre} ` : ''}${prefix}`, { log, ...options })
+			return buildLog(`${pre ? `${pre} ` : ''}${prefix}`, {
+				log,
+				useColors,
+				...options,
+			})
 		},
 	}
 
 	return logUtil
 
-	function write(chalkMethod: keyof Chalk, args: any[], level: string) {
-		useColors
-			? log((chalk[info] as any)[chalkMethod](pre, ...args))
-			: log(`(${level})${pre ? ` ${pre}` : ''}`, ...args)
+	function write(chalkMethod: Chalk, args: any[], level: string) {
+		let chalkArgs = [...args]
+		if (pre) {
+			chalkArgs = [pre, ...chalkArgs]
+		}
+
+		useColors === false
+			? log(`(${level})${pre ? ` ${pre}` : ''}`, ...args)
+			: log(chalkMethod(...chalkArgs))
 	}
 }
 

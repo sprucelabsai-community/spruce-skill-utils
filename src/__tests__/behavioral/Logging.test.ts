@@ -1,4 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import chalk from 'chalk'
 import buildLog from '../../buildLog'
 
 const ROOT_PREFIX = 'root prefix'
@@ -47,6 +48,19 @@ export default class LoggingTest extends AbstractSpruceTest {
 
 		log.info('message')
 		assert.isEqual(m, '(INFO) message')
+	}
+
+	@test()
+	protected static logsWithChalk() {
+		let m
+		const log = buildLog(undefined, {
+			log: (...message: any) => {
+				m = message.join(' ')
+			},
+		})
+
+		log.info('go team')
+		assert.isEqual(m, chalk.italic.yellow('go team'))
 	}
 
 	@test()
