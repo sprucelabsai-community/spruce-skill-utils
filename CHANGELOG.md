@@ -1,3 +1,10 @@
+# [13.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.3.0...v13.4.0) (2020-12-20)
+
+
+### Features
+
+* log multi level ([fd1749a](https://github.com/sprucelabsai/spruce-skill-utils/commit/fd1749a))
+
 # [13.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.2.0...v13.3.0) (2020-12-20)
 
 
