@@ -1,3 +1,10 @@
+# [13.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.2.0...v13.3.0) (2020-12-20)
+
+
+### Features
+
+* log util ([39ce2d2](https://github.com/sprucelabsai/spruce-skill-utils/commit/39ce2d2))
+
 # [13.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v13.1.2...v13.2.0) (2020-12-19)
 
 
