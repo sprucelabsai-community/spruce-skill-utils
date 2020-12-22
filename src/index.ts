@@ -8,7 +8,7 @@ export * from './buildLog'
 
 export { ErrorOptions as UtilErrorOptions } from './SpruceError'
 export * from './constants'
-export * from './global.types'
+export * from './skill.types'
 
 export { default as SettingsService } from './services/SettingsService'
 export * from './services/SettingsService'
