@@ -63,5 +63,4 @@ export interface EventFeatureEvent {
 	eventName: string
 	eventNamespace: string
 	version: string
-	callback(skill: Skill): Promise<void>
 }
