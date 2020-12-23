@@ -40,7 +40,7 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": ">0",
+		"@sprucelabs/error": "latest",
 		"chalk": "^4.1.0",
 		"fs-extra": "^9.0.1",
 		"inflection": "^1.12.0",
@@ -55,10 +55,10 @@
 		"@babel/plugin-transform-runtime": "^7.12.10",
 		"@babel/preset-env": "^7.12.11",
 		"@babel/preset-typescript": "^7.12.7",
-		"@sprucelabs/babel-plugin-schema": ">0",
-		"@sprucelabs/jest-json-reporter": ">0",
-		"@sprucelabs/semantic-release": ">0",
-		"@sprucelabs/test": ">0",
+		"@sprucelabs/babel-plugin-schema": "latest",
+		"@sprucelabs/jest-json-reporter": "latest",
+		"@sprucelabs/semantic-release": "latest",
+		"@sprucelabs/test": "latest",
 		"@types/fs-extra": "^9.0.5",
 		"@types/inflection": "^1.5.28",
 		"@types/lodash": "^4.14.165",
