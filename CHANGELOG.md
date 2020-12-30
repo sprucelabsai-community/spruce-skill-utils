@@ -1,3 +1,10 @@
+# [15.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v14.0.8...v15.0.0) (2020-12-30)
+
+
+### Breaking Changes
+
+* eventNameWithOptionalNamespace -> fullyQualifiedEventName ([fca0771](https://github.com/sprucelabsai/spruce-skill-utils/commit/fca0771))
+
 ## [14.0.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v14.0.7...v14.0.8) (2020-12-30)
 
 ## [14.0.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v14.0.6...v14.0.7) (2020-12-28)
