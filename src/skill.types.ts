@@ -36,7 +36,7 @@ export interface ErrorHealthCheckItem extends HealthCheckItem {
 
 export interface EventHealthCheckItem extends HealthCheckItem {
 	listeners: Omit<EventFeatureListener, 'callback'>[]
-	contracts: { eventNameWithOptionalNamespace: string }[]
+	contracts: { fullyQualifiedEventName: string }[]
 	events: EventFeatureEvent[]
 }
 
