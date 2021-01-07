@@ -11,9 +11,9 @@ export interface LogOptions {
 
 export interface Log {
 	readonly prefix: string | undefined
-	info: (...args: string[]) => void
-	error: (...args: string[]) => void
-	warn: (...args: string[]) => void
+	info: (...args: string[]) => string
+	error: (...args: string[]) => string
+	warn: (...args: string[]) => string
 	buildLog(prefix: string | undefined, options?: LogOptions): Log
 }
 
@@ -34,17 +34,17 @@ export default function buildLog(
 
 		info(...args: string[]) {
 			//@ts-ignore
-			write(chalk.green[info], args, 'INFO')
+			return write(chalk.green[info], args, 'INFO')
 		},
 
 		warn(...args: string[]) {
 			//@ts-ignore
-			write(chalk.yellow[info], args, 'WARN')
+			return write(chalk.yellow[info], args, 'WARN')
 		},
 
 		error(...args: string[]) {
 			//@ts-ignore
-			write(chalk.red[error], args, 'ERROR')
+			return write(chalk.red[error], args, 'ERROR')
 		},
 
 		buildLog(prefix: string | undefined = undefined, options?: LogOptions) {
@@ -80,9 +80,9 @@ export default function buildLog(
 }
 
 export const mockLogUtil: Log = {
-	info() {},
-	error() {},
-	warn() {},
+	info: (m: string) => m,
+	error: (m: string) => m,
+	warn: (m: string) => m,
 	prefix: '',
 	buildLog() {
 		return mockLogUtil
