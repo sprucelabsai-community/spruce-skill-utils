@@ -53,14 +53,11 @@ export default class LoggingTest extends AbstractSpruceTest {
 	@test()
 	protected static logsWithChalk() {
 		let m
-		const log = buildLog(undefined, {
-			log: (...message: any) => {
-				m = message.join(' ')
-			},
-		})
+		const log = buildLog()
 
+		debugger
 		log.info('go team')
-		assert.isEqual(m, chalk.italic.yellow('go team'))
+		assert.isEqual(m, chalk.green('go team'))
 	}
 
 	@test()

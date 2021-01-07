@@ -64,9 +64,18 @@ export default function buildLog(
 			chalkArgs = [pre, ...chalkArgs]
 		}
 
-		useColors === false
-			? log(`(${level})${pre ? ` ${pre}` : ''}`, ...args)
-			: log(chalkMethod(...chalkArgs))
+		const message =
+			useColors === false
+				? `(${level})${pre ? ` ${pre}` : ''}`
+				: chalkMethod(...chalkArgs)
+
+		if (useColors === false) {
+			log(message, ...args)
+		} else {
+			log(message)
+		}
+
+		return message
 	}
 }
 
