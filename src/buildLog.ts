@@ -13,6 +13,7 @@ export interface Log {
 	readonly prefix: string | undefined
 	info: (...args: string[]) => void
 	error: (...args: string[]) => void
+	warn: (...args: string[]) => void
 	buildLog(prefix: string | undefined, options?: LogOptions): Log
 }
 
@@ -33,12 +34,17 @@ export default function buildLog(
 
 		info(...args: string[]) {
 			//@ts-ignore
-			write(chalk.italic[info], args, 'INFO')
+			write(chalk.green[info], args, 'INFO')
+		},
+
+		warn(...args: string[]) {
+			//@ts-ignore
+			write(chalk.yellow[info], args, 'WARN')
 		},
 
 		error(...args: string[]) {
 			//@ts-ignore
-			write(chalk.bold[error], args, 'ERROR')
+			write(chalk.red[error], args, 'ERROR')
 		},
 
 		buildLog(prefix: string | undefined = undefined, options?: LogOptions) {
@@ -67,6 +73,7 @@ export default function buildLog(
 export const mockLogUtil: Log = {
 	info() {},
 	error() {},
+	warn() {},
 	prefix: '',
 	buildLog() {
 		return mockLogUtil
