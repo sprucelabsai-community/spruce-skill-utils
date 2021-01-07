@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import chalk from 'chalk'
 import buildLog, { mockLogUtil } from '../../buildLog'
 
 const ROOT_PREFIX = 'root prefix'

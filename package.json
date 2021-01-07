@@ -27,7 +27,7 @@
 		"rebuild": "yarn clean && yarn && yarn build",
 		"clean": "rm -rf node_modules ; rm -rf build/ ; true",
 		"lint": "eslint '**/*.ts' && tsc -p . --noEmit",
-		"lint.fix": "eslint --fix '**/*.ts'",
+		"fix.lint": "eslint --fix '**/*.ts'",
 		"release": "semantic-release",
 		"arkit": "arkit -f index.ts -o docs/images/arkit.svg",
 		"arkit.png": "arkit -f index.ts -o docs/images/arkit.png",
