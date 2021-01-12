@@ -108,10 +108,4 @@ export interface GraphicsInterface {
 
 	waitForEnter(message?: string): Promise<void>
 	confirm(question: string): Promise<boolean>
-
-	getCursorPosition(): Promise<{ x: number; y: number } | null>
-	moveCursorTo(x: number, y: number): void
-
-	clear(): void
-	clearBelowCursor(): void
 }
