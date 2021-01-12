@@ -97,8 +97,6 @@ export interface GraphicsInterface {
 		definition: T
 	): Promise<FieldDefinitionValueType<T>>
 
-	sendInput(message: string): Promise<void>
-
 	startLoading(message?: string): void
 	stopLoading(): void
 
@@ -106,6 +104,5 @@ export interface GraphicsInterface {
 	updateProgressBar(options: ProgressBarUpdateOptions): void
 	removeProgressBar(): void
 
-	waitForEnter(message?: string): Promise<void>
 	confirm(question: string): Promise<boolean>
 }
