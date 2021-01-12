@@ -1,6 +1,6 @@
 import pathUtil from 'path'
 import globby from 'globby'
-import SpruceError from './SpruceError'
+import SpruceError from './errors/SpruceError'
 
 const pluginUtil = {
 	async import(args: any[], ...path: string[]) {
