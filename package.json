@@ -44,7 +44,7 @@
 		"@sprucelabs/error": "latest",
 		"@sprucelabs/schema": "^19.0.1",
 		"chalk": "^4.1.0",
-		"fs-extra": "^9.0.1",
+		"fs-extra": "^9.1.0",
 		"inflection": "^1.12.0",
 		"lodash": "^4.17.20",
 		"uuid": "^8.3.2"
