@@ -1,3 +1,15 @@
+## [15.1.11](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.10...v15.1.11) (2021-01-18)
+
+## [15.1.10](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.9...v15.1.10) (2021-01-18)
+
+## [15.1.9](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.8...v15.1.9) (2021-01-18)
+
+## [15.1.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.7...v15.1.8) (2021-01-15)
+
+## [15.1.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.6...v15.1.7) (2021-01-14)
+
+## [15.1.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.5...v15.1.6) (2021-01-13)
+
 ## [15.1.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.4...v15.1.5) (2021-01-12)
 
 ## [15.1.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.3...v15.1.4) (2021-01-12)
