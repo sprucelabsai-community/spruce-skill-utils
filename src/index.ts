@@ -13,3 +13,4 @@ export * from './skill.types'
 
 export { default as SettingsService } from './services/SettingsService'
 export * from './services/SettingsService'
+export { default } from './skills/Skill'
