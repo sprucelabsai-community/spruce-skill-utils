@@ -1,3 +1,10 @@
+# [15.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.11...v15.2.0) (2021-01-19)
+
+
+### Features
+
+* exporting spruce skill implementation for booting skills ([389efed](https://github.com/sprucelabsai/spruce-skill-utils/commit/389efed))
+
 ## [15.1.11](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.10...v15.1.11) (2021-01-18)
 
 ## [15.1.10](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.1.9...v15.1.10) (2021-01-18)
