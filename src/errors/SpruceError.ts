@@ -8,7 +8,16 @@ interface FailedToLoadPluginErrorOptions extends IErrorOptions {
 	file: string
 }
 
-export type ErrorOptions = FailedToLoadPluginErrorOptions | SpruceErrorOptions
+interface InvalidFeatureCodeErrorOptions extends IErrorOptions {
+	code: 'INVALID_FEATURE_CODE'
+	suppliedCode: string
+	validCodes: string[]
+}
+
+export type ErrorOptions =
+	| FailedToLoadPluginErrorOptions
+	| InvalidFeatureCodeErrorOptions
+	| SpruceErrorOptions
 
 export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 	public friendlyMessage() {
@@ -18,6 +27,13 @@ export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 			case 'FAILED_TO_LOAD_PLUGIN':
 				message = `Failed to load the plugin at ${this.options.file}.\n\n`
 				message += this.options.friendlyMessage
+				break
+			case 'INVALID_FEATURE_CODE':
+				message = `"${
+					this.options.suppliedCode
+				}" is not a valid feature code. Valid codes are: ${this.options.validCodes.join(
+					', '
+				)}`
 				break
 		}
 

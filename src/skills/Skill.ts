@@ -1,4 +1,5 @@
 import buildLog, { Log } from '../buildLog'
+import SpruceError from '../errors/SpruceError'
 import {
 	HealthCheckResults,
 	SkillFeature,
@@ -106,6 +107,18 @@ export default class Skill implements ISkill {
 			code,
 			feature: this.featureMap[code],
 		}))
+	}
+
+	public getFeatureByCode(code: string): SkillFeature {
+		if (this.featureMap[code]) {
+			return this.featureMap[code]
+		}
+
+		throw new SpruceError({
+			code: 'INVALID_FEATURE_CODE',
+			suppliedCode: code,
+			validCodes: Object.keys(this.featureMap),
+		})
 	}
 
 	public buildLog(...args: any[]): Log {

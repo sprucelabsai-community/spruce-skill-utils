@@ -74,12 +74,9 @@
             }
         },
         {
-            "label": "yarn",
+            "label": "shell",
             "type": "shell",
-            "command": "${input:command}",
-            "args": [
-                "${input:optionsCommand}"
-            ],
+            "command": "${input:command} ${input:optionsCommand}",
             "problemMatcher": [],
             "presentation": {
                 "reveal": "always",
