@@ -1,3 +1,10 @@
+# [16.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v16.0.0...v16.1.0) (2021-01-20)
+
+
+### Features
+
+* new skill methods ([9cd42a5](https://github.com/sprucelabsai/spruce-skill-utils/commit/9cd42a5))
+
 # [16.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.4.0...v16.0.0) (2021-01-20)
 
 
