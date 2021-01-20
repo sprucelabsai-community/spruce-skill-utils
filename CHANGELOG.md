@@ -1,3 +1,10 @@
+# [16.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.4.0...v16.0.0) (2021-01-20)
+
+
+### Breaking Changes
+
+* remove skill instance ([6d26768](https://github.com/sprucelabsai/spruce-skill-utils/commit/6d26768))
+
 # [15.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.3.2...v15.4.0) (2021-01-20)
 
 
