@@ -8,6 +8,7 @@ export interface Skill {
 	hashSpruceDir: string
 	registerFeature(code: string, feature: SkillFeature): void
 	getFeatureByCode(code: string): SkillFeature
+	isRunning(): boolean
 	buildLog(prefix?: string, options?: LogOptions): Log
 }
 
@@ -15,6 +16,7 @@ export interface SkillFeature {
 	execute(): Promise<void>
 	checkHealth(): Promise<HealthCheckItem>
 	isInstalled(): Promise<boolean>
+	destroy(): Promise<void>
 }
 
 export interface SchemaHealthCheckItem extends HealthCheckItem {

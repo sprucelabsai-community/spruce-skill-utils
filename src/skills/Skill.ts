@@ -13,6 +13,8 @@ export default class Skill implements ISkill {
 
 	private featureMap: Record<string, SkillFeature> = {}
 	private log = buildLog('skill')
+	private _isRunning = false
+	private shutdownTimeout: any
 
 	public constructor(options: {
 		rootDir: string
@@ -38,6 +40,19 @@ export default class Skill implements ISkill {
 	) => {
 		this.log.info(`Registering feature.${featureCode}`)
 		this.featureMap[featureCode] = feature
+	}
+
+	public isRunning(): boolean {
+		return this._isRunning
+	}
+
+	public async kill() {
+		this._isRunning = false
+		if (this.shutdownTimeout) {
+			clearTimeout(this.shutdownTimeout)
+		}
+
+		await Promise.all(this.getFeatures().map((feature) => feature.destroy()))
 	}
 
 	public checkHealth = async (): Promise<HealthCheckResults> => {
@@ -70,32 +85,46 @@ export default class Skill implements ISkill {
 	}
 
 	public execute = async () => {
+		this._isRunning = true
+
 		await Promise.all(this.getFeatures().map((feature) => feature.execute()))
+
+		if (!this._isRunning) {
+			return
+		}
+
 		this.log.info('All features have finished execution.')
 		this.log.info('Shutting down in 3')
-		await new Promise((resolve) =>
-			setTimeout(() => {
-				this.log.info('.................2')
-				resolve(null)
-			}, 1000)
+
+		await new Promise(
+			(resolve) =>
+				(this.shutdownTimeout = setTimeout(() => {
+					this.log.info('.................2')
+					resolve(null)
+				}, 1000))
 		)
-		await new Promise((resolve) =>
-			setTimeout(() => {
-				this.log.info('.................1')
-				resolve(null)
-			}, 1000)
+		await new Promise(
+			(resolve) =>
+				(this.shutdownTimeout = setTimeout(() => {
+					this.log.info('.................1')
+					resolve(null)
+				}, 1000))
 		)
-		await new Promise((resolve) =>
-			setTimeout(() => {
-				this.log.info('.................Good bye 👋')
-				resolve(null)
-			}, 1000)
+		await new Promise(
+			(resolve) =>
+				(this.shutdownTimeout = setTimeout(() => {
+					this.log.info('.................Good bye 👋')
+					resolve(null)
+				}, 1000))
 		)
-		await new Promise((resolve) =>
-			setTimeout(() => {
-				resolve(null)
-			}, 1000)
+		await new Promise(
+			(resolve) =>
+				(this.shutdownTimeout = setTimeout(() => {
+					resolve(null)
+				}, 1000))
 		)
+
+		this._isRunning = false
 	}
 
 	public getFeatures() {
