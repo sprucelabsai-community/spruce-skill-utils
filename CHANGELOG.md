@@ -1,3 +1,10 @@
+# [15.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.3.2...v15.4.0) (2021-01-20)
+
+
+### Features
+
+* skill running and killing ([992841a](https://github.com/sprucelabsai/spruce-skill-utils/commit/992841a))
+
 ## [15.3.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.3.1...v15.3.2) (2021-01-20)
 
 ## [15.3.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v15.3.0...v15.3.1) (2021-01-20)
