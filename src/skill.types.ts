@@ -7,6 +7,7 @@ export interface Skill {
 	activeDir: string
 	hashSpruceDir: string
 	registerFeature(code: string, feature: SkillFeature): void
+	getFeatureByCode(code: string): SkillFeature
 	buildLog(prefix?: string, options?: LogOptions): Log
 }
 
