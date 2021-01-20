@@ -10,7 +10,10 @@ export interface Skill {
 	getFeatureByCode(code: string): SkillFeature
 	getFeatures(): SkillFeature[]
 	isRunning(): boolean
+	checkHealth(): Promise<HealthCheckResults>
 	buildLog(prefix?: string, options?: LogOptions): Log
+	execute(): Promise<void>
+	kill(): Promise<void>
 }
 
 export interface SkillFeature {
