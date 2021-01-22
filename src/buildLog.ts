@@ -79,12 +79,18 @@ export default function buildLog(
 	}
 }
 
-export const mockLogUtil: Log = {
+export const mockLog: Log = {
 	info: (m: string) => m,
 	error: (m: string) => m,
 	warn: (m: string) => m,
 	prefix: '',
 	buildLog() {
-		return mockLogUtil
+		return mockLog
 	},
 }
+
+export const testLog = buildLog('TEST', {
+	log: (...parts: any[]) => {
+		process.stderr.write(parts.join(' ') + '\n')
+	},
+})

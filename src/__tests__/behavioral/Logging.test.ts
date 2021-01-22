@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import buildLog, { mockLogUtil } from '../../buildLog'
+import buildLog, { mockLog, testLog } from '../../buildLog'
 
 const ROOT_PREFIX = 'root prefix'
 
@@ -87,7 +87,42 @@ export default class LoggingTest extends AbstractSpruceTest {
 
 	@test()
 	protected static mockLogsBuildMockLogs() {
-		const log = mockLogUtil.buildLog('')
-		assert.isEqual(log, mockLogUtil)
+		const log = mockLog.buildLog('')
+		assert.isEqual(log, mockLog)
+	}
+
+	@test()
+	protected static testLogLogsToStdErr() {
+		const old = process.stderr.write
+		let lastWrite: any[] = []
+
+		//@ts-ignore
+		process.stderr.write = (...parts: any[]) => {
+			lastWrite = parts
+		}
+
+		testLog.info('go team!')
+
+		assert.doesInclude(lastWrite[0], 'go team!')
+
+		process.stderr.write = old
+	}
+
+	@test()
+	protected static testLogBuildsLogThatLogsToStdErr() {
+		const old = process.stderr.write
+		let lastWrite: any[] = []
+
+		//@ts-ignore
+		process.stderr.write = (...parts: any[]) => {
+			lastWrite = parts
+		}
+
+		testLog.buildLog('waka').info('go team!')
+
+		assert.doesInclude(lastWrite[0], 'go team!')
+		assert.doesInclude(lastWrite[0], 'waka')
+
+		process.stderr.write = old
 	}
 }
