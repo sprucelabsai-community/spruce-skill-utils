@@ -10,6 +10,7 @@ export interface Skill {
 	getFeatureByCode(code: string): SkillFeature
 	getFeatures(): SkillFeature[]
 	isRunning(): boolean
+	isBooted(): boolean
 	checkHealth(): Promise<HealthCheckResults>
 	buildLog(prefix?: string, options?: LogOptions): Log
 	execute(): Promise<void>
@@ -21,6 +22,7 @@ export interface SkillFeature {
 	checkHealth(): Promise<HealthCheckItem>
 	isInstalled(): Promise<boolean>
 	destroy(): Promise<void>
+	isBooted(): boolean
 }
 
 export interface SchemaHealthCheckItem extends HealthCheckItem {
