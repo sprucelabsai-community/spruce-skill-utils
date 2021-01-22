@@ -1,3 +1,10 @@
+# [16.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v16.1.0...v16.2.0) (2021-01-22)
+
+
+### Features
+
+* test loggin ([e62ab15](https://github.com/sprucelabsai/spruce-skill-utils/commit/e62ab15))
+
 # [16.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v16.0.0...v16.1.0) (2021-01-20)
 
 
