@@ -23,8 +23,7 @@ export default function buildLog(
 	prefix: string | undefined = undefined,
 	options?: LogOptions
 ) {
-	const { colors = {}, log = console.log.bind(console), useColors } =
-		options ?? {}
+	const { colors = {}, log, useColors } = options ?? {}
 	const { info = 'yellow', error = 'red' } = colors
 
 	const pre = prefix ? `${prefix} ::` : undefined
@@ -64,15 +63,23 @@ export default function buildLog(
 			chalkArgs = [pre, ...chalkArgs]
 		}
 
+		let l =
+			log ??
+			(level === 'ERROR'
+				? (...args: []) => {
+						process.stderr.write(args.join('\n'))
+				  }
+				: console.log.bind(console))
+
 		const message =
 			useColors === false
 				? `(${level})${pre ? ` ${pre}` : ''}`
 				: chalkMethod(...chalkArgs)
 
 		if (useColors === false) {
-			log(message, ...args)
+			l(message, ...args)
 		} else {
-			log(message)
+			l(message)
 		}
 
 		return message

@@ -60,6 +60,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 	@test()
 	protected static logsbuildLogs() {
 		let m: any
+
 		const log = buildLog(ROOT_PREFIX, {
 			useColors: false,
 			log: (...message: any) => {
