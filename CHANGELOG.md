@@ -1,3 +1,12 @@
+## [17.0.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v17.0.0...v17.0.1) (2021-01-25)
+
+# [17.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v16.2.0...v17.0.0) (2021-01-22)
+
+
+### Breaking Changes
+
+* new isBooted method on skill booter and features ([a3fef23](https://github.com/sprucelabsai/spruce-skill-utils/commit/a3fef23))
+
 # [16.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v16.1.0...v16.2.0) (2021-01-22)
 
 
