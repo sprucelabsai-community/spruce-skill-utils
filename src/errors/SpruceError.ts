@@ -14,10 +14,15 @@ interface InvalidFeatureCodeErrorOptions extends IErrorOptions {
 	validCodes: string[]
 }
 
+interface SkillCrashedErrorOptions extends IErrorOptions {
+	code: 'SKILL_CRASHED'
+}
+
 export type ErrorOptions =
 	| FailedToLoadPluginErrorOptions
 	| InvalidFeatureCodeErrorOptions
 	| SpruceErrorOptions
+	| SkillCrashedErrorOptions
 
 export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 	public friendlyMessage() {
@@ -34,6 +39,11 @@ export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 				}" is not a valid feature code. Valid codes are: ${this.options.validCodes.join(
 					', '
 				)}`
+				break
+			case 'SKILL_CRASHED':
+				message = `Shoot, your skill crashed. Here are some deets:\n\n${
+					this.options.originalError?.message ?? 'UNKNOWN'
+				}`
 				break
 		}
 
