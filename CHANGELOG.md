@@ -1,3 +1,10 @@
+# [17.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v17.0.3...v17.1.0) (2021-02-02)
+
+
+### Features
+
+* skill crashed error ([8384dc6](https://github.com/sprucelabsai/spruce-skill-utils/commit/8384dc6))
+
 ## [17.0.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v17.0.2...v17.0.3) (2021-01-31)
 
 ## [17.0.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v17.0.1...v17.0.2) (2021-01-26)
