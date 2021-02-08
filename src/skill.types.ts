@@ -43,33 +43,13 @@ export interface ErrorHealthCheckItem extends HealthCheckItem {
 	}[]
 }
 
-export interface EventHealthCheckItem extends HealthCheckItem {
-	listeners: Omit<EventFeatureListener, 'callback'>[]
-	contracts: { fullyQualifiedEventName: string }[]
-	events: EventFeatureEvent[]
-}
-
 export interface HealthCheckResults {
 	skill: HealthCheckItem
 	schema?: SchemaHealthCheckItem
 	error?: ErrorHealthCheckItem
-	event?: EventHealthCheckItem
 }
 
 export interface HealthCheckItem {
 	status: 'failed' | 'passed'
 	errors?: AbstractSpruceError<any>[]
-}
-
-export interface EventFeatureListener {
-	eventName: string
-	eventNamespace: string
-	version: string
-	callback(skill: Skill): Promise<void>
-}
-
-export interface EventFeatureEvent {
-	eventName: string
-	eventNamespace: string
-	version: string
 }
