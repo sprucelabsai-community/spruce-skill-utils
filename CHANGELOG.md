@@ -1,3 +1,10 @@
+# [18.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v17.1.4...v18.0.0) (2021-02-08)
+
+
+### Breaking Changes
+
+* removed event types ([a7c0357](https://github.com/sprucelabsai/spruce-skill-utils/commit/a7c0357))
+
 ## [17.1.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v17.1.3...v17.1.4) (2021-02-04)
 
 ## [17.1.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v17.1.2...v17.1.3) (2021-02-04)
