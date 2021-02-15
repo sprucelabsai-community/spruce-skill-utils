@@ -1,3 +1,10 @@
+# [18.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.0.8...v18.1.0) (2021-02-15)
+
+
+### Features
+
+* env service ([006c9c1](https://github.com/sprucelabsai/spruce-skill-utils/commit/006c9c1))
+
 ## [18.0.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.0.7...v18.0.8) (2021-02-14)
 
 ## [18.0.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.0.6...v18.0.7) (2021-02-12)
