@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import diskUtil from '../../disk.utility'
 import SettingsService from '../../services/SettingsService'
+import diskUtil from '../../utilities/disk.utility'
 
 export default class SettingsServiceTest extends AbstractSpruceTest {
 	private static service: SettingsService

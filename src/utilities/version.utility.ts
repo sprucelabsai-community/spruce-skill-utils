@@ -1,7 +1,7 @@
 import pathUtil from 'path'
 import { LATEST_HANDLEBARS, LATEST_TOKEN } from '../constants'
+import SpruceError from '../errors/SpruceError'
 import diskUtil from './disk.utility'
-import SpruceError from './errors/SpruceError'
 import namesUtil from './names.utility'
 
 function parsePath(cwd: string, paths: string[]) {

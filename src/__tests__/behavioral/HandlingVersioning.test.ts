@@ -1,6 +1,6 @@
 import pathUtil from 'path'
 import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
-import versionUtil, { formatDate } from '../../version.utility'
+import versionUtil, { formatDate } from '../../utilities/version.utility'
 
 export default class HandlesVersioningTest extends AbstractSpruceTest {
 	@test()

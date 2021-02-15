@@ -1,5 +1,5 @@
 import { HASH_SPRUCE_DIR } from '../constants'
-import diskUtil from '../disk.utility'
+import diskUtil from '../utilities/disk.utility'
 
 export interface Settings<FeatureCode extends string = string> {
 	installed?: FeatureCode[]

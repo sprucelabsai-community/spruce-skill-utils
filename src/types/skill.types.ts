@@ -1,5 +1,5 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { Log, LogOptions } from './buildLog'
+import { Log, LogOptions } from '../utilities/buildLog'
 
 export interface Skill {
 	rootDir: string
