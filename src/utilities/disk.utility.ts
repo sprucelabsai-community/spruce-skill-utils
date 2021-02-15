@@ -3,7 +3,7 @@ import os from 'os'
 import pathUtil from 'path'
 import fs from 'fs-extra'
 import * as uuid from 'uuid'
-import { HASH_SPRUCE_DIR } from './constants'
+import { HASH_SPRUCE_DIR } from '../constants'
 
 export interface CreateFile {
 	/** The relative path from the cwd, without a leading forward slash */

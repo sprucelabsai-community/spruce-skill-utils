@@ -1,5 +1,5 @@
 import pathUtil from 'path'
-import { LATEST_HANDLEBARS, LATEST_TOKEN } from './constants'
+import { LATEST_HANDLEBARS, LATEST_TOKEN } from '../constants'
 import diskUtil from './disk.utility'
 import SpruceError from './errors/SpruceError'
 import namesUtil from './names.utility'
