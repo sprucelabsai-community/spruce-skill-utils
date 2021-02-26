@@ -31,10 +31,10 @@
 		"url": "https://github.com/sprucelabsai/spruce-skill-utils/issues"
 	},
 	"scripts": {
-		"build": "yarn build.tsc && yarn build.copy-files && yarn build.dist",
+		"build": "yarn build.tsc && yarn build.dist",
 		"build.copy-files": "cp -r ./src/.spruce build/ && cp -r ./src/__tests__/testDirsAndFiles build/__tests__/",
 		"build.dist": "tsc --project tsconfig.dist.json",
-		"build.tsc": "tsc",
+		"build.tsc": "tsc && yarn build.copy-files",
 		"clean": "rm -rf build/ ; true",
 		"clean.all": "rm -rf node_modules ; rm yarn.lock ; yarn clean ; true",
 		"fix.lint": "eslint --fix '**/*.ts'",
@@ -45,7 +45,7 @@
 		"upgrade.packages": "yarn-upgrade-all && rm yarn.lock ; yarn ; yarn fix.lint | true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test",
-		"watch.build": "concurrently 'yarn run build.babel --watch' \"chokidar 'src/**/*' -c 'clear ; yarn build.types'\"",
+		"watch.build": "concurrently 'yarn run build.tsc' \"chokidar 'src/**/*' -c 'clear ; yarn build.tsc'\"",
 		"watch.lint": "chokidar 'src/**/*' -c 'yarn lint.tsc'",
 		"watch.tests": "jest --watch"
 	},
