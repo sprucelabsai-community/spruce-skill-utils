@@ -1,3 +1,10 @@
+# [18.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.1.15...v18.2.0) (2021-02-26)
+
+
+### Features
+
+* random util ([60572c8](https://github.com/sprucelabsai/spruce-skill-utils/commit/60572c8))
+
 ## [18.1.15](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.1.14...v18.1.15) (2021-02-26)
 
 ## [18.1.14](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.1.13...v18.1.14) (2021-02-24)
