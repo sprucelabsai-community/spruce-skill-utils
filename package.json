@@ -32,9 +32,9 @@
 	},
 	"scripts": {
 		"build": "yarn build.tsc && yarn build.dist",
-		"build.copy-files": "cp -r ./src/.spruce build/ && cp -r ./src/__tests__/testDirsAndFiles build/__tests__/",
+		"build.copy-files": "mkdir -p build/__tests__ && cp -r ./src/.spruce build/ && cp -r ./src/__tests__/testDirsAndFiles build/__tests__/",
 		"build.dist": "tsc --project tsconfig.dist.json",
-		"build.tsc": "tsc && yarn build.copy-files",
+		"build.tsc": "yarn build.copy-files && tsc",
 		"clean": "rm -rf build/",
 		"clean.all": "rm -rf node_modules/ yarn.lock ; yarn clean",
 		"fix.lint": "eslint --fix '**/*.ts'",
@@ -45,7 +45,7 @@
 		"upgrade.packages": "yarn-upgrade-all && rm yarn.lock ; yarn ; yarn fix.lint | true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test",
-		"watch.build": "concurrently 'yarn run build.tsc' \"chokidar 'src/**/*' -c 'clear ; yarn build.tsc'\"",
+		"watch.build": "yarn build.tsc -w",
 		"watch.lint": "chokidar 'src/**/*' -c 'yarn lint.tsc'"
 	},
 	"dependencies": {
