@@ -35,8 +35,8 @@
 		"build.copy-files": "cp -r ./src/.spruce build/ && cp -r ./src/__tests__/testDirsAndFiles build/__tests__/",
 		"build.dist": "tsc --project tsconfig.dist.json",
 		"build.tsc": "tsc && yarn build.copy-files",
-		"clean": "rm -rf build/ ; true",
-		"clean.all": "rm -rf node_modules ; rm yarn.lock ; yarn clean ; true",
+		"clean": "rm -rf build/",
+		"clean.all": "rm -rf node_modules/ yarn.lock ; yarn clean",
 		"fix.lint": "eslint --fix '**/*.ts'",
 		"lint": "eslint '**/*.ts' && tsc -p . --noEmit",
 		"rebuild": "yarn clean.all && yarn && yarn build",
@@ -46,8 +46,7 @@
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test",
 		"watch.build": "concurrently 'yarn run build.tsc' \"chokidar 'src/**/*' -c 'clear ; yarn build.tsc'\"",
-		"watch.lint": "chokidar 'src/**/*' -c 'yarn lint.tsc'",
-		"watch.tests": "jest --watch"
+		"watch.lint": "chokidar 'src/**/*' -c 'yarn lint.tsc'"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "latest",
