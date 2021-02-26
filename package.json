@@ -6,6 +6,7 @@
 	"version": "18.2.0",
 	"files": [
 		"build/**/*",
+		"!build/__tests__",
 		"tsconfig.json"
 	],
 	"main": "./build/index.js",
@@ -30,10 +31,10 @@
 		"url": "https://github.com/sprucelabsai/spruce-skill-utils/issues"
 	},
 	"scripts": {
-		"build": "yarn build.babel && yarn build.types",
-		"build.babel": "babel src --out-dir build --extensions \".ts,.tsx\" --source-maps --copy-files",
+		"build": "yarn build.tsc && yarn build.copy-files && yarn build.dist",
+		"build.copy-files": "cp -r ./src/.spruce build/ && cp -r ./src/__tests__/testDirsAndFiles build/__tests__/",
 		"build.dist": "tsc --project tsconfig.dist.json",
-		"build.types": "tsc --emitDeclarationOnly && echo PASS",
+		"build.tsc": "tsc",
 		"clean": "rm -rf build/ ; true",
 		"clean.all": "rm -rf node_modules ; rm yarn.lock ; yarn clean ; true",
 		"fix.lint": "eslint --fix '**/*.ts'",
@@ -59,13 +60,6 @@
 		"uuid": "^8.3.2"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.13.0",
-		"@babel/core": "^7.13.1",
-		"@babel/plugin-proposal-class-properties": "^7.13.0",
-		"@babel/plugin-proposal-decorators": "^7.13.5",
-		"@babel/plugin-transform-runtime": "^7.13.7",
-		"@babel/preset-env": "^7.13.5",
-		"@babel/preset-typescript": "^7.13.0",
 		"@sprucelabs/babel-plugin-schema": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
 		"@sprucelabs/semantic-release": "latest",
@@ -77,7 +71,6 @@
 		"@types/node": "^14.14.31",
 		"@types/random": "^2.1.1",
 		"@types/uuid": "^8.3.0",
-		"babel-plugin-module-resolver": "^4.1.0",
 		"chokidar-cli": "^2.1.0",
 		"concurrently": "^6.0.0",
 		"conventional-changelog-sprucelabs": "latest",
