@@ -1,3 +1,10 @@
+## [18.2.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.1...v18.2.2) (2021-02-26)
+
+
+### Bug Fixes
+
+* watch.build ([a0b4634](https://github.com/sprucelabsai/spruce-skill-utils/commit/a0b4634))
+
 ## [18.2.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.0...v18.2.1) (2021-02-26)
 
 # [18.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.1.15...v18.2.0) (2021-02-26)
