@@ -1,8 +1,10 @@
-import random from 'random'
+function random(min: number, max: number) {
+	return Math.random() * (max - min) + min
+}
 
 const randomUtil = {
 	rand(possibilities: any[]) {
-		return possibilities[random.int(0, possibilities.length - 1)]
+		return possibilities[random(0, possibilities.length - 1)]
 	},
 }
 
