@@ -1,3 +1,29 @@
+## [18.2.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.6...v18.2.7) (2021-03-01)
+
+## [18.2.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.5...v18.2.6) (2021-02-28)
+
+## [18.2.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.4...v18.2.5) (2021-02-27)
+
+## [18.2.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.3...v18.2.4) (2021-02-26)
+
+## [18.2.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.2...v18.2.3) (2021-02-26)
+
+## [18.2.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.1...v18.2.2) (2021-02-26)
+
+
+### Bug Fixes
+
+* watch.build ([a0b4634](https://github.com/sprucelabsai/spruce-skill-utils/commit/a0b4634))
+
+## [18.2.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.0...v18.2.1) (2021-02-26)
+
+# [18.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.1.15...v18.2.0) (2021-02-26)
+
+
+### Features
+
+* random util ([60572c8](https://github.com/sprucelabsai/spruce-skill-utils/commit/60572c8))
+
 ## [18.1.15](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.1.14...v18.1.15) (2021-02-26)
 
 ## [18.1.14](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.1.13...v18.1.14) (2021-02-24)
