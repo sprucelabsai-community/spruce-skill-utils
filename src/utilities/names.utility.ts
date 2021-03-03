@@ -36,6 +36,11 @@ const namesUtil = {
 	toKebab(name: string) {
 		return kebabCase(name)
 	},
+
+	/** First name => first_name */
+	toSnake(name: string) {
+		return snakeCase(name)
+	},
 }
 
 export default namesUtil
