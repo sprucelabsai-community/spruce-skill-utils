@@ -1,3 +1,10 @@
+# [18.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.10...v18.3.0) (2021-03-03)
+
+
+### Features
+
+* snake name ([e1986b6](https://github.com/sprucelabsai/spruce-skill-utils/commit/e1986b6))
+
 ## [18.2.10](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.9...v18.2.10) (2021-03-02)
 
 ## [18.2.9](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.8...v18.2.9) (2021-03-01)
