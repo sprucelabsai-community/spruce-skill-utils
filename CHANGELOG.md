@@ -1,3 +1,10 @@
+# [18.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.3.2...v18.4.0) (2021-03-05)
+
+
+### Features
+
+* new SkillContext type and functionality ([8a9315f](https://github.com/sprucelabsai/spruce-skill-utils/commit/8a9315f))
+
 ## [18.3.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.3.1...v18.3.2) (2021-03-05)
 
 ## [18.3.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.3.0...v18.3.1) (2021-03-04)
