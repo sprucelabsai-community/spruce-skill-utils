@@ -18,7 +18,7 @@ export interface Skill {
 	execute(): Promise<void>
 	kill(): Promise<void>
 	getContext(): SkillContext
-	setContext<Key extends keyof SkillContext>(
+	updateContext<Key extends keyof SkillContext>(
 		key: Key,
 		value: SkillContext[Key]
 	): void
