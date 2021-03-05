@@ -1,6 +1,8 @@
 import AbstractSpruceError from '@sprucelabs/error'
 import { Log, LogOptions } from '../utilities/buildLog'
 
+export interface SkillContext {}
+
 export interface Skill {
 	rootDir: string
 	/** Source or build depending on running with .local */
@@ -15,6 +17,11 @@ export interface Skill {
 	buildLog(prefix?: string, options?: LogOptions): Log
 	execute(): Promise<void>
 	kill(): Promise<void>
+	getContext(): SkillContext
+	setContext<Key extends keyof SkillContext>(
+		key: Key,
+		value: SkillContext[Key]
+	): void
 }
 
 export interface SkillFeature {
