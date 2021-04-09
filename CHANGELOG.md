@@ -1,3 +1,40 @@
+## [18.4.14](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.13...v18.4.14) (2021-04-07)
+
+## [18.4.13](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.12...v18.4.13) (2021-04-05)
+
+## [18.4.12](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.11...v18.4.12) (2021-04-02)
+
+## [18.4.11](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.10...v18.4.11) (2021-03-31)
+
+## [18.4.10](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.9...v18.4.10) (2021-03-27)
+
+## [18.4.9](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.8...v18.4.9) (2021-03-26)
+
+## [18.4.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.7...v18.4.8) (2021-03-25)
+
+## [18.4.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.6...v18.4.7) (2021-03-25)
+
+## [18.4.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.5...v18.4.6) (2021-03-15)
+
+## [18.4.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.4...v18.4.5) (2021-03-12)
+
+## [18.4.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.3...v18.4.4) (2021-03-12)
+
+## [18.4.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.2...v18.4.3) (2021-03-09)
+
+## [18.4.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.1...v18.4.2) (2021-03-07)
+
+## [18.4.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.0...v18.4.1) (2021-03-05)
+
+# [18.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.3.2...v18.4.0) (2021-03-05)
+
+
+### Features
+
+* new SkillContext type and functionality ([8a9315f](https://github.com/sprucelabsai/spruce-skill-utils/commit/8a9315f))
+
+## [18.3.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.3.1...v18.3.2) (2021-03-05)
+
 ## [18.3.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.3.0...v18.3.1) (2021-03-04)
 
 # [18.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.2.10...v18.3.0) (2021-03-03)
