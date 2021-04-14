@@ -67,7 +67,7 @@ export default function buildLog(
 			log ??
 			(level === 'ERROR'
 				? (...args: []) => {
-						process.stderr.write(args.join('\n'))
+						process.stderr.write(args.join('\n') + '\n')
 				  }
 				: console.log.bind(console))
 
