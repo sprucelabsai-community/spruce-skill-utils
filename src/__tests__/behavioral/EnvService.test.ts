@@ -82,4 +82,18 @@ export default class EnvServiceTest extends AbstractSpruceTest {
 		const result = service.get('NOT_A_REAL_KEY')
 		assert.isUndefined(result)
 	}
+
+	@test()
+	protected static async canSetAndRetrieveJsonEncodedStrings() {
+		const service = this.Service()
+
+		service.set('person', JSON.stringify({ firstName: 'tay', lastName: 'ro' }))
+		service.set('anotherVar', true)
+
+		const match = JSON.parse(service.get('person') as string)
+
+		assert.isTruthy(match)
+		assert.isEqualDeep(match, { firstName: 'tay', lastName: 'ro' })
+		assert.isTrue(service.get('anotherVar') as boolean)
+	}
 }
