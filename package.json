@@ -45,7 +45,7 @@
 	"dependencies": {
 		"@sprucelabs/error": "latest",
 		"@sprucelabs/schema": "latest",
-		"chalk": "^4.1.0",
+		"chalk": "^4.1.1",
 		"dotenv": "^8.2.0",
 		"fs-extra": "^9.1.0",
 		"inflection": "^1.12.0",
