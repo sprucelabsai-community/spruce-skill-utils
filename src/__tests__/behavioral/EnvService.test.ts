@@ -96,4 +96,17 @@ export default class EnvServiceTest extends AbstractSpruceTest {
 		assert.isEqualDeep(match, { firstName: 'tay', lastName: 'ro' })
 		assert.isTrue(service.get('anotherVar') as boolean)
 	}
+
+	@test()
+	protected static async canSaveWithNewlines() {
+		const service = this.Service()
+		const expected = `hey
+
+there!`
+		service.set('NEWLINES', expected)
+
+		const actual = service.get('NEWLINES')
+
+		assert.isEqual(actual, expected)
+	}
 }

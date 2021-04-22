@@ -63,13 +63,17 @@ export default class EnvService {
 		let valueLiteral = ''
 
 		if (typeof value === 'string') {
-			valueLiteral = `"${value}"`
+			valueLiteral = `"${this.escape(value)}"`
 		} else if (typeof value === 'boolean') {
 			valueLiteral = value ? 'true' : 'false'
 		} else {
 			valueLiteral = `${value}`
 		}
 		return valueLiteral
+	}
+
+	private escape(value: string) {
+		return value.replace(/\n/g, '\\n')
 	}
 
 	private getEnvPath() {
