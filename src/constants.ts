@@ -10,7 +10,7 @@ export const CORE_SCHEMA_VERSION = {
 } as const
 
 export const CORE_NAMESPACE = 'Spruce' as const
-export const MERCURY_API_NAMESPACE = 'mercuryApi'
+export const MERCURY_API_NAMESPACE = 'mercury'
 export const TEST_JEST_PASSED = 'passed' as const
 export const TEST_JEST_FAILED = 'failed' as const
 export const HEALTH_DIVIDER = '###### HEALTH REPORT ######' as const
