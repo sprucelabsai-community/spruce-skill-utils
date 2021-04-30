@@ -1,3 +1,10 @@
+# [19.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.29...v19.0.0) (2021-04-30)
+
+
+### Breaking Changes
+
+* mercury api changing ([2b59f88](https://github.com/sprucelabsai/spruce-skill-utils/commit/2b59f88))
+
 ## [18.4.29](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.28...v18.4.29) (2021-04-29)
 
 ## [18.4.28](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.27...v18.4.28) (2021-04-27)
