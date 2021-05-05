@@ -46,7 +46,7 @@
 		"@sprucelabs/error": "latest",
 		"@sprucelabs/schema": "latest",
 		"chalk": "^4.1.1",
-		"dotenv": "^8.6.0",
+		"dotenv": "^9.0.0",
 		"fs-extra": "^10.0.0",
 		"globby": "^11.0.3",
 		"inflection": "^1.13.1",
