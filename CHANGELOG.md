@@ -1,3 +1,42 @@
+## [19.0.16](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.15...v19.0.16) (2021-05-12)
+
+## [19.0.15](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.14...v19.0.15) (2021-05-12)
+
+## [19.0.14](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.13...v19.0.14) (2021-05-10)
+
+## [19.0.13](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.12...v19.0.13) (2021-05-09)
+
+## [19.0.12](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.11...v19.0.12) (2021-05-09)
+
+## [19.0.11](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.10...v19.0.11) (2021-05-08)
+
+## [19.0.10](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.9...v19.0.10) (2021-05-08)
+
+## [19.0.9](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.8...v19.0.9) (2021-05-05)
+
+## [19.0.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.7...v19.0.8) (2021-05-05)
+
+## [19.0.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.6...v19.0.7) (2021-05-05)
+
+## [19.0.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.5...v19.0.6) (2021-05-05)
+
+## [19.0.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.4...v19.0.5) (2021-05-04)
+
+## [19.0.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.3...v19.0.4) (2021-05-03)
+
+## [19.0.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.2...v19.0.3) (2021-05-01)
+
+## [19.0.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.1...v19.0.2) (2021-05-01)
+
+## [19.0.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.0...v19.0.1) (2021-04-30)
+
+# [19.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.29...v19.0.0) (2021-04-30)
+
+
+### Breaking Changes
+
+* mercury api changing ([2b59f88](https://github.com/sprucelabsai/spruce-skill-utils/commit/2b59f88))
+
 ## [18.4.29](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.28...v18.4.29) (2021-04-29)
 
 ## [18.4.28](https://github.com/sprucelabsai/spruce-skill-utils/compare/v18.4.27...v18.4.28) (2021-04-27)
