@@ -2,8 +2,10 @@ import { exec } from 'child_process'
 import os from 'os'
 import pathUtil from 'path'
 import fs from 'fs-extra'
+import fsUtil from 'fs-extra'
 import * as uuid from 'uuid'
 import { HASH_SPRUCE_DIR } from '../constants'
+import SpruceError from '../errors/SpruceError'
 
 export interface CreateFile {
 	/** The relative path from the cwd, without a leading forward slash */
@@ -133,6 +135,45 @@ const diskUtil = {
 	isFileDifferent(destination: string, contents: string) {
 		const currentContents = this.readFile(destination)
 		return currentContents != contents
+	},
+
+	deleteEmptyDirs(dir: string) {
+		if (!dir) {
+			throw new SpruceError({
+				code: 'MISSING_PARAMETERS',
+				parameters: ['dir'],
+			})
+		}
+
+		if (!this.doesDirExist(dir)) {
+			throw new SpruceError({
+				code: 'INVALID_PARAMETERS',
+				parameters: ['dir'],
+				friendlyMessage: `No directory found at ${dir} to clean.`,
+			})
+		}
+
+		const dirname = pathUtil.resolve(dir)
+
+		const remove = (dir: string, depth = 0): void => {
+			const thisDepth = depth + 1
+			if (!diskUtil.isDir(dir)) {
+				return
+			}
+
+			let files = fsUtil.readdirSync(dir)
+
+			for (let filepath of files) {
+				remove(pathUtil.join(dir, filepath), thisDepth)
+			}
+
+			let filesAfter = fsUtil.readdirSync(dir)
+			if (depth > 0 && filesAfter.length === 0) {
+				diskUtil.deleteDir(dir)
+			}
+		}
+
+		return remove(dirname)
 	},
 
 	resolvePath(cwd: string, ...filePath: string[]): string {

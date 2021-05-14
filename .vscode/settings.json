@@ -9,6 +9,7 @@
 		"**/build/**": true,
 		"**/node_modules/**": true,
 	},
+	"editor.folding": false,
 	"search.exclude": {
 		"**/build/**": true,
 		"**/node_modules/**": true,

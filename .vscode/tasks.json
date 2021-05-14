@@ -14,7 +14,7 @@
             "presentation": {
                 "panel": "dedicated",
                 "focus": false,
-                "reveal": "silent"
+                "reveal": "never",
             }
         },
         {
