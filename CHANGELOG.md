@@ -1,3 +1,10 @@
+# [19.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.16...v19.1.0) (2021-05-14)
+
+
+### Features
+
+* clean empty dirs on disk util ([950b30b](https://github.com/sprucelabsai/spruce-skill-utils/commit/950b30b))
+
 ## [19.0.16](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.15...v19.0.16) (2021-05-12)
 
 ## [19.0.15](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.0.14...v19.0.15) (2021-05-12)
