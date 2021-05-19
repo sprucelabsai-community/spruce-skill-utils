@@ -1,3 +1,10 @@
+# [19.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.1.2...v19.2.0) (2021-05-19)
+
+
+### Features
+
+* bulit has spruce path resolving ([f1ce7a7](https://github.com/sprucelabsai/spruce-skill-utils/commit/f1ce7a7))
+
 ## [19.1.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.1.1...v19.1.2) (2021-05-15)
 
 ## [19.1.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.1.0...v19.1.1) (2021-05-14)
