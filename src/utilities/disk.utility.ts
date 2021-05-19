@@ -132,6 +132,29 @@ const diskUtil = {
 		}
 	},
 
+	resolveBuiltHashSprucePath(cwd: string, ...filePath: string[]): string {
+		const parts = cwd.split(pathUtil.sep)
+
+		do {
+			const path = pathUtil.join('/', ...parts, HASH_SPRUCE_DIR)
+			if (this.doesDirExist(path)) {
+				return this.resolvePath(path, ...filePath)
+			}
+			parts.pop()
+		} while (parts.length > 0)
+
+		throw new Error(`Hash Spruce directory not found at ${cwd}`)
+	},
+
+	doesBuiltHashSprucePathExist(cwd: string, ...filePath: string[]): boolean {
+		try {
+			this.resolveBuiltHashSprucePath(cwd, ...filePath)
+			return true
+		} catch {
+			return false
+		}
+	},
+
 	isFileDifferent(destination: string, contents: string) {
 		const currentContents = this.readFile(destination)
 		return currentContents != contents
