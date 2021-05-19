@@ -4,7 +4,7 @@ import pathUtil from 'path'
 import fs from 'fs-extra'
 import fsUtil from 'fs-extra'
 import * as uuid from 'uuid'
-import { HASH_SPRUCE_DIR } from '../constants'
+import { HASH_SPRUCE_BUILD_DIR, HASH_SPRUCE_DIR } from '../constants'
 import SpruceError from '../errors/SpruceError'
 
 export interface CreateFile {
@@ -136,7 +136,7 @@ const diskUtil = {
 		const parts = cwd.split(pathUtil.sep)
 
 		do {
-			const path = pathUtil.join('/', ...parts, HASH_SPRUCE_DIR)
+			const path = pathUtil.join('/', ...parts, HASH_SPRUCE_BUILD_DIR)
 			if (this.doesDirExist(path)) {
 				return this.resolvePath(path, ...filePath)
 			}
