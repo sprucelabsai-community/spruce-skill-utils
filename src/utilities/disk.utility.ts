@@ -120,7 +120,7 @@ const diskUtil = {
 			parts.pop()
 		} while (parts.length > 0)
 
-		throw new Error(`Hash Spruce directory not found at ${cwd}`)
+		throw new Error(`.spruce directory not found at ${cwd}`)
 	},
 
 	doesHashSprucePathExist(cwd: string, ...filePath: string[]): boolean {
@@ -143,7 +143,7 @@ const diskUtil = {
 			parts.pop()
 		} while (parts.length > 0)
 
-		throw new Error(`Hash Spruce directory not found at ${cwd}`)
+		throw new Error(`Build .spruce directory not found at ${cwd}`)
 	},
 
 	doesBuiltHashSprucePathExist(cwd: string, ...filePath: string[]): boolean {
