@@ -143,7 +143,9 @@ const diskUtil = {
 			parts.pop()
 		} while (parts.length > 0)
 
-		throw new Error(`Build .spruce directory not found at ${cwd}`)
+		throw new Error(
+			`Built .spruce directory not found at ${cwd}. Try \`spruce build\` and try again.`
+		)
 	},
 
 	doesBuiltHashSprucePathExist(cwd: string, ...filePath: string[]): boolean {
