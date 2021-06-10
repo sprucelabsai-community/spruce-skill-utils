@@ -3,7 +3,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"version": "19.2.23",
+	"version": "19.3.0",
 	"files": [
 		"build/**/*",
 		"!build/__tests__",
@@ -83,16 +83,16 @@
 		"reporters": [
 			"default",
 			[
-			  "@sprucelabs/jest-sheets-reporter",
-			  {
-				"sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
-				"worksheetId": 843037832,
-				"testMap": {
-				  "canUpdateTrackedHash": "I171"
+				"@sprucelabs/jest-sheets-reporter",
+				{
+					"sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
+					"worksheetId": 843037832,
+					"testMap": {
+						"canUpdateTrackedHash": "I171"
+					}
 				}
-			  }
 			]
-		  ],
+		],
 		"testEnvironment": "node",
 		"testPathIgnorePatterns": [
 			"<rootDir>/tmp/",

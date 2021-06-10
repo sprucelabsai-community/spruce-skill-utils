@@ -1,3 +1,10 @@
+# [19.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.2.23...v19.3.0) (2021-06-10)
+
+
+### Features
+
+* add hasFileChanged and markFileAsUnchanged ([9627c93](https://github.com/sprucelabsai/spruce-skill-utils/commit/9627c93))
+
 ## [19.2.23](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.2.22...v19.2.23) (2021-06-08)
 
 ## [19.2.22](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.2.21...v19.2.22) (2021-06-08)
