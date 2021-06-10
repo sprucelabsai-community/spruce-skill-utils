@@ -231,5 +231,70 @@ const diskUtil = {
 	createRandomTempDir() {
 		return this.createTempDir(uuid.v4())
 	},
+
+	hasFileChanged(cwd: string, file: string): boolean {
+		const cacheFile = this.getFileChangedCacheFile(cwd, file)
+
+		let fileStat
+		try {
+			fileStat = fsUtil.statSync(file)
+		} catch (err) {
+			return true
+		}
+
+		let cacheFileStat
+		try {
+			cacheFileStat = fsUtil.statSync(cacheFile)
+		} catch (err) {
+			//@ts-ignore
+		}
+
+		if (!cacheFileStat || cacheFileStat.ctimeMs < fileStat.ctimeMs) {
+			this.writeFile(cacheFile, '')
+			return true
+		}
+
+		return false
+	},
+
+	markFileAsUnchanged(cwd: string, file: string) {
+		const cacheCheckFile = this.getFileChangedCacheFile(cwd, file)
+		diskUtil.writeFile(cacheCheckFile, '')
+	},
+
+	getFileChangedDir(cwd: string): string {
+		return this.resolvePath(cwd, '.hasChanged')
+	},
+
+	getFileChangedCacheFile(cwd: string, file: string) {
+		if (!file) {
+			throw new SpruceError({
+				code: 'MISSING_PARAMETERS',
+				parameters: ['file'],
+			})
+		}
+
+		const relativeFilePath = pathUtil.relative(cwd, file)
+		const fileChangeDir = this.getFileChangedDir(cwd)
+
+		const cacheFile = this.resolvePath(
+			fileChangeDir,
+			relativeFilePath.replace(/\.\./g, '__')
+		)
+
+		const cacheFileDirName = pathUtil.dirname(cacheFile)
+
+		if (!this.doesDirExist(cacheFileDirName)) {
+			fs.mkdirSync(cacheFileDirName, { recursive: true })
+		}
+
+		const gitignoreFile = diskUtil.resolvePath(fileChangeDir, '.gitignore')
+
+		if (!diskUtil.doesFileExist(gitignoreFile)) {
+			diskUtil.writeFile(gitignoreFile, '*')
+		}
+
+		return cacheFile
+	},
 }
 export default diskUtil
