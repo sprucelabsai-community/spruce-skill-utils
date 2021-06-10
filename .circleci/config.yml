@@ -18,6 +18,10 @@ jobs:
               echo "[npm-publish] detected. No publish necessary 👊"
               circleci-agent step halt
             fi
+      - run:
+          name: "ENV file creation"
+          command: |
+            [ -n "$BASE64_ENV" ] && echo $BASE64_ENV | base64 --decode > .env
       - run: yarn install
       - run: yarn lint
       - run: yarn build.dev
@@ -94,7 +98,7 @@ jobs:
             echo "$(hub pull-request --base master --head $TARGETBRANCH -m 'Automated Package Upgrade' 2>&1)" |egrep "/pull/|already exists"
 workflows:
   version: 2.1
-  do_build:
+  test_and_release:
     jobs:
       - test:
           context: public_package_publish

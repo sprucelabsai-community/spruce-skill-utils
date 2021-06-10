@@ -56,6 +56,7 @@
 	"devDependencies": {
 		"@sprucelabs/esm-postbuild": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
+		"@sprucelabs/jest-sheets-reporter": "^1.2.44",
 		"@sprucelabs/resolve-path-aliases": "latest",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
@@ -79,6 +80,19 @@
 	"jest": {
 		"maxWorkers": 4,
 		"testTimeout": 300000,
+		"reporters": [
+			"default",
+			[
+			  "@sprucelabs/jest-sheets-reporter",
+			  {
+				"sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
+				"worksheetId": 843037832,
+				"testMap": {
+				  "canUpdateTrackedHash": "I171"
+				}
+			  }
+			]
+		  ],
 		"testEnvironment": "node",
 		"testPathIgnorePatterns": [
 			"<rootDir>/tmp/",

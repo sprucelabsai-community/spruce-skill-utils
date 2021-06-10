@@ -22,6 +22,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 	protected static async returnsTrueForNewFile() {
 		this.cwd = diskUtil.createRandomTempDir()
 		const file = this.resolvePath('somefile')
+
 		diskUtil.writeFile(file, new Date().getTime().toString())
 
 		const result = diskUtil.hasFileChanged(this.cwd, file)
@@ -57,8 +58,10 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		diskUtil.writeFile(file, 'panda')
 
 		diskUtil.hasFileChanged(this.cwd, file)
-		diskUtil.writeFile(file, 'panda2')
 
+		await this.wait(100)
+
+		diskUtil.writeFile(file, 'panda2')
 		const result = diskUtil.hasFileChanged(this.cwd, file)
 
 		assert.isTrue(result)
@@ -101,6 +104,8 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		const result2 = diskUtil.hasFileChanged(this.cwd, file2)
 		assert.isTrue(result2)
 
+		await this.wait(100)
+
 		diskUtil.writeFile(file1, 'panda2')
 		const result3 = diskUtil.hasFileChanged(this.cwd, file1)
 
@@ -135,6 +140,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		let result = diskUtil.hasFileChanged(this.cwd, file)
 		assert.isTrue(result)
 
+		await this.wait(100)
 		diskUtil.writeFile(file, 'panda2')
 		result = diskUtil.hasFileChanged(this.cwd, file)
 		assert.isTrue(result)
@@ -147,6 +153,9 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		assert.isFalse(result)
 
 		diskUtil.markFileAsUnchanged(this.cwd, file)
+
+		await this.wait(100)
+
 		diskUtil.writeFile(file, 'panda')
 		result = diskUtil.hasFileChanged(this.cwd, file)
 		assert.isTrue(result)
