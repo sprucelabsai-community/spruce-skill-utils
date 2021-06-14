@@ -19,3 +19,4 @@ yarn-error.log*
 build/
 .eslintcache
 .env
+process.yml
