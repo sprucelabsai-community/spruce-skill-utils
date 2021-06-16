@@ -1,5 +1,9 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import buildLog, { mockLog, testLog } from '../../utilities/buildLog'
+import buildLog, {
+	mockLog,
+	testLog,
+	setLogTransport,
+} from '../../utilities/buildLog'
 
 const ROOT_PREFIX = 'root prefix'
 
@@ -125,5 +129,23 @@ export default class LoggingTest extends AbstractSpruceTest {
 		assert.doesInclude(lastWrite[0], 'waka')
 
 		process.stderr.write = old
+	}
+
+	@test()
+	protected static canSetTransportForErrorType() {
+		let infoMessage: string | undefined
+		setLogTransport('INFO', (...messageParts: string[]) => {
+			infoMessage = messageParts.join(' ')
+		})
+
+		const log = buildLog('TEST', { useColors: false })
+		log.info('go team')
+
+		assert.isEqual(infoMessage, '(INFO) TEST :: go team')
+
+		const secondLog = log.buildLog('TEST2')
+		secondLog.info('go again team')
+
+		assert.isEqual(infoMessage, '(INFO) TEST :: TEST2 :: go again team')
 	}
 }

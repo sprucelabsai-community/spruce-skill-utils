@@ -9,6 +9,14 @@ export interface LogOptions {
 	}
 }
 
+export type Level = 'ERROR' | 'INFO' | 'WARN'
+type Transport = (...messageParts: string[]) => void
+const transports: Record<Level, Transport> = {}
+
+export function setLogTransport(level: Level, cb: Transport) {
+	transports[level] = cb
+}
+
 export interface Log {
 	readonly prefix: string | undefined
 	info: (...args: string[]) => string
@@ -57,19 +65,27 @@ export default function buildLog(
 
 	return logUtil
 
-	function write(chalkMethod: Chalk, args: any[], level: string) {
-		let chalkArgs = [...args]
-		if (pre) {
-			chalkArgs = [pre, ...chalkArgs]
+	function getTransport(level: Level) {
+		if (transports[level]) {
+			return transports[level]
 		}
-
-		let l =
+		return (
 			log ??
 			(level === 'ERROR'
 				? (...args: []) => {
 						process.stderr.write(args.join('\n') + '\n')
 				  }
 				: console.log.bind(console))
+		)
+	}
+
+	function write(chalkMethod: Chalk, args: any[], level: Level) {
+		let chalkArgs = [...args]
+		if (pre) {
+			chalkArgs = [pre, ...chalkArgs]
+		}
+
+		let transport = getTransport(level)
 
 		const message =
 			useColors === false
@@ -77,9 +93,9 @@ export default function buildLog(
 				: chalkMethod(...chalkArgs)
 
 		if (useColors === false) {
-			l(message, ...args)
+			transport(message, ...args)
 		} else {
-			l(message)
+			transport(message)
 		}
 
 		return message
