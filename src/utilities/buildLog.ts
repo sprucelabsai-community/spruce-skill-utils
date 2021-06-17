@@ -10,14 +10,14 @@ export interface LogOptions {
 }
 
 export type Level = 'ERROR' | 'INFO' | 'WARN'
-type Transport = (...messageParts: string[]) => void
-const transports: Record<Level, Transport | null> = {
+export type LogTransport = (...messageParts: string[]) => void
+const transports: Record<Level, LogTransport | null> = {
 	ERROR: null,
 	INFO: null,
 	WARN: null,
 }
 
-export function setLogTransport(level: Level, cb: Transport) {
+export function setLogTransport(level: Level, cb: LogTransport) {
 	transports[level] = cb
 }
 
@@ -69,9 +69,9 @@ export default function buildLog(
 
 	return logUtil
 
-	function getTransport(level: Level): Transport {
+	function getTransport(level: Level): LogTransport {
 		if (transports[level]) {
-			return transports[level] as Transport
+			return transports[level] as LogTransport
 		}
 		return (
 			log ??
