@@ -1,3 +1,18 @@
+## [19.4.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.3...v19.4.4) (2021-06-17)
+
+## [19.4.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.2...v19.4.3) (2021-06-17)
+
+## [19.4.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.1...v19.4.2) (2021-06-17)
+
+## [19.4.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.0...v19.4.1) (2021-06-16)
+
+# [19.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.3.6...v19.4.0) (2021-06-16)
+
+
+### Features
+
+* log transport support ([aec358c](https://github.com/sprucelabsai/spruce-skill-utils/commit/aec358c))
+
 ## [19.3.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.3.5...v19.3.6) (2021-06-16)
 
 ## [19.3.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.3.4...v19.3.5) (2021-06-15)
