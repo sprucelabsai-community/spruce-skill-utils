@@ -1,3 +1,10 @@
+# [19.5.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.4...v19.5.0) (2021-06-17)
+
+
+### Features
+
+* LogTransport type exported ([9a9b6d4](https://github.com/sprucelabsai/spruce-skill-utils/commit/9a9b6d4))
+
 ## [19.4.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.3...v19.4.4) (2021-06-17)
 
 ## [19.4.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.2...v19.4.3) (2021-06-17)
