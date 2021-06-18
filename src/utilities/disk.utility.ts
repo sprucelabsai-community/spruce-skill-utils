@@ -1,7 +1,6 @@
 import { exec } from 'child_process'
 import os from 'os'
 import pathUtil from 'path'
-import fs from 'fs-extra'
 import fsUtil from 'fs-extra'
 import * as uuid from 'uuid'
 import { HASH_SPRUCE_BUILD_DIR, HASH_SPRUCE_DIR } from '../constants'
@@ -16,36 +15,36 @@ export interface CreateFile {
 
 const diskUtil = {
 	writeFile(destination: string, contents: string) {
-		fs.outputFileSync(destination, contents)
+		fsUtil.outputFileSync(destination, contents)
 	},
 
 	readDir(destination: string) {
-		return fs.readdirSync(destination)
+		return fsUtil.readdirSync(destination)
 	},
 
 	readFile(source: string) {
-		if (!fs.existsSync(source)) {
+		if (!fsUtil.existsSync(source)) {
 			throw new Error(`No file to read at ${source}`)
 		}
-		return fs.readFileSync(source).toString()
+		return fsUtil.readFileSync(source).toString()
 	},
 
 	deleteFile(destination: string) {
-		if (fs.existsSync(destination)) {
-			fs.removeSync(destination)
+		if (fsUtil.existsSync(destination)) {
+			fsUtil.removeSync(destination)
 		}
 	},
 
 	createDir(destination: string) {
-		fs.ensureDirSync(destination)
+		fsUtil.ensureDirSync(destination)
 	},
 
 	moveDir(source: string, destination: string) {
-		fs.moveSync(source, destination)
+		fsUtil.moveSync(source, destination)
 	},
 
 	moveFile(source: string, destination: string) {
-		fs.moveSync(source, destination)
+		fsUtil.moveSync(source, destination)
 	},
 
 	async copyDir(source: string, destination: string) {
@@ -67,20 +66,20 @@ const diskUtil = {
 
 	deleteDir(target: string) {
 		const resolved = this.resolvePath(target)
-		if (fs.existsSync(resolved)) {
-			fs.removeSync(resolved)
+		if (fsUtil.existsSync(resolved)) {
+			fsUtil.removeSync(resolved)
 		}
 	},
 
 	doesFileExist(target: string) {
 		const resolved = this.resolvePath(target)
-		return fs.existsSync(resolved)
+		return fsUtil.existsSync(resolved)
 	},
 
 	isDir(target: string) {
 		const resolved = this.resolvePath(target)
 		if (this.doesDirExist(resolved)) {
-			return fs.lstatSync(resolved).isDirectory()
+			return fsUtil.lstatSync(resolved).isDirectory()
 		}
 
 		return false
@@ -98,7 +97,7 @@ const diskUtil = {
 	isFile(target: string) {
 		const resolved = this.resolvePath(target)
 		if (this.doesFileExist(resolved)) {
-			return fs.lstatSync(resolved).isFile()
+			return fsUtil.lstatSync(resolved).isFile()
 		}
 
 		return false
@@ -106,7 +105,7 @@ const diskUtil = {
 
 	doesDirExist(target: string) {
 		const resolved = this.resolvePath(target)
-		return fs.existsSync(resolved)
+		return fsUtil.existsSync(resolved)
 	},
 
 	resolveHashSprucePath(cwd: string, ...filePath: string[]): string {
@@ -232,8 +231,17 @@ const diskUtil = {
 		return this.createTempDir(uuid.v4())
 	},
 
-	hasFileChanged(cwd: string, file: string): boolean {
-		const cacheFile = this.getFileChangedCacheFile(cwd, file)
+	hasFileChanged(...filePath: string[]): boolean {
+		if (!filePath || !(filePath.length > 0)) {
+			throw new SpruceError({
+				code: 'MISSING_PARAMETERS',
+				parameters: ['file'],
+			})
+		}
+
+		//@ts-ignore
+		const file = this.resolvePath(...filePath)
+		const cacheFile = this.getFileChangedCacheFile(file)
 
 		let fileStat
 		try {
@@ -262,11 +270,11 @@ const diskUtil = {
 		diskUtil.writeFile(cacheCheckFile, '')
 	},
 
-	getFileChangedDir(cwd: string): string {
-		return this.resolvePath(cwd, '.hasChanged')
+	getChangeCacheForDir(dir: string): string {
+		return this.resolvePath(dir, '.change_cache')
 	},
 
-	getFileChangedCacheFile(cwd: string, file: string) {
+	getFileChangedCacheFile(file: string) {
 		if (!file) {
 			throw new SpruceError({
 				code: 'MISSING_PARAMETERS',
@@ -274,21 +282,20 @@ const diskUtil = {
 			})
 		}
 
-		const relativeFilePath = pathUtil.relative(cwd, file)
-		const fileChangeDir = this.getFileChangedDir(cwd)
+		const dirname = pathUtil.dirname(file)
+		const filename = pathUtil.basename(file)
+		const changeCacheDir = this.getChangeCacheForDir(dirname)
 
 		const cacheFile = this.resolvePath(
-			fileChangeDir,
-			relativeFilePath.replace(/\.\./g, '__')
+			changeCacheDir,
+			filename.replace(/\.\./g, '__')
 		)
 
-		const cacheFileDirName = pathUtil.dirname(cacheFile)
-
-		if (!this.doesDirExist(cacheFileDirName)) {
-			fs.mkdirSync(cacheFileDirName, { recursive: true })
+		if (!this.doesDirExist(changeCacheDir)) {
+			fsUtil.mkdirSync(changeCacheDir, { recursive: true })
 		}
 
-		const gitignoreFile = diskUtil.resolvePath(fileChangeDir, '.gitignore')
+		const gitignoreFile = diskUtil.resolvePath(changeCacheDir, '.gitignore')
 
 		if (!diskUtil.doesFileExist(gitignoreFile)) {
 			diskUtil.writeFile(gitignoreFile, '*')

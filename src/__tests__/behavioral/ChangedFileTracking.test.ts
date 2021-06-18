@@ -83,7 +83,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		const result2 = diskUtil.hasFileChanged(this.cwd, file2)
 		assert.isTrue(result2)
 
-		const result3 = diskUtil.hasFileChanged(this.cwd, file1)
+		const result3 = diskUtil.hasFileChanged(file1)
 
 		assert.isFalse(result3)
 	}
@@ -121,7 +121,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		diskUtil.hasFileChanged(this.cwd, file)
 
 		const gitignoreFile = this.resolvePath(
-			diskUtil.getFileChangedDir(this.cwd),
+			diskUtil.getChangeCacheForDir(this.cwd),
 			'.gitignore'
 		)
 
