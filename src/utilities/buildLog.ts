@@ -82,7 +82,7 @@ export default function buildLog(
 
 		let transport = getTransport(level)
 		if (transport) {
-			transport(...[prefix.trim(), ...args])
+			transport(...[prefix.trim(), ...args].filter((t) => t && t.length > 0))
 			return prefix
 		}
 

@@ -130,6 +130,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 	@test()
 	protected static canSetTransportForErrorType() {
 		let infoMessage: string | undefined
+		let errorMessage: string | undefined
 
 		const log = buildLog('TEST', {
 			useColors: true,
@@ -137,15 +138,37 @@ export default class LoggingTest extends AbstractSpruceTest {
 				INFO: (...messageParts: string[]) => {
 					infoMessage = messageParts.join(' ')
 				},
+				ERROR: (...messageParts: string[]) => {
+					errorMessage = messageParts.join(' ')
+				},
 			},
 		})
 		log.info('go team')
-
 		assert.isEqual(infoMessage, 'TEST :: go team')
 
 		const secondLog = log.buildLog('TEST2')
 		secondLog.info('go again team')
 
 		assert.isEqual(infoMessage, 'TEST :: TEST2 :: go again team')
+
+		log.error('error me scotty')
+		assert.isEqual(errorMessage, 'TEST :: error me scotty')
+	}
+
+	@test()
+	protected static transportGetsMessagesWithoutPaddingWhenNoPrefixSupplied() {
+		let infoMessage: string | undefined
+
+		const log = buildLog(undefined, {
+			useColors: true,
+			transportsByLevel: {
+				INFO: (...messageParts: string[]) => {
+					infoMessage = messageParts.join(' ')
+				},
+			},
+		})
+
+		log.info('go team')
+		assert.isEqual(infoMessage, 'go team')
 	}
 }
