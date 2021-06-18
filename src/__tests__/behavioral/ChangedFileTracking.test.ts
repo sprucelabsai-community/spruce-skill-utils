@@ -121,7 +121,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		diskUtil.hasFileChanged(this.cwd, file)
 
 		const gitignoreFile = this.resolvePath(
-			diskUtil.getChangeCacheForDir(this.cwd),
+			diskUtil.resolveCacheDirForDir(this.cwd),
 			'.gitignore'
 		)
 

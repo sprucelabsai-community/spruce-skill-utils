@@ -273,7 +273,7 @@ const diskUtil = {
 		diskUtil.writeFile(cacheCheckFile, '')
 	},
 
-	getChangeCacheForDir(dir: string): string {
+	resolveCacheDirForDir(dir: string): string {
 		return this.resolvePath(dir, '.change_cache')
 	},
 
@@ -287,7 +287,7 @@ const diskUtil = {
 
 		const dirname = pathUtil.dirname(file)
 		const filename = pathUtil.basename(file)
-		const changeCacheDir = this.getChangeCacheForDir(dirname)
+		const changeCacheDir = this.resolveCacheDirForDir(dirname)
 
 		const cacheFile = this.resolvePath(
 			changeCacheDir,
