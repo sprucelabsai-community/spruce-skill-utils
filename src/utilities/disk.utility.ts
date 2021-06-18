@@ -265,8 +265,11 @@ const diskUtil = {
 		return false
 	},
 
-	markFileAsUnchanged(cwd: string, file: string) {
-		const cacheCheckFile = this.getFileChangedCacheFile(cwd, file)
+	markFileAsUnchanged(...filePath: string[]) {
+		const cacheCheckFile = this.getFileChangedCacheFile(
+			//@ts-ignore
+			this.resolvePath(...filePath)
+		)
 		diskUtil.writeFile(cacheCheckFile, '')
 	},
 
