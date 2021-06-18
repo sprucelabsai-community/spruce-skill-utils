@@ -3,6 +3,7 @@ import chalk, { Chalk } from 'chalk'
 export interface LogOptions {
 	log?: (...args: any[]) => void
 	useColors?: boolean
+	transportsByLevel?: Partial<TransportMap>
 	colors?: {
 		info?: Color
 		error?: Color
@@ -11,15 +12,7 @@ export interface LogOptions {
 
 export type Level = 'ERROR' | 'INFO' | 'WARN'
 export type LogTransport = (...messageParts: string[]) => void
-const transports: Record<Level, LogTransport | null> = {
-	ERROR: null,
-	INFO: null,
-	WARN: null,
-}
-
-export function setLogTransport(level: Level, cb: LogTransport) {
-	transports[level] = cb
-}
+type TransportMap = Record<Level, LogTransport | null | undefined>
 
 export interface Log {
 	readonly prefix: string | undefined
@@ -39,6 +32,12 @@ export default function buildLog(
 	const { info = 'yellow', error = 'red' } = colors
 
 	const pre = prefix ? `${prefix} ::` : undefined
+
+	const transports: TransportMap = {
+		ERROR: options?.transportsByLevel?.ERROR,
+		INFO: options?.transportsByLevel?.INFO,
+		WARN: options?.transportsByLevel?.WARN,
+	}
 
 	const logUtil: Log = {
 		prefix,
@@ -62,6 +61,7 @@ export default function buildLog(
 			return buildLog(`${pre ? `${pre} ` : ''}${prefix}`, {
 				log,
 				useColors,
+				transportsByLevel: transports,
 				...options,
 			})
 		},
@@ -70,17 +70,7 @@ export default function buildLog(
 	return logUtil
 
 	function getTransport(level: Level): LogTransport {
-		if (transports[level]) {
-			return transports[level] as LogTransport
-		}
-		return (
-			log ??
-			(level === 'ERROR'
-				? (...args: []) => {
-						process.stderr.write(args.join('\n') + '\n')
-				  }
-				: console.log.bind(console))
-		)
+		return transports[level] as LogTransport
 	}
 
 	function write(chalkMethod: Chalk, args: any[], level: Level) {
@@ -88,13 +78,23 @@ export default function buildLog(
 		if (pre) {
 			chalkArgs = [pre, ...chalkArgs]
 		}
+		const prefix = `(${level})${pre ? ` ${pre}` : ''}`
 
 		let transport = getTransport(level)
+		if (transport) {
+			transport(...[prefix, ...args])
+			return prefix
+		}
 
-		const message =
-			useColors === false
-				? `(${level})${pre ? ` ${pre}` : ''}`
-				: chalkMethod(...chalkArgs)
+		transport =
+			log ??
+			(level === 'ERROR'
+				? (...args: []) => {
+						process.stderr.write(args.join('\n') + '\n')
+				  }
+				: console.log.bind(console))
+
+		const message = useColors === false ? prefix : chalkMethod(...chalkArgs)
 
 		if (useColors === false) {
 			transport(message, ...args)

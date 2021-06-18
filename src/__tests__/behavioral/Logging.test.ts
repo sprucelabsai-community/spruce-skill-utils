@@ -134,11 +134,15 @@ export default class LoggingTest extends AbstractSpruceTest {
 	@test()
 	protected static canSetTransportForErrorType() {
 		let infoMessage: string | undefined
-		setLogTransport('INFO', (...messageParts: string[]) => {
-			infoMessage = messageParts.join(' ')
-		})
 
-		const log = buildLog('TEST', { useColors: false })
+		const log = buildLog('TEST', {
+			useColors: true,
+			transportsByLevel: {
+				INFO: (...messageParts: string[]) => {
+					infoMessage = messageParts.join(' ')
+				},
+			},
+		})
 		log.info('go team')
 
 		assert.isEqual(infoMessage, '(INFO) TEST :: go team')
