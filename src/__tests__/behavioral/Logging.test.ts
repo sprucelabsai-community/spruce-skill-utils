@@ -141,11 +141,11 @@ export default class LoggingTest extends AbstractSpruceTest {
 		})
 		log.info('go team')
 
-		assert.isEqual(infoMessage, '(INFO) TEST :: go team')
+		assert.isEqual(infoMessage, 'TEST :: go team')
 
 		const secondLog = log.buildLog('TEST2')
 		secondLog.info('go again team')
 
-		assert.isEqual(infoMessage, '(INFO) TEST :: TEST2 :: go again team')
+		assert.isEqual(infoMessage, 'TEST :: TEST2 :: go again team')
 	}
 }

@@ -78,11 +78,11 @@ export default function buildLog(
 		if (pre) {
 			chalkArgs = [pre, ...chalkArgs]
 		}
-		const prefix = `(${level})${pre ? ` ${pre}` : ''}`
+		const prefix = `${pre ? ` ${pre}` : ''}`
 
 		let transport = getTransport(level)
 		if (transport) {
-			transport(...[prefix, ...args])
+			transport(...[prefix.trim(), ...args])
 			return prefix
 		}
 
@@ -94,7 +94,8 @@ export default function buildLog(
 				  }
 				: console.log.bind(console))
 
-		const message = useColors === false ? prefix : chalkMethod(...chalkArgs)
+		const message =
+			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
 
 		if (useColors === false) {
 			transport(message, ...args)
