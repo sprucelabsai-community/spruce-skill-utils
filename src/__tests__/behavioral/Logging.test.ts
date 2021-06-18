@@ -1,9 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import buildLog, {
-	mockLog,
-	testLog,
-	setLogTransport,
-} from '../../utilities/buildLog'
+import buildLog, { mockLog, testLog } from '../../utilities/buildLog'
 
 const ROOT_PREFIX = 'root prefix'
 
