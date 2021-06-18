@@ -1,3 +1,10 @@
+# [20.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.5.0...v20.0.0) (2021-06-18)
+
+
+### Breaking Changes
+
+* set transport when building logi ([ad84eb5](https://github.com/sprucelabsai/spruce-skill-utils/commit/ad84eb5))
+
 # [19.5.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v19.4.4...v19.5.0) (2021-06-17)
 
 
