@@ -76,4 +76,11 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 			},
 		})
 	}
+
+	@test()
+	protected static canGetNestedObject() {
+		this.settings.set('nested.object', { hey: 'there!' })
+		const actual = this.settings.get('nested.object.hey')
+		assert.isEqual(actual, 'there!')
+	}
 }
