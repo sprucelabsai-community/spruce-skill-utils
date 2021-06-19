@@ -3,70 +3,77 @@ import SettingsService from '../../services/SettingsService'
 import diskUtil from '../../utilities/disk.utility'
 
 export default class SettingsServiceTest extends AbstractSpruceTest {
-	private static service: SettingsService
+	private static settings: SettingsService
 
 	protected static async beforeEach() {
 		await super.beforeEach()
 		this.cwd = diskUtil.createRandomTempDir()
-		this.service = new SettingsService(this.cwd)
+		this.settings = new SettingsService(this.cwd)
 	}
 
 	@test()
 	protected static async canInstantiate() {
-		assert.isTruthy(this.service)
+		assert.isTruthy(this.settings)
 	}
 
 	@test()
 	protected static defaultsFeatureAsNotInstalled() {
-		const actual = this.service.isMarkedAsInstalled('feature')
+		const actual = this.settings.isMarkedAsInstalled('feature')
 		assert.isFalse(actual)
 	}
 
 	@test()
 	protected static canMarkFeatureAsInstalled() {
-		this.service.markAsInstalled('feature')
-		const actual = this.service.isMarkedAsInstalled('feature')
+		this.settings.markAsInstalled('feature')
+		const actual = this.settings.isMarkedAsInstalled('feature')
 		assert.isTrue(actual)
 	}
 
 	@test()
 	protected static isNotSkippedToStart() {
-		const actual = this.service.isMarkedAsPermanentlySkipped('feature')
+		const actual = this.settings.isMarkedAsPermanentlySkipped('feature')
 		assert.isFalse(actual)
 	}
 
 	@test()
 	protected static canMarkAsSkipped() {
-		let actual = this.service.isMarkedAsPermanentlySkipped('feature')
+		let actual = this.settings.isMarkedAsPermanentlySkipped('feature')
 		assert.isFalse(actual)
-		this.service.markAsPermanentlySkipped('feature')
-		actual = this.service.isMarkedAsPermanentlySkipped('feature')
+		this.settings.markAsPermanentlySkipped('feature')
+		actual = this.settings.isMarkedAsPermanentlySkipped('feature')
 		assert.isTrue(actual)
 	}
 
 	@test()
 	protected static canSetAndGetArbitrarySettings() {
-		this.service.set('test', true)
-		assert.isTrue(this.service.get('test'))
+		this.settings.set('test', true)
+		assert.isTrue(this.settings.get('test'))
 
-		this.service.set('test2', 'hello')
-		assert.isEqual(this.service.get('test2'), 'hello')
+		this.settings.set('test2', 'hello')
+		assert.isEqual(this.settings.get('test2'), 'hello')
 	}
 
 	@test()
 	protected static canUnsetArbitrarySetting() {
-		this.service.set('test', true)
-		this.service.unset('test')
-		assert.isUndefined(this.service.get('test'))
+		this.settings.set('test', true)
+		this.settings.unset('test')
+		assert.isUndefined(this.settings.get('test'))
 	}
 
 	@test()
-	protected static async reloadsSettingsIfSettinsgHaveChangedOnDisk() {
-		const settings2 = new SettingsService(this.cwd)
-		this.service.set('go', 'team')
-		assert.isEqual(settings2.get('go'), 'team')
-		this.service.set('go', 'team2')
-		await this.wait(1000)
-		assert.isEqual(settings2.get('go'), 'team2')
+	protected static savesNestedObjects() {
+		this.settings.set('nested.object', { hey: 'there!' })
+		//@ts-ignore
+		const path = this.settings.getSettingsPath()
+		const contents = diskUtil.readFile(path)
+		const settings = JSON.parse(contents)
+
+		assert.isEqualDeep(settings, {
+			nested: {
+				object: {
+					hey: 'there!',
+				},
+			},
+		})
 	}
 }

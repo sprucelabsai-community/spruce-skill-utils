@@ -1,3 +1,5 @@
+import get from 'lodash/get'
+import set from 'lodash/set'
 import { HASH_SPRUCE_DIR } from '../constants'
 import diskUtil from '../utilities/disk.utility'
 
@@ -50,12 +52,12 @@ export default class SettingsService<FeatureCode extends string = string> {
 	}
 
 	public get(key: string): any {
-		return this.loadSettings()[key]
+		return get(this.loadSettings(), key)
 	}
 
 	public set(key: string, value: any) {
 		const settings = this.loadSettings()
-		settings[key] = value
+		set(settings, key, value)
 		this.saveSettings(settings)
 	}
 
@@ -67,7 +69,7 @@ export default class SettingsService<FeatureCode extends string = string> {
 
 	private loadSettings(): Settings {
 		const path = this.getSettingsPath()
-		if (!this.settings || diskUtil.hasFileChanged(path)) {
+		if (!this.settings) {
 			try {
 				const contents = diskUtil.readFile(path)
 				this.settings = JSON.parse(contents)
