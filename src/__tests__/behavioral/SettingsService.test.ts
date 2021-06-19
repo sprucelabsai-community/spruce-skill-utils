@@ -61,11 +61,12 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 	}
 
 	@test()
-	protected static reloadsSettingsIfSettinsgHaveChangedOnDisk() {
+	protected static async reloadsSettingsIfSettinsgHaveChangedOnDisk() {
 		const settings2 = new SettingsService(this.cwd)
 		this.service.set('go', 'team')
 		assert.isEqual(settings2.get('go'), 'team')
 		this.service.set('go', 'team2')
+		await this.wait(100)
 		assert.isEqual(settings2.get('go'), 'team2')
 	}
 }
