@@ -1,3 +1,14 @@
+## [20.1.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.1...v20.1.2) (2021-06-18)
+
+## [20.1.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.0...v20.1.1) (2021-06-18)
+
+# [20.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.0.3...v20.1.0) (2021-06-18)
+
+
+### Features
+
+* simplified change api (no cwd required) ([fe0e31e](https://github.com/sprucelabsai/spruce-skill-utils/commit/fe0e31e))
+
 ## [20.0.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.0.2...v20.0.3) (2021-06-18)
 
 ## [20.0.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.0.1...v20.0.2) (2021-06-18)
