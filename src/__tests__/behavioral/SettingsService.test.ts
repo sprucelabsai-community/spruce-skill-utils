@@ -66,7 +66,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		this.service.set('go', 'team')
 		assert.isEqual(settings2.get('go'), 'team')
 		this.service.set('go', 'team2')
-		await this.wait(100)
+		await this.wait(1000)
 		assert.isEqual(settings2.get('go'), 'team2')
 	}
 }
