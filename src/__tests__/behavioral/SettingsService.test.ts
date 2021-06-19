@@ -59,4 +59,13 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		this.service.unset('test')
 		assert.isUndefined(this.service.get('test'))
 	}
+
+	@test()
+	protected static reloadsSettingsIfSettinsgHaveChangedOnDisk() {
+		const settings2 = new SettingsService(this.cwd)
+		this.service.set('go', 'team')
+		assert.isEqual(settings2.get('go'), 'team')
+		this.service.set('go', 'team2')
+		assert.isEqual(settings2.get('go'), 'team2')
+	}
 }

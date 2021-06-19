@@ -66,12 +66,8 @@ export default class SettingsService<FeatureCode extends string = string> {
 	}
 
 	private loadSettings(): Settings {
-		if (!this.settings) {
-			const path = diskUtil.resolvePath(
-				this.cwd,
-				HASH_SPRUCE_DIR,
-				'settings.json'
-			)
+		const path = this.getSettingsPath()
+		if (!this.settings || diskUtil.hasFileChanged(path)) {
 			try {
 				const contents = diskUtil.readFile(path)
 				this.settings = JSON.parse(contents)
@@ -80,6 +76,10 @@ export default class SettingsService<FeatureCode extends string = string> {
 			}
 		}
 		return this.settings as Settings
+	}
+
+	private getSettingsPath() {
+		return diskUtil.resolvePath(this.cwd, HASH_SPRUCE_DIR, 'settings.json')
 	}
 
 	private saveSettings(settings: Settings) {
