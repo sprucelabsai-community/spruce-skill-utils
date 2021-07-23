@@ -1,3 +1,10 @@
+# [20.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.32...v20.2.0) (2021-07-23)
+
+
+### Features
+
+* EnvService prioritizes process env ([77d5d43](https://github.com/sprucelabsai/spruce-skill-utils/commit/77d5d43))
+
 ## [20.1.32](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.31...v20.1.32) (2021-07-20)
 
 ## [20.1.31](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.30...v20.1.31) (2021-07-17)
