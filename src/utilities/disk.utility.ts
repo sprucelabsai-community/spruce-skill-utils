@@ -219,6 +219,24 @@ const diskUtil = {
 		return builtPath
 	},
 
+	resolveFile(...pathItems: string[]) {
+		const extensions = ['', '.js', '.ts']
+
+		for (const extension of extensions) {
+			const items = [...pathItems]
+			items[pathItems.length - 1] += extension
+
+			//@ts-ignore
+			const resolved = this.resolvePath(...items)
+
+			if (this.doesFileExist(resolved)) {
+				return resolved
+			}
+		}
+
+		return false
+	},
+
 	createTempDir(...files: string[]) {
 		const tmpDir = os.tmpdir()
 		const targetDir = pathUtil.join(tmpDir, ...files)
