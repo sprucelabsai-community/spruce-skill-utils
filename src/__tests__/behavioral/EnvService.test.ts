@@ -109,4 +109,28 @@ there!`
 
 		assert.isEqual(actual, expected)
 	}
+
+	@test()
+	protected static async honorsNonEnvFileEnv() {
+		const service = this.Service()
+		service.set('NEW_KEY', 'firstValue')
+		const found = service.get('NEW_KEY')
+		assert.isEqual(found, 'firstValue')
+
+		process.env.NEW_KEY = 'secondValue'
+		const found2 = service.get('NEW_KEY')
+		assert.isEqual(found2, 'secondValue')
+	}
+
+	@test()
+	protected static async processEnvRetainsTypes() {
+		const input = 'true'
+		const expected = true
+
+		const service = this.Service()
+		process.env.OTHER_KEY = input
+		const actual = service.get('OTHER_KEY')
+
+		assert.isEqual(actual, expected)
+	}
 }

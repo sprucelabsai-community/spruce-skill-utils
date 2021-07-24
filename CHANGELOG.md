@@ -1,3 +1,68 @@
+# [20.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.32...v20.2.0) (2021-07-23)
+
+
+### Features
+
+* EnvService prioritizes process env ([77d5d43](https://github.com/sprucelabsai/spruce-skill-utils/commit/77d5d43))
+
+## [20.1.32](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.31...v20.1.32) (2021-07-20)
+
+## [20.1.31](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.30...v20.1.31) (2021-07-17)
+
+## [20.1.30](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.29...v20.1.30) (2021-07-17)
+
+## [20.1.29](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.28...v20.1.29) (2021-07-16)
+
+## [20.1.28](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.27...v20.1.28) (2021-07-14)
+
+## [20.1.27](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.26...v20.1.27) (2021-07-09)
+
+## [20.1.26](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.25...v20.1.26) (2021-07-09)
+
+## [20.1.25](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.24...v20.1.25) (2021-07-09)
+
+## [20.1.24](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.23...v20.1.24) (2021-07-08)
+
+## [20.1.23](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.22...v20.1.23) (2021-07-08)
+
+## [20.1.22](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.21...v20.1.22) (2021-07-07)
+
+## [20.1.21](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.20...v20.1.21) (2021-07-06)
+
+## [20.1.20](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.19...v20.1.20) (2021-07-06)
+
+## [20.1.19](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.18...v20.1.19) (2021-07-03)
+
+## [20.1.18](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.17...v20.1.18) (2021-07-02)
+
+## [20.1.17](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.16...v20.1.17) (2021-07-02)
+
+## [20.1.16](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.15...v20.1.16) (2021-07-02)
+
+## [20.1.15](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.14...v20.1.15) (2021-07-01)
+
+## [20.1.14](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.13...v20.1.14) (2021-07-01)
+
+## [20.1.13](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.12...v20.1.13) (2021-06-30)
+
+## [20.1.12](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.11...v20.1.12) (2021-06-28)
+
+## [20.1.11](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.10...v20.1.11) (2021-06-28)
+
+## [20.1.10](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.9...v20.1.10) (2021-06-27)
+
+## [20.1.9](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.8...v20.1.9) (2021-06-26)
+
+## [20.1.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.7...v20.1.8) (2021-06-26)
+
+## [20.1.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.6...v20.1.7) (2021-06-22)
+
+## [20.1.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.5...v20.1.6) (2021-06-22)
+
+## [20.1.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.4...v20.1.5) (2021-06-21)
+
+## [20.1.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.3...v20.1.4) (2021-06-19)
+
 ## [20.1.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.2...v20.1.3) (2021-06-19)
 
 ## [20.1.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.1.1...v20.1.2) (2021-06-18)

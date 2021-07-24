@@ -29,9 +29,20 @@ export default class EnvService {
 	}
 
 	public get(key: string): EnvValue {
+		if (process.env[key]) {
+			return this.coerceType(process.env[key] as EnvValue)
+		}
+
 		const env = this.parseEnv()
 		const value = env[key]
+
+		return this.coerceType(value)
+	}
+
+	private coerceType(value: EnvValue) {
+		//@ts-ignore
 		const numValue = parseInt(value, 10)
+		//@ts-ignore
 		if (/^-?\d+$/.test(value) && !isNaN(numValue)) {
 			return numValue
 		} else if (value === 'true') {
