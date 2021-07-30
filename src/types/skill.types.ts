@@ -60,3 +60,5 @@ export interface HealthCheckItem {
 	status: 'failed' | 'passed'
 	errors?: AbstractSpruceError<any>[]
 }
+
+export type EnvValue = string | boolean | number

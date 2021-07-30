@@ -1,7 +1,6 @@
+import { EnvValue } from '../types/skill.types'
 import diskUtil from '../utilities/disk.utility'
 const dotenv = require('dotenv')
-
-type EnvValue = string | boolean | number
 
 export default class EnvService {
 	private cwd: string
@@ -31,7 +30,7 @@ export default class EnvService {
 		diskUtil.writeFile(path, lines.join('\n'))
 	}
 
-	public get(key: string): EnvValue {
+	public get(key: string): EnvValue | undefined {
 		if (process.env[key]) {
 			return this.coerceType(process.env[key] as EnvValue)
 		}

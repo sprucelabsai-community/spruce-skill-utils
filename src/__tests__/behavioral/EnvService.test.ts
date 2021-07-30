@@ -64,6 +64,13 @@ export default class EnvServiceTest extends AbstractSpruceTest {
 	}
 
 	@test()
+	protected static gettingSomethingNeverSetReturnsUndefined() {
+		const service = this.Service()
+		const value = service.get('NEVER_BEEN_SET')
+		assert.isUndefined(value)
+	}
+
+	@test()
 	protected static async canSetTwoUniqueKeysAndChangeThem() {
 		const service = this.Service()
 		service.set('MY_KEY', 'MY_VALUE')
