@@ -61,6 +61,7 @@ export default class EnvService {
 		const env = this.parseEnv()
 		delete env[key]
 		this.writeConfig(env)
+		delete process.env[key]
 	}
 
 	private parseEnv() {

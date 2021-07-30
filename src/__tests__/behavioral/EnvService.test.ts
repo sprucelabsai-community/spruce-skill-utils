@@ -134,4 +134,12 @@ there!`
 
 		assert.isEqual(actual, expected)
 	}
+
+	@test()
+	protected static canUnset() {
+		const service = this.Service()
+		service.set('TEST', true)
+		service.unset('TEST')
+		assert.isUndefined(process.env.TEST)
+	}
 }
