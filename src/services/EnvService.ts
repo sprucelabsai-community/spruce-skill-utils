@@ -13,6 +13,9 @@ export default class EnvService {
 		const env = this.parseEnv()
 		env[key] = value
 
+		//@ts-ignore
+		process.env[key] = value
+
 		this.writeConfig(env)
 	}
 

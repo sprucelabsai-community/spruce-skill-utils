@@ -42,6 +42,7 @@ export default class EnvServiceTest extends AbstractSpruceTest {
 
 		const actual = service.get(key)
 		assert.isEqual(actual, value)
+		assert.isEqual(process.env[key], `${value}`)
 	}
 
 	private static assertEnvIsExpected(expected: string) {
