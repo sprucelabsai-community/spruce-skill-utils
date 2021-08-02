@@ -26,7 +26,7 @@
 	"scripts": {
 		"build.ci": "yarn build.tsc",
 		"build.copy-files": "mkdir -p build/__tests__ && cp -r ./src/.spruce build/ && cp -r ./src/__tests__/testDirsAndFiles build/__tests__/",
-		"build.dev": "yarn build.tsc",
+		"build.dev": "yarn build.tsc --sourceMap",
 		"build.dist": "yarn build.tsc && tsc --project tsconfig.dist.json && yarn build.esm-postbuild",
 		"build.esm-postbuild": "esm-postbuild --target build/esm --patterns '**/*.js'",
 		"build.tsc": "yarn build.copy-files && tsc",
