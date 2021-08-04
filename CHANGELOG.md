@@ -1,3 +1,10 @@
+# [20.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.3.22...v20.4.0) (2021-08-04)
+
+
+### Features
+
+* function delegation util ([4a569d9](https://github.com/sprucelabsai/spruce-skill-utils/commit/4a569d9))
+
 ## [20.3.22](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.3.21...v20.3.22) (2021-08-04)
 
 ## [20.3.21](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.3.20...v20.3.21) (2021-08-04)
