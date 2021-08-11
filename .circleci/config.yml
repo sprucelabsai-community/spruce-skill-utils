@@ -51,6 +51,7 @@ jobs:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
       - checkout
+      - run: which rsync || ( sudo apt-get update -y && sudo apt-get install rsync -y )
       - run:
           name: "Check and skip if npm-publish"
           command: |
