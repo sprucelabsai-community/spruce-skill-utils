@@ -18,11 +18,17 @@ interface SkillCrashedErrorOptions extends IErrorOptions {
 	code: 'SKILL_CRASHED'
 }
 
+interface InvalidPluginErrorOptions extends IErrorOptions {
+	code: 'INVALID_PLUGIN'
+	file: string
+}
+
 export type ErrorOptions =
 	| FailedToLoadPluginErrorOptions
 	| InvalidFeatureCodeErrorOptions
 	| SpruceErrorOptions
 	| SkillCrashedErrorOptions
+	| InvalidPluginErrorOptions
 
 export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 	public friendlyMessage() {
