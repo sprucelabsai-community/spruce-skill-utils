@@ -1,3 +1,12 @@
+## [20.5.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.5.0...v20.5.1) (2021-08-11)
+
+# [20.5.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.4.2...v20.5.0) (2021-08-11)
+
+
+### Features
+
+* pluginUtilImportSync ([55327c4](https://github.com/sprucelabsai/spruce-skill-utils/commit/55327c4))
+
 ## [20.4.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.4.1...v20.4.2) (2021-08-08)
 
 ## [20.4.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.4.0...v20.4.1) (2021-08-06)
