@@ -71,10 +71,6 @@ const pluginUtil = {
 		const query = pathUtil.join(lookup, '**', '*.plugin.[t|j]s')
 		const results = globby.sync(query)
 
-		if (results.length === 0) {
-			return []
-		}
-
 		const pluginResults: any[] = []
 
 		for (const match of results) {
