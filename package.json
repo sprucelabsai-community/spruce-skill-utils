@@ -1,131 +1,132 @@
 {
-	"name": "@sprucelabs/spruce-skill-utils",
-	"publishConfig": {
-		"access": "public"
-	},
-	"version": "20.5.7",
-	"files": [
-		"build/**/*",
-		"!build/__tests__",
-		"tsconfig.json"
-	],
-	"main": "./build/index.js",
-	"types": "./build/index.d.ts",
-	"module": "./build/esm/index.js",
-	"sideEffects": false,
-	"license": "MIT",
-	"description": "Loosely coupled classes and functions to make skill development faster! 🏎",
-	"keywords": [
-		"node",
-		"sprucelabs"
-	],
-	"homepage": "https://github.com/sprucelabsai/spruce-skill-utils",
-	"bugs": {
-		"url": "https://github.com/sprucelabsai/spruce-skill-utils/issues"
-	},
-	"scripts": {
-		"build.ci": "yarn build.tsc",
-		"build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
-		"build.dev": "yarn build.tsc --sourceMap",
-		"build.dist": "yarn build.tsc && tsc --project tsconfig.dist.json && yarn build.esm-postbuild",
-		"build.esm-postbuild": "esm-postbuild --target build/esm --patterns '**/*.js'",
-		"build.tsc": "yarn build.copy-files && tsc",
-		"clean": "yarn clean.build",
-		"clean.all": "yarn clean.dependencies && yarn clean.build",
-		"clean.build": "rm -rf build/",
-		"clean.dependencies": "rm -rf node_modules/ package-lock.json yarn.lock",
-		"fix.lint": "eslint --fix '**/*.ts'",
-		"lint": "eslint --cache '**/*.ts' && tsc -p . --noEmit",
-		"rebuild": "yarn clean.all && yarn && yarn build.dev",
-		"release": "semantic-release",
-		"test": "jest",
-		"update.dependencies": "yarn clean.dependencies && yarn",
-		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn fix.lint ; true",
-		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
-		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build.dev && yarn test",
-		"watch.build.dev": "yarn build.dev -w",
-		"watch.lint": "chokidar 'src/**/*' -c 'yarn lint.tsc'"
-	},
-	"dependencies": {
-		"@sprucelabs/error": "latest",
-		"@sprucelabs/schema": "latest",
-		"chalk": "^4.1.2",
-		"dotenv": "^10.0.0",
-		"fs-extra": "^10.0.0",
-		"globby": "^11.0.4",
-		"inflection": "^1.13.1",
-		"lodash": "^4.17.21",
-		"uuid": "^8.3.2"
-	},
-	"devDependencies": {
-		"@sprucelabs/esm-postbuild": "latest",
-		"@sprucelabs/jest-json-reporter": "latest",
-		"@sprucelabs/jest-sheets-reporter": "^1.2.59",
-		"@sprucelabs/resolve-path-aliases": "latest",
-		"@sprucelabs/semantic-release": "latest",
-		"@sprucelabs/test": "latest",
-		"@sprucelabs/test-utils": "latest",
-		"@types/fs-extra": "^9.0.12",
-		"@types/inflection": "^1.5.28",
-		"@types/lodash": "^4.14.172",
-		"@types/node": "^16.7.1",
-		"@types/uuid": "^8.3.1",
-		"chokidar-cli": "^3.0.0",
-		"concurrently": "^6.2.1",
-		"conventional-changelog-sprucelabs": "latest",
-		"eslint": "^7.32.0",
-		"eslint-config-spruce": "latest",
-		"jest": "^27.0.6",
-		"jest-circus": "^27.0.6",
-		"prettier": "^2.3.2",
-		"typescript": "^4.3.5",
-		"yarn-upgrade-all": "^0.5.4"
-	},
-	"jest": {
-		"maxWorkers": 4,
-		"testTimeout": 300000,
-		"reporters": [
-			"default",
-			[
-				"@sprucelabs/jest-sheets-reporter",
-				{
-					"sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
-					"worksheetId": 843037832,
-					"testMap": {
-						"canUpdateTrackedHash": "I171",
-						"import many": "I253"
-					}
-				}
-			]
-		],
-		"testEnvironment": "node",
-		"testPathIgnorePatterns": [
-			"<rootDir>/tmp/",
-			"<rootDir>/src/",
-			"<rootDir>/node_modules/",
-			"<rootDir>/build/__tests__/testDirsAndFiles/",
-			"<rootDir>/build/esm/"
-		],
-		"testMatch": [
-			"**/__tests__/**/*.test.js?(x)"
-		],
-		"moduleNameMapper": {
-			"^#spruce/(.*)$": "<rootDir>/build/.spruce/$1"
-		}
-	},
-	"yarn-upgrade-all": {
-		"ignore": [
-			"@sprucelabs/error",
-			"@sprucelabs/esm-postbuild",
-			"@sprucelabs/jest-json-reporter",
-			"@sprucelabs/resolve-path-aliases",
-			"@sprucelabs/schema",
-			"@sprucelabs/semantic-release",
-			"@sprucelabs/test",
-			"@sprucelabs/test-utils",
-			"conventional-changelog-sprucelabs",
-			"eslint-config-spruce",
-			"globby"
-		]
-	}
+  "name": "@sprucelabs/spruce-skill-utils",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "20.5.7",
+  "skill": {
+    "namespace": "skill-utils",
+    "upgradeIgnoreList": [
+      "globby"
+    ]
+  },
+  "files": [
+    "build/**/*",
+    "!build/__tests__",
+    "tsconfig.json"
+  ],
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "module": "./build/esm/index.js",
+  "sideEffects": false,
+  "license": "MIT",
+  "description": "Loosely coupled classes and functions to make skill development faster! 🏎",
+  "keywords": [
+    "node",
+    "sprucelabs"
+  ],
+  "homepage": "https://github.com/sprucelabsai/spruce-skill-utils",
+  "bugs": {
+    "url": "https://github.com/sprucelabsai/spruce-skill-utils/issues"
+  },
+  "scripts": {
+	"build": "yarn build.dev",
+    "build.ci": "yarn build.tsc && yarn build.resolve-paths && yarn lint",
+    "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
+    "build.dev": "yarn build.tsc --sourceMap ; yarn resolve-paths.lint",
+    "build.dist": "yarn build.tsc && tsc --project tsconfig.dist.json && yarn build.esm-postbuild",
+    "build.esm-postbuild": "esm-postbuild --target build/esm --patterns '**/*.js'",
+	  "build.resolve-paths": "resolve-path-aliases --target build --patterns '**/*.js,**/*.d.ts'",
+	  "build.tsc": "yarn build.copy-files && tsc",
+    "clean": "yarn clean.build",
+    "clean.all": "yarn clean.dependencies && yarn clean.build",
+    "clean.build": "rm -rf build/",
+    "clean.dependencies": "rm -rf node_modules/ package-lock.json yarn.lock",
+    "fix.lint": "eslint --fix --cache '**/*.ts'",
+    "lint": "eslint --cache '**/*.ts'",
+    "rebuild": "yarn clean.all && yarn && yarn build.dev",
+    "release": "semantic-release",
+	  "resolve-paths.lint": "yarn build.resolve-paths ; yarn lint",
+	  "test": "jest",
+    "update.dependencies": "yarn clean.dependencies && yarn",
+    "upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn fix.lint ; true",
+    "upgrade.packages.all": "yarn install && yarn upgrade.packages",
+    "upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build.dev && yarn test",
+    "watch.build.dev": "concurrently 'yarn build.dev' 'yarn watch.tsc --sourceMap' \"chokidar 'src/**/*' --ignore '.*/tmp/.*' -c 'yarn build.copy-files && yarn build.resolve-paths'\"",
+    "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\"",
+    "watch.rebuild": "yarn clean.all && yarn && yarn watch.build.dev",
+    "watch.tsc": "tsc -w"
+  },
+  "dependencies": {
+    "@sprucelabs/error": "latest",
+    "@sprucelabs/schema": "latest",
+    "chalk": "^4.1.2",
+    "dotenv": "^10.0.0",
+    "fs-extra": "^10.0.0",
+    "globby": "^11.0.4",
+    "inflection": "^1.13.1",
+    "lodash": "^4.17.21",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@sprucelabs/esm-postbuild": "latest",
+    "@sprucelabs/jest-json-reporter": "latest",
+    "@sprucelabs/jest-sheets-reporter": "^1.2.59",
+    "@sprucelabs/resolve-path-aliases": "latest",
+    "@sprucelabs/semantic-release": "latest",
+    "@sprucelabs/test": "latest",
+    "@sprucelabs/test-utils": "latest",
+    "@types/fs-extra": "^9.0.12",
+    "@types/inflection": "^1.5.28",
+    "@types/lodash": "^4.14.172",
+    "@types/node": "^16.7.1",
+    "@types/uuid": "^8.3.1",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^6.2.1",
+    "conventional-changelog-sprucelabs": "latest",
+    "eslint": "^7.32.0",
+    "eslint-config-spruce": "latest",
+    "jest": "^27.0.6",
+    "jest-circus": "^27.0.6",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5",
+    "yarn-upgrade-all": "^0.5.4"
+  },
+  "jest": {
+    "maxWorkers": 4,
+    "testTimeout": 300000,
+    "reporters": [
+      "default",
+      [
+        "@sprucelabs/jest-sheets-reporter",
+        {
+          "sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
+          "worksheetId": 843037832,
+          "testMap": {
+            "canUpdateTrackedHash": "I171",
+            "import many": "I253"
+          }
+        }
+      ]
+    ],
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/tmp/",
+      "<rootDir>/src/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/build/__tests__/testDirsAndFiles/",
+      "<rootDir>/build/esm/"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.test.js?(x)"
+    ],
+    "moduleNameMapper": {
+      "^#spruce/(.*)$": "<rootDir>/build/.spruce/$1"
+    }
+  },
+  "yarn-upgrade-all": {
+    "ignore": [
+      "globby"
+    ]
+  }
 }

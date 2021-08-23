@@ -4,5 +4,14 @@
   ],
   "skipped": [
     "skill"
-  ]
+  ],
+  "scriptUpdater": {
+    "skips": []
+  },
+  "writer": {
+    "skips": [
+      "tsconfig.json",
+      "src/index.ts"
+    ]
+  }
 }
