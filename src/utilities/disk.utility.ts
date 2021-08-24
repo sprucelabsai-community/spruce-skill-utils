@@ -1,10 +1,10 @@
 import { exec } from 'child_process'
 import os from 'os'
 import pathUtil from 'path'
+import { SchemaError } from '@sprucelabs/schema'
 import fsUtil from 'fs-extra'
 import * as uuid from 'uuid'
 import { HASH_SPRUCE_BUILD_DIR, HASH_SPRUCE_DIR } from '../constants'
-import SpruceError from '../errors/SpruceError'
 
 export interface CreateFile {
 	/** The relative path from the cwd, without a leading forward slash */
@@ -163,14 +163,14 @@ const diskUtil = {
 
 	deleteEmptyDirs(dir: string) {
 		if (!dir) {
-			throw new SpruceError({
+			throw new SchemaError({
 				code: 'MISSING_PARAMETERS',
 				parameters: ['dir'],
 			})
 		}
 
 		if (!this.doesDirExist(dir)) {
-			throw new SpruceError({
+			throw new SchemaError({
 				code: 'INVALID_PARAMETERS',
 				parameters: ['dir'],
 				friendlyMessage: `No directory found at ${dir} to clean.`,
@@ -251,7 +251,7 @@ const diskUtil = {
 
 	hasFileChanged(...filePath: string[]): boolean {
 		if (!filePath || !(filePath.length > 0)) {
-			throw new SpruceError({
+			throw new SchemaError({
 				code: 'MISSING_PARAMETERS',
 				parameters: ['file'],
 			})
@@ -297,7 +297,7 @@ const diskUtil = {
 
 	getFileChangedCacheFile(file: string) {
 		if (!file) {
-			throw new SpruceError({
+			throw new SchemaError({
 				code: 'MISSING_PARAMETERS',
 				parameters: ['file'],
 			})
