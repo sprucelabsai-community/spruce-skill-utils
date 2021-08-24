@@ -1,5 +1,5 @@
 import pathUtil from 'path'
-import { SpruceError as SchemaSpruceError } from '@sprucelabs/schema'
+import { SchemaError } from '@sprucelabs/schema'
 import globby from 'globby'
 import SpruceError from '../errors/SpruceError'
 import diskUtil from './disk.utility'
@@ -42,7 +42,7 @@ const pluginUtil = {
 		}
 
 		if (missing.length > 0) {
-			throw new SchemaSpruceError({
+			throw new SchemaError({
 				code: 'MISSING_PARAMETERS',
 				parameters: missing,
 				friendlyMessage: `You have to pass path as a string to load the plugins and args[] to what will be ...unrolled as the args to the plugin's callback function.`,
@@ -50,7 +50,7 @@ const pluginUtil = {
 		}
 
 		if (!Array.isArray(args)) {
-			throw new SchemaSpruceError({
+			throw new SchemaError({
 				code: 'INVALID_PARAMETERS',
 				parameters: ['args'],
 				friendlyMessage: `You have to pass args[] as an array to what will be ...unrolled as the args to the plugin's callback function.`,
@@ -61,7 +61,7 @@ const pluginUtil = {
 		const lookup = diskUtil.resolvePath(...path)
 
 		if (!diskUtil.isDir(lookup)) {
-			throw new SchemaSpruceError({
+			throw new SchemaError({
 				code: 'INVALID_PARAMETERS',
 				parameters: ['path'],
 				friendlyMessage: `I couldn't find the directory at ${lookup}.`,

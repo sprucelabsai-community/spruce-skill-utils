@@ -1,5 +1,4 @@
 import AbstractSpruceError, {
-	SpruceErrorOptions,
 	ErrorOptions as IErrorOptions,
 } from '@sprucelabs/error'
 
@@ -26,7 +25,6 @@ interface InvalidPluginErrorOptions extends IErrorOptions {
 export type ErrorOptions =
 	| FailedToLoadPluginErrorOptions
 	| InvalidFeatureCodeErrorOptions
-	| SpruceErrorOptions
 	| SkillCrashedErrorOptions
 	| InvalidPluginErrorOptions
 
