@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@sprucelabs/error": "^5.0.1",
-    "@sprucelabs/schema": "^25.1.1",
+    "@sprucelabs/schema": "^25.1.2",
     "chalk": "^4.1.2",
     "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0",
@@ -79,7 +79,7 @@
     "@types/fs-extra": "^9.0.12",
     "@types/inflection": "^1.5.28",
     "@types/lodash": "^4.14.172",
-    "@types/node": "^16.7.2",
+    "@types/node": "^16.7.3",
     "@types/uuid": "^8.3.1",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^6.2.1",
