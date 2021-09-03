@@ -59,7 +59,6 @@
     "watch.build.dev": "tsc-watch --sourceMap --onCompilationComplete 'yarn post.watch.build'"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.0.2",
     "@sprucelabs/schema": "^25.1.5",
     "chalk": "^4.1.2",
     "dotenv": "^10.0.0",
