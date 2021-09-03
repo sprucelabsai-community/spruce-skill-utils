@@ -30,6 +30,7 @@
     "url": "https://github.com/sprucelabsai/spruce-skill-utils/issues"
   },
   "scripts": {
+    "preinstall": "git config core.hooksPath .githooks",
     "build": "yarn build.dev",
     "build.ci": "yarn build.tsc && yarn build.resolve-paths && yarn lint",
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
