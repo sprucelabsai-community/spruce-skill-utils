@@ -58,7 +58,7 @@
     "watch.build.dev": "tsc-watch --sourceMap --onCompilationComplete 'yarn post.watch.build'"
   },
   "dependencies": {
-    "@sprucelabs/schema": "^25.3.40",
+    "@sprucelabs/schema": "^25.3.41",
     "chalk": "^4.1.2",
     "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0",
@@ -68,12 +68,12 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.73",
-    "@sprucelabs/jest-json-reporter": "^6.0.46",
-    "@sprucelabs/jest-sheets-reporter": "^1.2.77",
-    "@sprucelabs/resolve-path-aliases": "^1.0.80",
+    "@sprucelabs/esm-postbuild": "^1.0.74",
+    "@sprucelabs/jest-json-reporter": "^6.0.47",
+    "@sprucelabs/jest-sheets-reporter": "^1.2.78",
+    "@sprucelabs/resolve-path-aliases": "^1.0.81",
     "@sprucelabs/semantic-release": "^4.0.6",
-    "@sprucelabs/test": "^7.7.63",
+    "@sprucelabs/test": "^7.7.64",
     "@sprucelabs/test-utils": "^3.0.56",
     "@types/fs-extra": "^9.0.12",
     "@types/inflection": "^1.13.0",
