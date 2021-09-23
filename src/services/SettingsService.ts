@@ -1,5 +1,6 @@
 import get from 'lodash/get'
 import set from 'lodash/set'
+import unset from 'lodash/unset'
 import { HASH_SPRUCE_DIR } from '../constants'
 import diskUtil from '../utilities/disk.utility'
 
@@ -63,7 +64,7 @@ export default class SettingsService<FeatureCode extends string = string> {
 
 	public unset(key: string) {
 		const settings = this.loadSettings()
-		delete settings[key]
+		unset(settings, key)
 		this.saveSettings(settings)
 	}
 
