@@ -1,3 +1,10 @@
+# [20.6.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.5.155...v20.6.0) (2021-09-23)
+
+
+### Features
+
+* can unset by nested key ([2f58c8b](https://github.com/sprucelabsai/spruce-skill-utils/commit/2f58c8b))
+
 ## [20.5.155](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.5.154...v20.5.155) (2021-09-23)
 
 ## [20.5.154](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.5.153...v20.5.154) (2021-09-23)
