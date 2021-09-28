@@ -66,6 +66,7 @@ export default class SettingsService<FeatureCode extends string = string> {
 		const settings = this.loadSettings()
 		unset(settings, key)
 		this.saveSettings(settings)
+		this.settings = undefined
 	}
 
 	private loadSettings(): Settings {

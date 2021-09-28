@@ -91,4 +91,12 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		const actual = this.settings.get('nested.object.hey')
 		assert.isFalsy(actual)
 	}
+
+	@test()
+	protected static unsettingClearsCache() {
+		this.settings.set('nested.object', { hey: 'there!' })
+		this.settings.unset('nested.object.hey')
+		//@ts-ignore
+		assert.isFalsy(this.settings.settings)
+	}
 }
