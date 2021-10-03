@@ -1,3 +1,5 @@
+## [20.6.171](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.6.170...v20.6.171) (2021-10-03)
+
 ## [20.6.170](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.6.169...v20.6.170) (2021-10-03)
 
 ## [20.6.169](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.6.168...v20.6.169) (2021-10-03)
