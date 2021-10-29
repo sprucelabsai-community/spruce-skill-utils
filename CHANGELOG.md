@@ -1,3 +1,10 @@
+# [21.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.6.377...v21.0.0) (2021-10-29)
+
+
+### Breaking Changes
+
+* onBootCallbacks for skills ([ec08480](https://github.com/sprucelabsai/spruce-skill-utils/commit/ec08480))
+
 ## [20.6.377](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.6.376...v20.6.377) (2021-10-29)
 
 ## [20.6.376](https://github.com/sprucelabsai/spruce-skill-utils/compare/v20.6.375...v20.6.376) (2021-10-29)
