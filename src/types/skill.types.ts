@@ -3,6 +3,10 @@ import { Log, LogOptions } from '../utilities/buildLog'
 
 export interface SkillContext {}
 
+interface BootCallback {
+	(err?: Error): void
+}
+
 export interface Skill {
 	rootDir: string
 	/** Source or build depending on running with .local */
@@ -13,6 +17,7 @@ export interface Skill {
 	getFeatures(): SkillFeature[]
 	isRunning(): boolean
 	isBooted(): boolean
+	onBoot(cb: BootCallback): void
 	checkHealth(): Promise<HealthCheckResults>
 	buildLog(prefix?: string, options?: LogOptions): Log
 	execute(): Promise<void>
@@ -30,6 +35,7 @@ export interface SkillFeature {
 	isInstalled(): Promise<boolean>
 	destroy(): Promise<void>
 	isBooted(): boolean
+	onBoot(cb: BootCallback): void
 }
 
 export interface SchemaHealthCheckItem extends HealthCheckItem {
