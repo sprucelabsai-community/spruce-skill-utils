@@ -4,7 +4,7 @@ import { Log, LogOptions } from '../utilities/buildLog'
 export interface SkillContext {}
 
 export interface BootCallback {
-	(err?: Error): void
+	(): void
 }
 
 export interface Skill {
