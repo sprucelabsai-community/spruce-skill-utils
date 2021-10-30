@@ -1,3 +1,10 @@
+# [22.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v21.0.6...v22.0.0) (2021-10-30)
+
+
+### Breaking Changes
+
+* didBoot on skill no longer fires on boot error. catch promises returned from skill.execute() ([a5829bf](https://github.com/sprucelabsai/spruce-skill-utils/commit/a5829bf))
+
 ## [21.0.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v21.0.5...v21.0.6) (2021-10-30)
 
 ## [21.0.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v21.0.4...v21.0.5) (2021-10-30)
