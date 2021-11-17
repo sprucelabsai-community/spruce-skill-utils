@@ -61,7 +61,7 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/schema": "^25.3.510",
+    "@sprucelabs/schema": "^25.3.511",
     "chalk": "^4.1.2",
     "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0",
@@ -93,7 +93,7 @@
     "prettier": "^2.4.1",
     "ts-node": "^10.4.0",
     "tsc-watch": "^4.5.0",
-    "typescript": "^4.4.4",
+    "typescript": "^4.5.2",
     "yarn-upgrade-all": "^0.5.4"
   },
   "jest": {
