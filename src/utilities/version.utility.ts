@@ -1,5 +1,6 @@
 import pathUtil from 'path'
 import globby from 'globby'
+import { uniq, uniqBy } from 'lodash'
 import { LATEST_HANDLEBARS, LATEST_TOKEN } from '../constants'
 import SpruceError from '../errors/SpruceError'
 import diskUtil from './disk.utility'
@@ -39,12 +40,15 @@ const versionUtil = {
 			matches = diskUtil.readDir(dirToRead)
 		}
 
-		const allDateIsh = matches
-			.filter((value) => this.isValidVersion(value))
-			.map((dateIsh) => this.generateVersion(dateIsh))
-			.sort((a, b) => {
-				return a.intValue > b.intValue ? 1 : -1
-			})
+		const allDateIsh = uniqBy(
+			matches
+				.filter((value) => this.isValidVersion(value))
+				.map((dateIsh) => this.generateVersion(dateIsh))
+				.sort((a, b) => {
+					return a.intValue > b.intValue ? 1 : -1
+				}),
+			'constValue'
+		)
 		return allDateIsh
 	},
 	generateVersion(dateFormattedString?: string) {

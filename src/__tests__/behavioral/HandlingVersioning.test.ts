@@ -66,13 +66,24 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 		assert.isLength(version, 0)
 	}
 
-	@test('pattern matches single dir 1', 'create', ['2020_01_01', '2021_11_25'])
-	protected static versionsInSingleDir(dir: string, expectedMatches: string[]) {
-		const path = this.resolveTestPath('utilities', '**', dir, '**', '*')
+	@test(
+		'pattern matches single dir 1',
+		['**', 'create', '**', '*'],
+		['2020_01_01', '2021_11_25']
+	)
+	@test(
+		'pattern matches accross several dirs and removes dups',
+		['**', 'events', '**', '*'],
+		['2019_11_25', '2020_01_01', '2021_11_25']
+	)
+	protected static versionsInSingleDir(
+		pattern: string[],
+		expectedMatches: string[]
+	) {
+		const path = this.resolveTestPath('utilities', ...pattern)
 		const versions = versionUtil.getAllVersions(path)
 
-		assert.isLength(versions, expectedMatches.length)
-
+		const allExpected = []
 		for (const expected of expectedMatches) {
 			const version = {
 				intValue: parseInt(expected.replace(/_/g, ''), 10),
@@ -80,8 +91,10 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 				dirValue: `v${expected}`,
 			}
 
-			assert.doesInclude(versions, version)
+			allExpected.push(version)
 		}
+
+		assert.isEqualDeep(versions, allExpected)
 	}
 
 	protected static resolveTestPath(...pathAfterTestDirsAndFiles: string[]) {
