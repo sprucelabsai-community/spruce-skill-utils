@@ -1,4 +1,5 @@
 import pathUtil from 'path'
+import globby from 'globby'
 import { LATEST_HANDLEBARS, LATEST_TOKEN } from '../constants'
 import SpruceError from '../errors/SpruceError'
 import diskUtil from './disk.utility'
@@ -30,8 +31,15 @@ export function formatDate(date: Date) {
 
 const versionUtil = {
 	getAllVersions(dirToRead: string) {
-		const contents = diskUtil.readDir(dirToRead)
-		const allDateIsh = contents
+		let matches: string[] = []
+
+		if (dirToRead.includes('*')) {
+			matches = globby.sync(dirToRead)
+		} else {
+			matches = diskUtil.readDir(dirToRead)
+		}
+
+		const allDateIsh = matches
 			.filter((value) => this.isValidVersion(value))
 			.map((dateIsh) => this.generateVersion(dateIsh))
 			.sort((a, b) => {
