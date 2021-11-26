@@ -1,3 +1,10 @@
+# [22.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.0.142...v22.1.0) (2021-11-26)
+
+
+### Features
+
+* version util can now handle patterns to find versioned folders burried deep! ([2df50fc](https://github.com/sprucelabsai/spruce-skill-utils/commit/2df50fc))
+
 ## [22.0.142](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.0.141...v22.0.142) (2021-11-25)
 
 ## [22.0.141](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.0.140...v22.0.141) (2021-11-25)
