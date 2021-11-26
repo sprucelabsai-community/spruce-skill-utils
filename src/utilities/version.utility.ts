@@ -1,6 +1,6 @@
 import pathUtil from 'path'
 import globby from 'globby'
-import { uniq, uniqBy } from 'lodash'
+import { uniqBy } from 'lodash'
 import { LATEST_HANDLEBARS, LATEST_TOKEN } from '../constants'
 import SpruceError from '../errors/SpruceError'
 import diskUtil from './disk.utility'
