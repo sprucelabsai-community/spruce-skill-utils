@@ -59,6 +59,11 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 	}
 
 	@test()
+	protected static getAllVersionsReturnsEmptyArrayOnDirThatDoesNotExist() {
+		assert.isEqualDeep(versionUtil.getAllVersions('/does-not-exist'), [])
+	}
+
+	@test()
 	protected static passingPatternThatFindsNothingReturnsEmptyArray() {
 		const path = this.resolveTestPath('utilities', 'nothing', '**')
 

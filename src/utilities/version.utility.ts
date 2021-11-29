@@ -36,7 +36,7 @@ const versionUtil = {
 
 		if (dirToRead.includes('*')) {
 			matches = globby.sync(dirToRead)
-		} else {
+		} else if (diskUtil.doesFileExist(dirToRead)) {
 			matches = diskUtil.readDir(dirToRead)
 		}
 
