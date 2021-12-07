@@ -62,7 +62,7 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/schema": "^25.4.69",
+    "@sprucelabs/schema": "^25.4.70",
     "chalk": "^4.1.2",
     "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0",
@@ -72,13 +72,13 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.296",
+    "@sprucelabs/esm-postbuild": "^1.0.297",
     "@sprucelabs/jest-json-reporter": "^6.0.265",
     "@sprucelabs/jest-sheets-reporter": "^1.2.268",
-    "@sprucelabs/resolve-path-aliases": "^1.0.236",
+    "@sprucelabs/resolve-path-aliases": "^1.0.237",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test": "^7.7.248",
-    "@sprucelabs/test-utils": "^3.0.301",
+    "@sprucelabs/test-utils": "^3.0.302",
     "@types/fs-extra": "^9.0.13",
     "@types/inflection": "^1.13.0",
     "@types/lodash": "^4.14.177",
@@ -87,7 +87,7 @@
     "chokidar-cli": "^3.0.0",
     "concurrently": "^6.4.0",
     "conventional-changelog-sprucelabs": "^1.1.2",
-    "eslint": "^8.4.0",
+    "eslint": "^8.4.1",
     "eslint-config-spruce": "^10.10.16",
     "jest": "^27.4.3",
     "jest-circus": "^27.4.2",
