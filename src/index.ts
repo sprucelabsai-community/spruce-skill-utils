@@ -14,5 +14,7 @@ export * from './types/skill.types'
 
 export { default as SettingsService } from './services/SettingsService'
 export { default as EnvService } from './services/EnvService'
+export { default as PkgService } from './services/PkgService'
+export { default as AuthService } from './services/AuthService'
 export * from './services/SettingsService'
 export { default as functionDelegationUtil } from './utilities/functionDelegation.utility'

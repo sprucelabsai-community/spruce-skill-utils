@@ -13,6 +13,12 @@ interface InvalidFeatureCodeErrorOptions extends IErrorOptions {
 	validCodes: string[]
 }
 
+interface InvalidPackageJsonErrorOptions extends IErrorOptions {
+	code: 'INVALID_PACKAGE_JSON'
+	path: string
+	errorMessage: string
+}
+
 interface SkillCrashedErrorOptions extends IErrorOptions {
 	code: 'SKILL_CRASHED'
 }
@@ -27,6 +33,7 @@ export type ErrorOptions =
 	| InvalidFeatureCodeErrorOptions
 	| SkillCrashedErrorOptions
 	| InvalidPluginErrorOptions
+	| InvalidPackageJsonErrorOptions
 
 export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 	public friendlyMessage() {
@@ -48,6 +55,10 @@ export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 				message = `Shoot, your skill crashed. Here are some deets:\n\n${
 					this.options.originalError?.message ?? 'UNKNOWN'
 				}`
+				break
+
+			case 'INVALID_PACKAGE_JSON':
+				message = `I could not open the package.json for this skill. Error was: ${this.options.errorMessage}`
 				break
 		}
 

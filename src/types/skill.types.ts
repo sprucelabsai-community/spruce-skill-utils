@@ -68,3 +68,16 @@ export interface HealthCheckItem {
 }
 
 export type EnvValue = string | boolean | number
+
+export interface NpmPackage {
+	name: string
+	version?: string
+	isDev?: boolean
+}
+
+export interface PersonWithToken {
+	id: string
+	casualName: string
+	token: string
+	isLoggedIn?: boolean | undefined | null
+}
