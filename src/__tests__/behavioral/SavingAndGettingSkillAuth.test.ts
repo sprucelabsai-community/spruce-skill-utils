@@ -30,14 +30,10 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
 	}
 
 	@test()
-	protected static throwsWhenSkillHasNoNamespaceDefined() {
+	protected static doesNotWhenSkillHasNoNamespaceDefined() {
 		const pkg = {}
 		this.writePackageJson(pkg)
-		const err = assert.doesThrow(() => AuthService.Auth(this.cwd))
-
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
-			parameters: ['cwd'],
-		})
+		AuthService.Auth(this.cwd)
 	}
 
 	@test()

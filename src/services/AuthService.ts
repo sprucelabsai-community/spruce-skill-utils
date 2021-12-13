@@ -63,23 +63,16 @@ export default class AuthService {
 		const pkgService = new PkgService(cwd)
 		const envService = new EnvService(cwd)
 
-		try {
-			const namespace = pkgService.get('skill.namespace')
-			if (!namespace) {
-				throw new Error(
-					"It does not look like you're in a skill. I expected to find 'skill.namespace' in there, but didn't!"
-				)
-			}
-
-			const auth = new this(envService, pkgService)
-			return auth
-		} catch (err: any) {
+		if (!pkgService.doesExist()) {
 			throw new SchemaError({
 				code: 'INVALID_PARAMETERS',
 				parameters: ['cwd'],
-				friendlyMessage: err.message,
+				friendlyMessage: 'Could not find a package.json file!',
 			})
 		}
+
+		const auth = new this(envService, pkgService)
+		return auth
 	}
 
 	private constructor(envService: EnvService, pkgService: PkgService) {
