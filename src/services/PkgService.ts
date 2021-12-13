@@ -6,8 +6,8 @@ import { NpmPackage } from '../types/skill.types'
 import diskUtil from '../utilities/disk.utility'
 
 export default class PkgService {
-	private _parsedPkg?: Record<string, any>
-	private cwd: string
+	protected _parsedPkg?: Record<string, any>
+	protected cwd: string
 
 	public constructor(cwd: string) {
 		this.cwd = cwd
