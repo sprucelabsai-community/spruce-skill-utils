@@ -75,6 +75,13 @@ export interface NpmPackage {
 	isDev?: boolean
 }
 
+export interface SkillAuth {
+	id: string
+	apiKey: string
+	name: string
+	slug: string
+}
+
 export interface PersonWithToken {
 	id: string
 	casualName: string

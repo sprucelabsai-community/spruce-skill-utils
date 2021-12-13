@@ -8,13 +8,6 @@ import { EnvService, namesUtil, PersonWithToken, PkgService } from '..'
 
 const LOGGED_IN_PERSON_KEY = 'LOGGED_IN_PERSON'
 
-export interface SkillAuth {
-	id: string
-	apiKey: string
-	name: string
-	slug: string
-}
-
 const personWithTokenSchema = buildSchema({
 	id: 'personWithToken',
 	version: 'v2020_07_22',
