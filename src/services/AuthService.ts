@@ -4,7 +4,10 @@ import {
 	SchemaError,
 	validateSchemaValues,
 } from '@sprucelabs/schema'
-import { EnvService, namesUtil, PersonWithToken, PkgService } from '..'
+import { PersonWithToken, SkillAuth } from '../types/skill.types'
+import namesUtil from '../utilities/names.utility'
+import EnvService from './EnvService'
+import PkgService from './PkgService'
 
 const LOGGED_IN_PERSON_KEY = 'LOGGED_IN_PERSON'
 
