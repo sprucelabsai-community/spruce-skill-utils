@@ -1,3 +1,10 @@
+# [22.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.1.89...v22.2.0) (2021-12-13)
+
+
+### Features
+
+* Auth and pkg services now available outside of cli, making developement even EASIER! ([c1b1d31](https://github.com/sprucelabsai/spruce-skill-utils/commit/c1b1d31))
+
 ## [22.1.89](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.1.88...v22.1.89) (2021-12-12)
 
 ## [22.1.88](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.1.87...v22.1.88) (2021-12-12)
