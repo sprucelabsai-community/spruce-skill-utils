@@ -63,9 +63,9 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/schema": "^25.6.66",
+    "@sprucelabs/schema": "^25.6.67",
     "chalk": "^4.1.2",
-    "dotenv": "^14.1.1",
+    "dotenv": "^14.2.0",
     "fs-extra": "^10.0.0",
     "globby": "^11.0.4",
     "inflection": "^1.13.1",
@@ -75,7 +75,7 @@
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^1.0.326",
     "@sprucelabs/jest-json-reporter": "^6.0.309",
-    "@sprucelabs/jest-sheets-reporter": "^1.2.311",
+    "@sprucelabs/jest-sheets-reporter": "^1.2.312",
     "@sprucelabs/resolve-path-aliases": "^1.0.253",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test": "^7.7.274",
