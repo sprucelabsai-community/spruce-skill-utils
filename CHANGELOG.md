@@ -1,3 +1,10 @@
+# [23.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.2.200...v23.0.0) (2022-01-19)
+
+
+### Breaking Changes
+
+* skill has postBoot to invoke listeners after didBoot (need better convention here) ([deb5227](https://github.com/sprucelabsai/spruce-skill-utils/commit/deb5227))
+
 ## [22.2.200](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.2.199...v22.2.200) (2022-01-19)
 
 ## [22.2.199](https://github.com/sprucelabsai/spruce-skill-utils/compare/v22.2.198...v22.2.199) (2022-01-18)
