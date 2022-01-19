@@ -18,6 +18,7 @@ export interface Skill {
 	isRunning(): boolean
 	isBooted(): boolean
 	onBoot(cb: BootCallback): void
+	onPostBoot(cb: BootCallback): void
 	checkHealth(): Promise<HealthCheckResults>
 	buildLog(prefix?: string, options?: LogOptions): Log
 	execute(): Promise<void>
