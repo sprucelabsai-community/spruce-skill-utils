@@ -1,3 +1,10 @@
+# [24.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v23.0.53...v24.0.0) (2022-01-31)
+
+
+### Breaking Changes
+
+* upgrade ([04c82f4](https://github.com/sprucelabsai/spruce-skill-utils/commit/04c82f4))
+
 ## [23.0.53](https://github.com/sprucelabsai/spruce-skill-utils/compare/v23.0.52...v23.0.53) (2022-01-29)
 
 ## [23.0.52](https://github.com/sprucelabsai/spruce-skill-utils/compare/v23.0.51...v23.0.52) (2022-01-29)
