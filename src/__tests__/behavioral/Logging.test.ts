@@ -4,6 +4,11 @@ import buildLog, { mockLog, testLog } from '../../utilities/buildLog'
 const ROOT_PREFIX = 'root prefix'
 
 export default class LoggingTest extends AbstractSpruceTest {
+	protected static async beforeEach(): Promise<void> {
+		await super.beforeEach()
+		delete process.env.MAXIMUM_LOG_PREFIXES_LENGTH
+	}
+
 	@test()
 	protected static canGetLogger() {
 		assert.isFunction(buildLog)
@@ -170,5 +175,36 @@ export default class LoggingTest extends AbstractSpruceTest {
 
 		log.info('go team')
 		assert.isEqual(infoMessage, 'go team')
+	}
+
+	@test('can set max prefixes length 1', '1', 'Last time :: what the!?')
+	@test(
+		'can set max prefixes length 2',
+		'2',
+		'AGAIN :: Last time :: what the!?'
+	)
+	@test('can set max prefixes length 3', '0', 'what the!?')
+	@test(
+		'can set max prefixes length 4',
+		undefined,
+		'TEST :: AGAIN :: Last time :: what the!?'
+	)
+	protected static canSetMaximumPrefixesLengt(max: string, expected: string) {
+		process.env.MAXIMUM_LOG_PREFIXES_LENGTH = max
+
+		let infoMessage = ''
+		const log = buildLog('TEST', {
+			transportsByLevel: {
+				INFO: (...messageParts: string[]) => {
+					infoMessage = messageParts.join(' ')
+				},
+			},
+		})
+			.buildLog('AGAIN')
+			.buildLog('Last time')
+
+		log.info('what the!?')
+
+		assert.isEqual(infoMessage, expected)
 	}
 }

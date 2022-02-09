@@ -24,6 +24,12 @@ export interface Log {
 
 type Color = keyof typeof chalk
 
+const getMaxLogPrefixesLength = () => {
+	return typeof process.env.MAXIMUM_LOG_PREFIXES_LENGTH === 'string'
+		? +process.env.MAXIMUM_LOG_PREFIXES_LENGTH
+		: undefined
+}
+
 export default function buildLog(
 	prefix: string | undefined = undefined,
 	options?: LogOptions
@@ -75,10 +81,16 @@ export default function buildLog(
 
 	function write(chalkMethod: Chalk, args: any[], level: Level) {
 		let chalkArgs = [...args]
+		let builtPrefix = pre
 		if (pre) {
-			chalkArgs = [pre, ...chalkArgs]
+			const length = getMaxLogPrefixesLength()
+			if (typeof length === 'number' && !isNaN(length)) {
+				const parts = pre.split(' :: ')
+				builtPrefix = parts.splice(parts.length - length, length).join(' :: ')
+			}
+			chalkArgs = [builtPrefix, ...chalkArgs]
 		}
-		const prefix = `${pre ? ` ${pre}` : ''}`
+		const prefix = `${builtPrefix ? ` ${builtPrefix}` : ''}`
 
 		let transport = getTransport(level)
 		if (transport) {
