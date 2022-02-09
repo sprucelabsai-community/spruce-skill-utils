@@ -1,3 +1,10 @@
+# [24.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v24.0.49...v24.1.0) (2022-02-09)
+
+
+### Features
+
+* log prefxes can be limted with MAXIMUM_LOG_PREFIXES_LENGTH ([1163805](https://github.com/sprucelabsai/spruce-skill-utils/commit/1163805))
+
 ## [24.0.49](https://github.com/sprucelabsai/spruce-skill-utils/compare/v24.0.48...v24.0.49) (2022-02-09)
 
 ## [24.0.48](https://github.com/sprucelabsai/spruce-skill-utils/compare/v24.0.47...v24.0.48) (2022-02-09)
