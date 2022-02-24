@@ -1,3 +1,10 @@
+# [25.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v24.1.88...v25.0.0) (2022-02-24)
+
+
+### Breaking Changes
+
+* **auto-upgrade:** upgraded packages [upgrade-all] ([46fdb28](https://github.com/sprucelabsai/spruce-skill-utils/commit/46fdb28))
+
 ## [24.1.88](https://github.com/sprucelabsai/spruce-skill-utils/compare/v24.1.87...v24.1.88) (2022-02-24)
 
 ## [24.1.87](https://github.com/sprucelabsai/spruce-skill-utils/compare/v24.1.86...v24.1.87) (2022-02-24)
