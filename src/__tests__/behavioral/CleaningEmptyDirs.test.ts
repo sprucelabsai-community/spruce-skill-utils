@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import fsUtil from 'fs-extra'
 import diskUtil from '../../utilities/disk.utility'
 
@@ -9,7 +9,7 @@ export default class CleaningEmptyDirsTest extends AbstractSpruceTest {
 		//@ts-ignore
 		const err = assert.doesThrow(() => diskUtil.deleteEmptyDirs())
 
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['dir'],
 		})
 	}
@@ -20,7 +20,7 @@ export default class CleaningEmptyDirsTest extends AbstractSpruceTest {
 			diskUtil.deleteEmptyDirs('/aoseuthaosenuthaosneuth')
 		)
 
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['dir'],
 		})
 	}

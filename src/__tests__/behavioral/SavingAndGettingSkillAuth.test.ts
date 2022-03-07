@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import AuthService from '../../services/AuthService'
 import diskUtil from '../../utilities/disk.utility'
 
@@ -14,17 +14,17 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
 		//@ts-ignore
 		const err = assert.doesThrow(() => AuthService.Auth())
 
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['cwd'],
 		})
 	}
 
 	@test()
-	protected static throwsWhenNoPackgeJson() {
+	protected static throwsWhenNoPackageJson() {
 		//@ts-ignore
 		const err = assert.doesThrow(() => AuthService.Auth(this.cwd))
 
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['cwd'],
 		})
 	}
@@ -64,7 +64,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
 			this.Auth().setLoggedInPerson({ test: true })
 		)
 
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS')
+		errorAssert.assertError(err, 'MISSING_PARAMETERS')
 	}
 
 	@test()

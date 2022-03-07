@@ -189,7 +189,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 		undefined,
 		'TEST :: AGAIN :: Last time :: what the!?'
 	)
-	protected static canSetMaximumPrefixesLengt(max: string, expected: string) {
+	protected static canSetMaximumPrefixesLength(max: string, expected: string) {
 		process.env.MAXIMUM_LOG_PREFIXES_LENGTH = max
 
 		let infoMessage = ''

@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import pluginUtil from '../../utilities/plugin.utility'
 
 export default class ImportingPluginsTest extends AbstractSpruceTest {
@@ -12,7 +12,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
 	protected static importRequiresArrayToStart() {
 		//@ts-ignore
 		const err = assert.doesThrow(() => pluginUtil.importSync())
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['args', 'path'],
 		})
 	}
@@ -20,7 +20,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
 	@test()
 	protected static importRequiresPathToStart() {
 		const err = assert.doesThrow(() => pluginUtil.importSync([]))
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['path'],
 		})
 	}
@@ -29,7 +29,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
 	protected static throwsWithBadArgs() {
 		//@ts-ignore
 		const err = assert.doesThrow(() => pluginUtil.importSync(true, 'test'))
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['args'],
 		})
 	}
@@ -39,7 +39,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
 	protected static throwsWithBadPath(path: string[]) {
 		//@ts-ignore
 		const err = assert.doesThrow(() => pluginUtil.importSync([], ...path))
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['path'],
 		})
 	}
@@ -70,7 +70,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
 
 		const err = assert.doesThrow(() => pluginUtil.importSync([], ...path))
 
-		errorAssertUtil.assertError(err, 'INVALID_PLUGIN', {
+		errorAssert.assertError(err, 'INVALID_PLUGIN', {
 			file: this.resolvePath(...path),
 		})
 	}

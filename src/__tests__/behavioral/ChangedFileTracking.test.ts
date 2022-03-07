@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import diskUtil from '../../utilities/disk.utility'
 
 export default class ChangedFileTrackingTest extends AbstractSpruceTest {
@@ -13,7 +13,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
 		//@ts-ignore
 		const err = assert.doesThrow(() => diskUtil.hasFileChanged())
 
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['file'],
 		})
 	}

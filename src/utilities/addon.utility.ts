@@ -13,6 +13,8 @@ const addonUtil = {
 		})
 
 		await Promise.all(all)
+
+		return results.length
 	},
 	importSync(options: any, ...path: string[]) {
 		const results = globby.sync(pathUtil.join(...path, '**', '*.addon.[t|j]s'))
@@ -23,6 +25,8 @@ const addonUtil = {
 				result.default(options)
 			}
 		})
+
+		return results.length
 	},
 }
 
