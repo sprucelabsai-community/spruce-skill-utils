@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import path from 'path'
 import inflection from 'inflection'
-import { camelCase, snakeCase, upperFirst, kebabCase } from 'lodash'
+import camelCase from 'lodash/camelCase'
+import kebabCase from 'lodash/kebabCase'
+import snakeCase from 'lodash/snakeCase'
+import upperFirst from 'lodash/upperFirst'
 
 const namesUtil = {
 	/** Gets you a name good for using in an import statement based off a file path */

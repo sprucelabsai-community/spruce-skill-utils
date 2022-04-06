@@ -1,6 +1,7 @@
 import pathUtil from 'path'
 import fs from 'fs-extra'
-import { set, get } from 'lodash'
+import get from 'lodash/get'
+import set from 'lodash/set'
 import SpruceError from '../errors/SpruceError'
 import { NpmPackage } from '../types/skill.types'
 import diskUtil from '../utilities/disk.utility'
