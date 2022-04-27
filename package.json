@@ -73,8 +73,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.453",
-    "@sprucelabs/jest-json-reporter": "^6.0.367",
+    "@sprucelabs/esm-postbuild": "^1.0.454",
+    "@sprucelabs/jest-json-reporter": "^6.0.368",
     "@sprucelabs/jest-sheets-reporter": "^1.3.42",
     "@sprucelabs/resolve-path-aliases": "^1.1.33",
     "@sprucelabs/semantic-release": "^4.0.8",
