@@ -54,4 +54,16 @@ export default class DiskUtilTest extends AbstractSpruceTest {
 		const actual = diskUtil.resolveFile(destinationDir, 'test')
 		assert.isEqual(actual, jsFile)
 	}
+
+	@test('can resolve relative 1', '/test/hey', '/hey', '../../hey')
+	@test('can resolve relative 2', '/test/what', '/no/go', '../../no/go')
+	@test('can resolve relative 2', '/test/what', '/test/what/hey', './hey')
+	protected static canResolveRelativePaths(
+		path1: string,
+		path2: string,
+		expected: string
+	) {
+		const actual = diskUtil.resolveRelativePath(path1, path2)
+		assert.isEqual(actual, expected)
+	}
 }

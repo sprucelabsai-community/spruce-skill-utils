@@ -219,6 +219,15 @@ const diskUtil = {
 		return builtPath
 	},
 
+	resolveRelativePath(path1: string, path2: string) {
+		const path = pathUtil.relative(path1, path2)
+		if (!path.includes(pathUtil.sep)) {
+			return `.${pathUtil.sep}${path}`
+		}
+
+		return path
+	},
+
 	resolveFile(...pathItems: string[]) {
 		const extensions = ['', '.js', '.ts']
 
