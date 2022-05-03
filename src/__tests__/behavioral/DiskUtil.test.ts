@@ -57,7 +57,13 @@ export default class DiskUtilTest extends AbstractSpruceTest {
 
 	@test('can resolve relative 1', '/test/hey', '/hey', '../../hey')
 	@test('can resolve relative 2', '/test/what', '/no/go', '../../no/go')
-	@test('can resolve relative 2', '/test/what', '/test/what/hey', './hey')
+	@test('can resolve relative 3', '/test/what', '/test/what/hey', './hey')
+	@test(
+		'can resolve relative 4',
+		'/test/what',
+		'/test/what/support/hey',
+		'./support/hey'
+	)
 	protected static canResolveRelativePaths(
 		path1: string,
 		path2: string,

@@ -221,7 +221,7 @@ const diskUtil = {
 
 	resolveRelativePath(path1: string, path2: string) {
 		const path = pathUtil.relative(path1, path2)
-		if (!path.includes(pathUtil.sep)) {
+		if (path[0] !== '.') {
 			return `.${pathUtil.sep}${path}`
 		}
 
