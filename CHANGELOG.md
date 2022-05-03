@@ -1,3 +1,16 @@
+## [25.1.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.2...v25.1.3) (2022-05-03)
+
+## [25.1.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.1...v25.1.2) (2022-05-03)
+
+## [25.1.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.0...v25.1.1) (2022-05-02)
+
+# [25.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.0.107...v25.1.0) (2022-05-02)
+
+
+### Features
+
+* diskUtil can now calculate relative paths ([b969b6c](https://github.com/sprucelabsai/spruce-skill-utils/commit/b969b6c))
+
 ## [25.0.107](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.0.106...v25.0.107) (2022-05-02)
 
 ## [25.0.106](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.0.105...v25.0.106) (2022-05-02)
