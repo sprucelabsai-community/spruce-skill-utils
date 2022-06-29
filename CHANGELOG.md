@@ -1,3 +1,198 @@
+## [26.0.91](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.90...v26.0.91) (2022-06-21)
+
+## [26.0.90](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.89...v26.0.90) (2022-06-21)
+
+## [26.0.89](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.88...v26.0.89) (2022-06-21)
+
+## [26.0.88](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.87...v26.0.88) (2022-06-18)
+
+## [26.0.87](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.86...v26.0.87) (2022-06-18)
+
+## [26.0.86](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.85...v26.0.86) (2022-06-17)
+
+## [26.0.85](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.84...v26.0.85) (2022-06-17)
+
+## [26.0.84](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.83...v26.0.84) (2022-06-17)
+
+## [26.0.83](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.82...v26.0.83) (2022-06-16)
+
+## [26.0.82](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.81...v26.0.82) (2022-06-16)
+
+## [26.0.81](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.80...v26.0.81) (2022-06-16)
+
+## [26.0.80](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.79...v26.0.80) (2022-06-16)
+
+## [26.0.79](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.78...v26.0.79) (2022-06-16)
+
+## [26.0.78](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.77...v26.0.78) (2022-06-15)
+
+## [26.0.77](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.76...v26.0.77) (2022-06-15)
+
+## [26.0.76](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.75...v26.0.76) (2022-06-15)
+
+## [26.0.75](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.74...v26.0.75) (2022-06-15)
+
+## [26.0.74](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.73...v26.0.74) (2022-06-14)
+
+## [26.0.73](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.72...v26.0.73) (2022-06-14)
+
+## [26.0.72](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.71...v26.0.72) (2022-06-14)
+
+## [26.0.71](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.70...v26.0.71) (2022-06-14)
+
+## [26.0.70](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.69...v26.0.70) (2022-06-11)
+
+## [26.0.69](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.68...v26.0.69) (2022-06-11)
+
+## [26.0.68](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.67...v26.0.68) (2022-06-10)
+
+## [26.0.67](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.66...v26.0.67) (2022-06-10)
+
+## [26.0.66](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.65...v26.0.66) (2022-06-08)
+
+## [26.0.65](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.64...v26.0.65) (2022-06-07)
+
+## [26.0.64](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.63...v26.0.64) (2022-06-07)
+
+## [26.0.63](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.62...v26.0.63) (2022-06-07)
+
+## [26.0.62](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.61...v26.0.62) (2022-06-05)
+
+## [26.0.61](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.60...v26.0.61) (2022-06-05)
+
+## [26.0.60](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.59...v26.0.60) (2022-06-05)
+
+## [26.0.59](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.58...v26.0.59) (2022-06-05)
+
+## [26.0.58](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.57...v26.0.58) (2022-06-04)
+
+## [26.0.57](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.56...v26.0.57) (2022-06-04)
+
+## [26.0.56](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.55...v26.0.56) (2022-06-04)
+
+## [26.0.55](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.54...v26.0.55) (2022-06-03)
+
+## [26.0.54](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.53...v26.0.54) (2022-06-03)
+
+## [26.0.53](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.52...v26.0.53) (2022-06-03)
+
+## [26.0.52](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.51...v26.0.52) (2022-06-03)
+
+## [26.0.51](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.50...v26.0.51) (2022-06-02)
+
+## [26.0.50](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.49...v26.0.50) (2022-06-02)
+
+## [26.0.49](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.48...v26.0.49) (2022-06-02)
+
+## [26.0.48](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.47...v26.0.48) (2022-06-02)
+
+## [26.0.47](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.46...v26.0.47) (2022-06-01)
+
+## [26.0.46](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.45...v26.0.46) (2022-06-01)
+
+## [26.0.45](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.44...v26.0.45) (2022-06-01)
+
+## [26.0.44](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.43...v26.0.44) (2022-05-31)
+
+## [26.0.43](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.42...v26.0.43) (2022-05-28)
+
+## [26.0.42](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.41...v26.0.42) (2022-05-28)
+
+## [26.0.41](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.40...v26.0.41) (2022-05-24)
+
+## [26.0.40](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.39...v26.0.40) (2022-05-24)
+
+## [26.0.39](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.38...v26.0.39) (2022-05-23)
+
+## [26.0.38](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.37...v26.0.38) (2022-05-23)
+
+## [26.0.37](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.36...v26.0.37) (2022-05-23)
+
+## [26.0.36](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.35...v26.0.36) (2022-05-23)
+
+## [26.0.35](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.34...v26.0.35) (2022-05-23)
+
+## [26.0.34](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.33...v26.0.34) (2022-05-22)
+
+## [26.0.33](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.32...v26.0.33) (2022-05-21)
+
+## [26.0.32](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.31...v26.0.32) (2022-05-21)
+
+## [26.0.31](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.30...v26.0.31) (2022-05-21)
+
+## [26.0.30](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.29...v26.0.30) (2022-05-21)
+
+## [26.0.29](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.28...v26.0.29) (2022-05-21)
+
+## [26.0.28](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.27...v26.0.28) (2022-05-19)
+
+## [26.0.27](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.26...v26.0.27) (2022-05-19)
+
+## [26.0.26](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.25...v26.0.26) (2022-05-18)
+
+## [26.0.25](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.24...v26.0.25) (2022-05-18)
+
+## [26.0.24](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.23...v26.0.24) (2022-05-17)
+
+## [26.0.23](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.22...v26.0.23) (2022-05-17)
+
+## [26.0.22](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.21...v26.0.22) (2022-05-17)
+
+## [26.0.21](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.20...v26.0.21) (2022-05-17)
+
+## [26.0.20](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.19...v26.0.20) (2022-05-16)
+
+## [26.0.19](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.18...v26.0.19) (2022-05-16)
+
+## [26.0.18](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.17...v26.0.18) (2022-05-16)
+
+## [26.0.17](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.16...v26.0.17) (2022-05-15)
+
+## [26.0.16](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.15...v26.0.16) (2022-05-15)
+
+## [26.0.15](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.14...v26.0.15) (2022-05-14)
+
+## [26.0.14](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.13...v26.0.14) (2022-05-14)
+
+## [26.0.13](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.12...v26.0.13) (2022-05-13)
+
+## [26.0.12](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.11...v26.0.12) (2022-05-12)
+
+## [26.0.11](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.10...v26.0.11) (2022-05-12)
+
+## [26.0.10](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.9...v26.0.10) (2022-05-12)
+
+## [26.0.9](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.8...v26.0.9) (2022-05-11)
+
+## [26.0.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.7...v26.0.8) (2022-05-11)
+
+## [26.0.7](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.6...v26.0.7) (2022-05-10)
+
+## [26.0.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.5...v26.0.6) (2022-05-10)
+
+## [26.0.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.4...v26.0.5) (2022-05-09)
+
+## [26.0.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.3...v26.0.4) (2022-05-07)
+
+## [26.0.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.2...v26.0.3) (2022-05-07)
+
+## [26.0.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.1...v26.0.2) (2022-05-07)
+
+## [26.0.1](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.0...v26.0.1) (2022-05-06)
+
+# [26.0.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.6...v26.0.0) (2022-05-06)
+
+
+### Breaking Changes
+
+* **auto-upgrade:** upgraded packages [upgrade-all] ([39db639](https://github.com/sprucelabsai/spruce-skill-utils/commit/39db639))
+
+## [25.1.6](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.5...v25.1.6) (2022-05-06)
+
+## [25.1.5](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.4...v25.1.5) (2022-05-06)
+
+## [25.1.4](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.3...v25.1.4) (2022-05-03)
+
 ## [25.1.3](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.2...v25.1.3) (2022-05-03)
 
 ## [25.1.2](https://github.com/sprucelabsai/spruce-skill-utils/compare/v25.1.1...v25.1.2) (2022-05-03)
