@@ -1,3 +1,10 @@
+# [26.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.91...v26.1.0) (2022-06-29)
+
+
+### Features
+
+* location renderer ([36c1ab1](https://github.com/sprucelabsai/spruce-skill-utils/commit/36c1ab1))
+
 ## [26.0.91](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.90...v26.0.91) (2022-06-21)
 
 ## [26.0.90](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.0.89...v26.0.90) (2022-06-21)
