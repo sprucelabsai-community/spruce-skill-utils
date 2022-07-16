@@ -3,7 +3,7 @@ function random(min: number, max: number) {
 }
 
 const randomUtil = {
-	rand(possibilities: any[]) {
+	rand<T>(possibilities: T[]): T {
 		return possibilities[random(0, possibilities.length - 1)]
 	},
 }
