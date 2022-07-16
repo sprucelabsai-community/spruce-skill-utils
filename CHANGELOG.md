@@ -1,3 +1,10 @@
+# [26.2.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.1.35...v26.2.0) (2022-07-16)
+
+
+### Features
+
+* slug util brought from heartwood ([0890aef](https://github.com/sprucelabsai/spruce-skill-utils/commit/0890aef))
+
 ## [26.1.35](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.1.34...v26.1.35) (2022-07-16)
 
 ## [26.1.34](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.1.33...v26.1.34) (2022-07-16)
