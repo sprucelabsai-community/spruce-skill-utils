@@ -1,14 +1,14 @@
-export default function cloneDeep<T>(obj: T, filter?: Filter): T {
+export default function cloneDeep<T>(obj: T, transformer?: Transformer): T {
 	const o = obj as any
 	let result: any = o
 	let type = {}.toString.call(o).slice(8, -1)
 	if (type == 'Set') {
-		return new Set([...o].map((value) => cloneDeep(value, filter))) as any
+		return new Set([...o].map((value) => cloneDeep(value, transformer))) as any
 	}
 	if (type == 'Map') {
 		const items: any[] = []
 		;[...o.entries()].forEach((kv) => {
-			if (filter?.(kv[1], kv[0]) !== false) {
+			if (transformer?.(kv[1], kv[0]) !== false) {
 				items.push([cloneDeep(kv[0]), cloneDeep(kv[1])])
 			}
 		})
@@ -23,9 +23,7 @@ export default function cloneDeep<T>(obj: T, filter?: Filter): T {
 	if (type == 'Array' || type == 'Object') {
 		result = Array.isArray(o) ? [] : {}
 		for (let key in o) {
-			if (filter?.(o[key], key) !== false) {
-				result[key] = cloneDeep(o[key], filter)
-			}
+			result[key] = transformer?.(o[key], key) ?? cloneDeep(o[key], transformer)
 		}
 	}
 
@@ -45,4 +43,4 @@ function getRegExpFlags(regExp: any) {
 		return flags.join('')
 	}
 }
-type Filter = (value: any, key: string) => void | boolean
+type Transformer = (value: any, key: string) => any | void

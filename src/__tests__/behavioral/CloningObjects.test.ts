@@ -1,4 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import { generateId } from '@sprucelabs/test-utils'
 import cloneDeep from '../../utilities/cloneDeep'
 
 export default class CloningObjectsTest extends AbstractSpruceTest {
@@ -47,38 +48,47 @@ export default class CloningObjectsTest extends AbstractSpruceTest {
 		assert.isEqualDeep(passedKeys, ['what', 'here'])
 	}
 
-	@test('can ignore keys 1', 'go', { team: 'stop' })
-	@test('can ignore keys 2', 'team', { go: 'to' })
-	protected static async canCancelCopyingOfKeys(
-		k: string,
-		expected: Record<string, any>
-	) {
+	@test('can transform keys 1', 'go')
+	@test('can transform keys 2', 'team')
+	protected static async canTarnsformCopyingOfKeys(k: string) {
 		const obj = { go: 'to', team: 'stop' }
+		const newValue = generateId()
 
 		const actual = cloneDeep(obj, (_, key) => {
 			if (key === k) {
-				return false
+				return newValue
 			}
-
-			return true
+			return
 		})
+
+		const expected = {
+			...obj,
+			[k]: newValue,
+		}
 
 		assert.isEqualDeep(actual, expected)
 	}
 
 	@test()
-	protected static async canIgnoreKeysPassedInArray() {
+	protected static async canTransformBasedOnKeysPassedInArray() {
 		const obj = [
 			{ go: 'to', team: 'stop' },
 			{ go: 'another', team: 'go' },
 		]
 
+		const newValue = generateId()
+
 		const actual = cloneDeep(obj, (_, key) => {
-			return key !== 'go'
+			if (key === 'go') {
+				return newValue
+			}
+			return
 		})
 
-		//@ts-ignore
-		assert.isEqualDeep(actual, [{ team: 'stop' }, { team: 'go' }])
+		assert.isEqualDeep(actual, [
+			{ team: 'stop', go: newValue },
+			{ team: 'go', go: newValue },
+		])
 	}
 
 	@test()
@@ -88,12 +98,24 @@ export default class CloningObjectsTest extends AbstractSpruceTest {
 			{ hey: 'another', team: 'hey' },
 		])
 
+		const newValue = generateId()
+
 		const actual = cloneDeep(obj, (_, key) => {
-			return key === 'team'
+			if (key === 'team') {
+				return newValue
+			}
+
+			return
 		})
 
 		//@ts-ignore
-		assert.isEqualDeep([...actual], [{ team: 'stop' }, { team: 'hey' }])
+		assert.isEqualDeep(
+			[...actual],
+			[
+				{ hey: 'to', team: newValue },
+				{ hey: 'another', team: newValue },
+			]
+		)
 	}
 
 	@test()
