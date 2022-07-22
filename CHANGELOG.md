@@ -1,3 +1,10 @@
+# [26.3.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.2.9...v26.3.0) (2022-07-22)
+
+
+### Features
+
+* cloneDeep so lodash can DIE! ([5f0617c](https://github.com/sprucelabsai/spruce-skill-utils/commit/5f0617c))
+
 ## [26.2.9](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.2.8...v26.2.9) (2022-07-19)
 
 ## [26.2.8](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.2.7...v26.2.8) (2022-07-19)
