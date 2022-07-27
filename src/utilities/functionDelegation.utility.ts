@@ -1,4 +1,4 @@
-export const fucntionDelegationUtil = {
+export const functionDelegationUtil = {
 	getAllFuncs(toCheck: any) {
 		const props = []
 		let obj = toCheck
@@ -26,4 +26,4 @@ export const fucntionDelegationUtil = {
 	},
 }
 
-export default fucntionDelegationUtil
+export default functionDelegationUtil
