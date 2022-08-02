@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { joinIntoSentence } from '../../utilities/joinIntoSentence'
+import joinIntoSentence from '../../utilities/joinIntoSentence.utility'
 
 export default class ConstructingSentencesTest extends AbstractSpruceTest {
 	@test()
