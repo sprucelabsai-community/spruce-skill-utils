@@ -1,3 +1,10 @@
+# [26.4.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.3.21...v26.4.0) (2022-08-02)
+
+
+### Features
+
+* joinIntoSentence utility to make creating sentences easier ([b978a1a](https://github.com/sprucelabsai/spruce-skill-utils/commit/b978a1a))
+
 ## [26.3.21](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.3.20...v26.3.21) (2022-08-01)
 
 ## [26.3.20](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.3.19...v26.3.20) (2022-08-01)
