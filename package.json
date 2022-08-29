@@ -9,8 +9,7 @@
     "upgradeIgnoreList": [
       "chalk",
       "globby",
-      "@sprucelabs/spruce-test-fixtures",
-      "typescript"
+      "@sprucelabs/spruce-test-fixtures"
     ]
   },
   "files": [
