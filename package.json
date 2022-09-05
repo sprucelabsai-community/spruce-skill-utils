@@ -70,7 +70,7 @@
     "globby": "^11.0.4",
     "inflection": "^1.13.2",
     "lodash": "^4.17.21",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^1.0.571",
