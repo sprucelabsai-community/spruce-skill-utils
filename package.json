@@ -68,7 +68,7 @@
     "dotenv": "^16.0.2",
     "fs-extra": "^10.1.0",
     "globby": "^11.0.4",
-    "inflection": "^1.13.2",
+    "inflection": "^1.13.4",
     "lodash": "^4.17.21",
     "uuid": "^9.0.0"
   },
