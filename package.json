@@ -63,7 +63,7 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/schema": "^28.5.18",
+    "@sprucelabs/schema": "^28.5.19",
     "chalk": "^4.1.2",
     "dotenv": "^16.0.2",
     "fs-extra": "^10.1.0",
@@ -79,11 +79,11 @@
     "@sprucelabs/resolve-path-aliases": "^1.1.102",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test": "^7.7.363",
-    "@sprucelabs/test-utils": "^3.2.8",
+    "@sprucelabs/test-utils": "^3.2.9",
     "@types/fs-extra": "^9.0.13",
     "@types/inflection": "^1.13.0",
     "@types/lodash": "^4.14.185",
-    "@types/node": "^18.7.20",
+    "@types/node": "^18.7.21",
     "@types/uuid": "^8.3.4",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^7.4.0",
