@@ -1,3 +1,5 @@
+## [26.4.114](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.4.113...v26.4.114) (2022-10-02)
+
 ## [26.4.113](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.4.112...v26.4.113) (2022-10-01)
 
 ## [26.4.112](https://github.com/sprucelabsai/spruce-skill-utils/compare/v26.4.111...v26.4.112) (2022-09-30)
