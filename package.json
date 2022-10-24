@@ -73,10 +73,10 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^2.0.11",
-    "@sprucelabs/jest-json-reporter": "^6.0.503",
-    "@sprucelabs/jest-sheets-reporter": "^2.0.11",
-    "@sprucelabs/resolve-path-aliases": "^1.1.116",
+    "@sprucelabs/esm-postbuild": "^2.0.12",
+    "@sprucelabs/jest-json-reporter": "^6.0.504",
+    "@sprucelabs/jest-sheets-reporter": "^2.0.12",
+    "@sprucelabs/resolve-path-aliases": "^1.1.117",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test": "^7.7.376",
     "@sprucelabs/test-utils": "^3.2.37",
