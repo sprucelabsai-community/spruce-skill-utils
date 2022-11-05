@@ -9,7 +9,11 @@
     "upgradeIgnoreList": [
       "chalk",
       "globby",
-      "@sprucelabs/spruce-test-fixtures"
+      "@sprucelabs/jest-json-reporter",
+      "@sprucelabs/jest-sheets-reporter",
+      "@sprucelabs/resolve-path-aliases",
+      "@sprucelabs/spruce-test-fixtures",
+      "@sprucelabs/esm-postbuild"
     ]
   },
   "files": [
@@ -63,7 +67,7 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/schema": "^28.5.57",
+    "@sprucelabs/schema": "^28.5.58",
     "chalk": "^4.1.2",
     "dotenv": "^16.0.3",
     "fs-extra": "^10.1.0",
@@ -78,8 +82,8 @@
     "@sprucelabs/jest-sheets-reporter": "^2.0.20",
     "@sprucelabs/resolve-path-aliases": "^1.1.122",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^7.7.379",
-    "@sprucelabs/test-utils": "^3.2.45",
+    "@sprucelabs/test": "^7.7.381",
+    "@sprucelabs/test-utils": "^3.2.46",
     "@types/fs-extra": "^9.0.13",
     "@types/inflection": "^1.13.0",
     "@types/lodash": "^4.14.188",
