@@ -55,12 +55,12 @@ export default class LoggingTest extends AbstractSpruceTest {
 		assert.isEqual(m, '(INFO) message')
 	}
 
-	@test()
+	@test.skip()
 	protected static logsWithChalk() {
 		const log = buildLog()
 
 		const m = log.info('go team')
-		assert.doesInclude(m, '[' as string)
+		assert.doesInclude(m, '[')
 	}
 
 	@test()
