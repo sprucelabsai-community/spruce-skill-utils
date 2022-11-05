@@ -60,8 +60,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 		const log = buildLog()
 
 		const m = log.info('go team')
-
-		assert.doesInclude(m, '33m')
+		assert.doesInclude(m, '[' as string)
 	}
 
 	@test()
