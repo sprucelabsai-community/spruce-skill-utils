@@ -1,4 +1,5 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test } from '@sprucelabs/test'
+import { assert } from '@sprucelabs/test-utils'
 import buildLog, { mockLog, testLog } from '../../utilities/buildLog'
 
 const ROOT_PREFIX = 'root prefix'
@@ -59,7 +60,8 @@ export default class LoggingTest extends AbstractSpruceTest {
 		const log = buildLog()
 
 		const m = log.info('go team')
-		assert.doesInclude(m, '[')
+
+		assert.doesInclude(m, '33m')
 	}
 
 	@test()
