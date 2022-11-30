@@ -88,6 +88,15 @@ export default class DiskUtilTest extends AbstractSpruceTest {
 			['src', '.spruce', 'test', 'whatever.js'],
 			'test/whatever'
 		)
+
+		this.assertResolvesFile(
+			['src', '.spruce', 'events', 'events.contract.ts'],
+			'events/events.contract'
+		)
+		this.assertResolvesFile(
+			['build', '.spruce', 'events', 'events.contract.js'],
+			'events/events.contract'
+		)
 	}
 
 	private static assertResolvesFile(filepath: string[], filename: string) {

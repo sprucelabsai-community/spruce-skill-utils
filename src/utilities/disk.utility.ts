@@ -312,15 +312,19 @@ const diskUtil = {
 		const dirs = ['build', 'src']
 
 		for (const dir of dirs) {
-			const file = this.resolveFile(
-				this.resolvePath(cwd, ...[dir, HASH_SPRUCE_DIR_NAME, ...filePath])
+			const path = this.resolvePath(
+				cwd,
+				...[dir, HASH_SPRUCE_DIR_NAME, ...filePath]
 			)
+			const file = this.resolveFile(path)
 			if (file) {
 				return file
 			}
 		}
-		//@ts-ignore
-		const path = diskUtil.resolvePath(...filePath)
+		const path = diskUtil.resolvePath(
+			//@ts-ignore
+			...[cwd, '[build|src]', HASH_SPRUCE_DIR_NAME, ...filePath]
+		)
 		throw new Error(`Could not find ${path}.[ts|js] in the hash spruce dir!`)
 	},
 
