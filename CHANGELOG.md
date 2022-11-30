@@ -1,3 +1,10 @@
+# [28.1.0](https://github.com/sprucelabsai/spruce-skill-utils/compare/v28.0.60...v28.1.0) (2022-11-30)
+
+
+### Features
+
+* diskUtil.resolveFileInHashSpruceDir ([d3a4ad8](https://github.com/sprucelabsai/spruce-skill-utils/commit/d3a4ad8))
+
 ## [28.0.60](https://github.com/sprucelabsai/spruce-skill-utils/compare/v28.0.59...v28.0.60) (2022-11-30)
 
 ## [28.0.59](https://github.com/sprucelabsai/spruce-skill-utils/compare/v28.0.58...v28.0.59) (2022-11-29)
