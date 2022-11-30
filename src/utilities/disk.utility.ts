@@ -4,7 +4,11 @@ import pathUtil from 'path'
 import { SchemaError } from '@sprucelabs/schema'
 import fsUtil from 'fs-extra'
 import * as uuid from 'uuid'
-import { HASH_SPRUCE_BUILD_DIR, HASH_SPRUCE_DIR } from '../constants'
+import {
+	HASH_SPRUCE_BUILD_DIR,
+	HASH_SPRUCE_DIR,
+	HASH_SPRUCE_DIR_NAME,
+} from '../constants'
 
 export interface CreateFile {
 	/** The relative path from the cwd, without a leading forward slash */
@@ -302,6 +306,22 @@ const diskUtil = {
 
 	resolveCacheDirForDir(dir: string): string {
 		return this.resolvePath(dir, '.change_cache')
+	},
+
+	resolveFileInHashSpruceDir(cwd: string, ...filePath: string[]) {
+		const dirs = ['build', 'src']
+
+		for (const dir of dirs) {
+			const file = this.resolveFile(
+				this.resolvePath(cwd, ...[dir, HASH_SPRUCE_DIR_NAME, ...filePath])
+			)
+			if (file) {
+				return file
+			}
+		}
+		//@ts-ignore
+		const path = diskUtil.resolvePath(...filePath)
+		throw new Error(`Could not find ${path}.[ts|js] in the hash spruce dir!`)
 	},
 
 	getFileChangedCacheFile(file: string) {

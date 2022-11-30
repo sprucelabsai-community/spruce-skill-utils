@@ -1,4 +1,5 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest from '@sprucelabs/test'
+import { assert, generateId, test } from '@sprucelabs/test-utils'
 import diskUtil from '../../utilities/disk.utility'
 
 export default class DiskUtilTest extends AbstractSpruceTest {
@@ -71,5 +72,36 @@ export default class DiskUtilTest extends AbstractSpruceTest {
 	) {
 		const actual = diskUtil.resolveRelativePath(path1, path2)
 		assert.isEqual(actual, expected)
+	}
+
+	@test()
+	protected static throwsWhenPassedBadPath() {
+		this.randomCwd()
+		assert.doesThrow(() => this.resolveFileInHashSpruce('test'))
+	}
+
+	@test()
+	protected static async canResolveFileInHashSpruceDir() {
+		this.assertResolvesFile(['build', '.spruce', 'test.ts'], 'test')
+		this.assertResolvesFile(['src', '.spruce', 'test.js'], 'test')
+		this.assertResolvesFile(
+			['src', '.spruce', 'test', 'whatever.js'],
+			'test/whatever'
+		)
+	}
+
+	private static assertResolvesFile(filepath: string[], filename: string) {
+		this.randomCwd()
+		const file = this.resolvePath(...filepath)
+		diskUtil.writeFile(file, generateId())
+		this.resolveFileInHashSpruce(filename)
+	}
+
+	private static randomCwd() {
+		this.cwd = diskUtil.createRandomTempDir()
+	}
+
+	private static resolveFileInHashSpruce(file: string): any {
+		return diskUtil.resolveFileInHashSpruceDir(this.cwd, file)
 	}
 }
