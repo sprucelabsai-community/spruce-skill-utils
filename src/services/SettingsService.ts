@@ -41,6 +41,10 @@ export default class SettingsService<FeatureCode extends string = string> {
 			settings.skipped = []
 		}
 
+		if (settings.installed) {
+			settings.installed = settings.installed.filter((c) => c !== code)
+		}
+
 		if (settings.skipped.indexOf(code) === -1) {
 			settings.skipped.push(code)
 			this.saveSettings(settings)

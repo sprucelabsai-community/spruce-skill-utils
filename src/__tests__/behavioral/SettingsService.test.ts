@@ -1,4 +1,5 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest from '@sprucelabs/test'
+import { assert, test } from '@sprucelabs/test-utils'
 import SettingsService from '../../services/SettingsService'
 import diskUtil from '../../utilities/disk.utility'
 
@@ -98,5 +99,48 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		this.settings.unset('nested.object.hey')
 		//@ts-ignore
 		assert.isFalsy(this.settings.settings)
+	}
+
+	@test()
+	protected static async markingAsSkippedMeansNoLongerInstalled() {
+		this.markAsInstalled('events')
+		this.markAsPermanentlySkipped('events')
+		this.assertNotInstalled('events')
+	}
+
+	@test()
+	protected static async onlyDisablesTheInstalledCodeWhenSkipped() {
+		this.markAsInstalled('feature1')
+		this.markAsInstalled('feature2')
+		this.markAsPermanentlySkipped('feature2')
+		this.assertNotInstalled('feature2')
+		this.assertInstalled('feature1')
+	}
+
+	@test()
+	protected static async disablesEvenIfFeatureInMiddleOfOthers() {
+		this.markAsPermanentlySkipped('feature1111')
+		this.markAsInstalled('feature1')
+		this.markAsInstalled('feature11')
+		this.markAsInstalled('feature111')
+		this.markAsPermanentlySkipped('feature11')
+		this.assertInstalled('feature111')
+		this.assertNotInstalled('feature11')
+	}
+
+	private static assertNotInstalled(code: string) {
+		assert.isFalse(this.settings.isMarkedAsInstalled(code))
+	}
+
+	private static assertInstalled(code: string) {
+		assert.isTrue(this.settings.isMarkedAsInstalled(code))
+	}
+
+	private static markAsPermanentlySkipped(code: string) {
+		this.settings.markAsPermanentlySkipped(code)
+	}
+
+	private static markAsInstalled(code: string) {
+		this.settings.markAsInstalled(code)
 	}
 }
