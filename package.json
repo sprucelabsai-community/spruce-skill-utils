@@ -67,7 +67,7 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/schema": "^28.5.117",
+    "@sprucelabs/schema": "^28.5.118",
     "chalk": "^4.1.2",
     "dotenv": "^16.0.3",
     "fs-extra": "^11.1.0",
@@ -82,8 +82,8 @@
     "@sprucelabs/jest-sheets-reporter": "^2.0.20",
     "@sprucelabs/resolve-path-aliases": "^1.1.122",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^7.7.415",
-    "@sprucelabs/test-utils": "^3.2.106",
+    "@sprucelabs/test": "^7.7.416",
+    "@sprucelabs/test-utils": "^3.2.107",
     "@types/fs-extra": "^11.0.1",
     "@types/inflection": "^1.13.0",
     "@types/lodash": "^4.14.191",
@@ -98,7 +98,7 @@
     "prettier": "^2.8.3",
     "ts-node": "^10.9.1",
     "tsc-watch": "^6.0.0",
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.5",
     "yarn-upgrade-all": "^0.7.2"
   },
   "jest": {
