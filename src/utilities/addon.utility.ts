@@ -1,5 +1,5 @@
 import pathUtil from 'path'
-import globby from 'globby'
+import globby from '@sprucelabs/globby'
 
 const addonUtil = {
 	async import(options: any, ...path: string[]) {
