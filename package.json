@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^0.0.7",
-    "@sprucelabs/schema": "^28.6.4",
+    "@sprucelabs/schema": "^28.6.5",
     "chalk": "^4.1.2",
     "dotenv": "^16.0.3",
     "fs-extra": "^11.1.1",
@@ -83,8 +83,8 @@
     "@sprucelabs/jest-sheets-reporter": "^2.0.20",
     "@sprucelabs/resolve-path-aliases": "^1.1.122",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^7.7.436",
-    "@sprucelabs/test-utils": "^3.4.33",
+    "@sprucelabs/test": "^7.7.437",
+    "@sprucelabs/test-utils": "^3.4.34",
     "@types/fs-extra": "^11.0.1",
     "@types/inflection": "^1.13.0",
     "@types/lodash": "^4.14.192",
@@ -99,7 +99,7 @@
     "prettier": "^2.8.7",
     "ts-node": "^10.9.1",
     "tsc-watch": "^6.0.0",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.3",
     "yarn-upgrade-all": "^0.7.2"
   },
   "jest": {
