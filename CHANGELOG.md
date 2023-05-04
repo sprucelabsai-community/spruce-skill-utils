@@ -1,3 +1,10 @@
+# [29.0.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v28.1.137...v29.0.0) (2023-05-04)
+
+
+### Breaking Changes
+
+* **auto-upgrade:** upgraded packages [upgrade-all] ([e5d1391](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/e5d1391))
+
 ## [28.1.137](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v28.1.136...v28.1.137) (2023-05-01)
 
 ## [28.1.136](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v28.1.135...v28.1.136) (2023-04-28)
