@@ -70,7 +70,7 @@
     "@sprucelabs/globby": "^1.0.1",
     "@sprucelabs/schema": "^28.6.34",
     "chalk": "^4.1.2",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.1.0",
     "fs-extra": "^11.1.1",
     "globby": "^11.0.4",
     "inflection": "^2.0.1",
