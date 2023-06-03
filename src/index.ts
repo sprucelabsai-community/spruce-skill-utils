@@ -22,3 +22,4 @@ export { default as joinIntoSentence } from './utilities/joinIntoSentence.utilit
 export { default as locationRenderer } from './renderers/locationRenderer'
 export { default as slug } from './utilities/slug.utility'
 export { default as cloneDeep } from './utilities/cloneDeep'
+export {default as isEqual} from './utilities/isEqual.utility'
