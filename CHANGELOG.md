@@ -1,3 +1,10 @@
+# [29.1.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v29.0.24...v29.1.0) (2023-06-03)
+
+
+### Features
+
+* isEqual to end all isEquals ([a51a1cf](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/a51a1cf))
+
 ## [29.0.24](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v29.0.23...v29.0.24) (2023-06-03)
 
 ## [29.0.23](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v29.0.22...v29.0.23) (2023-06-01)
