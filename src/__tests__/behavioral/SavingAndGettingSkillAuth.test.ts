@@ -7,6 +7,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
 	protected static async beforeEach() {
 		await super.beforeEach()
 		this.cwd = diskUtil.createRandomTempDir()
+		AuthService.homeDir = this.resolvePath(diskUtil.createRandomTempDir())
 	}
 
 	@test()
@@ -102,6 +103,15 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
 	}
 
 	@test()
+	protected static async loggingOutTwiceDoesNotTHrough() {
+		this.writeValidPackageJson()
+		const auth = this.Auth()
+
+		auth.logOutPerson()
+		auth.logOutPerson()
+	}
+
+	@test()
 	protected static getCurrentSkillReturnsNull() {
 		this.writeValidPackageJson()
 		assert.isNull(this.Auth().getCurrentSkill())
@@ -132,7 +142,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
 		})
 	}
 
-	private static Auth(): any {
+	private static Auth() {
 		return AuthService.Auth(this.cwd)
 	}
 	private static writePackageJson(pkg: Record<string, any> = {}) {

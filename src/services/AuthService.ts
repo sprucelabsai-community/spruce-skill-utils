@@ -1,3 +1,4 @@
+import os from 'os'
 import {
 	buildSchema,
 	normalizeSchemaValues,
@@ -5,52 +6,23 @@ import {
 	validateSchemaValues,
 } from '@sprucelabs/schema'
 import { PersonWithToken, SkillAuth } from '../types/skill.types'
+import diskUtil from '../utilities/disk.utility'
 import namesUtil from '../utilities/names.utility'
 import EnvService from './EnvService'
 import PkgService from './PkgService'
 
-const LOGGED_IN_PERSON_KEY = 'LOGGED_IN_PERSON'
-
-const personWithTokenSchema = buildSchema({
-	id: 'personWithToken',
-	version: 'v2020_07_22',
-	namespace: 'SpruceCli',
-	name: '',
-	description: 'A stripped down cli user with token details for login',
-	fields: {
-		/** Id. */
-		id: {
-			label: 'Id',
-			type: 'id',
-			isRequired: true,
-			options: undefined,
-		},
-		/** Casual name. The name you can use when talking to this person. */
-		casualName: {
-			label: 'Casual name',
-			type: 'text',
-			isRequired: true,
-			hint: 'The name you can use when talking to this person.',
-			options: undefined,
-		},
-		/** . */
-		token: {
-			type: 'text',
-			isRequired: true,
-			options: undefined,
-		},
-		/** Logged in. */
-		isLoggedIn: {
-			label: 'Logged in',
-			type: 'boolean',
-			options: undefined,
-		},
-	},
-})
-
 export default class AuthService {
+	public static homeDir = os.homedir()
+
 	private env: EnvService
 	private pkg: PkgService
+
+	public static Class?: typeof AuthService
+
+	protected constructor(envService: EnvService, pkgService: PkgService) {
+		this.env = envService
+		this.pkg = pkgService
+	}
 
 	public static Auth(cwd: string) {
 		if (!cwd) {
@@ -71,21 +43,16 @@ export default class AuthService {
 			})
 		}
 
-		const auth = new this(envService, pkgService)
+		const auth = new (this.Class ?? this)(envService, pkgService)
 		return auth
 	}
 
-	private constructor(envService: EnvService, pkgService: PkgService) {
-		this.env = envService
-		this.pkg = pkgService
-	}
-
 	public getLoggedInPerson(): PersonWithToken | null {
-		const p = this.env.get(LOGGED_IN_PERSON_KEY)
-		if (typeof p === 'string') {
-			return JSON.parse(p)
+		if (diskUtil.doesFileExist(this.personJsonPath)) {
+			const contents = diskUtil.readFile(this.personJsonPath)
+			const person = JSON.parse(contents)
+			return person as PersonWithToken
 		}
-
 		return null
 	}
 
@@ -93,17 +60,15 @@ export default class AuthService {
 		const normalized = normalizeSchemaValues(personWithTokenSchema, person)
 		validateSchemaValues(personWithTokenSchema, normalized)
 
-		this.env.set(
-			LOGGED_IN_PERSON_KEY,
-			JSON.stringify({
-				...normalized,
-				isLoggedIn: true,
-			})
+		const destination = this.personJsonPath
+		diskUtil.writeFile(
+			destination,
+			JSON.stringify({ ...normalized, isLoggedIn: true }, null, 2)
 		)
 	}
 
 	public logOutPerson() {
-		this.env.unset(LOGGED_IN_PERSON_KEY)
+		diskUtil.deleteFile(this.personJsonPath)
 	}
 
 	public getCurrentSkill(): SkillAuth | null {
@@ -144,4 +109,45 @@ export default class AuthService {
 			value: namesUtil.toKebab(namespace),
 		})
 	}
+
+	private get personJsonPath() {
+		return diskUtil.resolvePath(AuthService.homeDir, '.spruce', 'person.json')
+	}
 }
+
+const personWithTokenSchema = buildSchema({
+	id: 'personWithToken',
+	version: 'v2020_07_22',
+	namespace: 'SpruceCli',
+	name: '',
+	description: 'A stripped down cli user with token details for login',
+	fields: {
+		/** Id. */
+		id: {
+			label: 'Id',
+			type: 'id',
+			isRequired: true,
+			options: undefined,
+		},
+		/** Casual name. The name you can use when talking to this person. */
+		casualName: {
+			label: 'Casual name',
+			type: 'text',
+			isRequired: true,
+			hint: 'The name you can use when talking to this person.',
+			options: undefined,
+		},
+		/** . */
+		token: {
+			type: 'text',
+			isRequired: true,
+			options: undefined,
+		},
+		/** Logged in. */
+		isLoggedIn: {
+			label: 'Logged in',
+			type: 'boolean',
+			options: undefined,
+		},
+	},
+})
