@@ -1,3 +1,10 @@
+# [30.0.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v29.1.57...v30.0.0) (2023-08-14)
+
+
+### Breaking Changes
+
+* people auth now saved in home dir ([ea9d59f](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/ea9d59f))
+
 ## [29.1.57](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v29.1.56...v29.1.57) (2023-08-13)
 
 ## [29.1.56](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v29.1.55...v29.1.56) (2023-08-11)
