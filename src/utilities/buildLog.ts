@@ -24,6 +24,8 @@ export interface Log {
 
 type Color = keyof typeof chalk
 
+let lastLogTimeMs = Date.now()
+
 const getMaxLogPrefixesLength = () => {
 	return typeof process?.env?.MAXIMUM_LOG_PREFIXES_LENGTH === 'string'
 		? +process.env.MAXIMUM_LOG_PREFIXES_LENGTH
@@ -36,7 +38,6 @@ export default function buildLog(
 ) {
 	const { colors = {}, log, useColors } = options ?? {}
 	const { info = 'yellow', error = 'red' } = colors
-	let lastLogTimeMs = Date.now()
 
 	const pre = prefix ? `${prefix} ::` : undefined
 
