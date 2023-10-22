@@ -25,7 +25,7 @@ export interface Log {
 type Color = keyof typeof chalk
 
 const getMaxLogPrefixesLength = () => {
-	return typeof process.env.MAXIMUM_LOG_PREFIXES_LENGTH === 'string'
+	return typeof process?.env?.MAXIMUM_LOG_PREFIXES_LENGTH === 'string'
 		? +process.env.MAXIMUM_LOG_PREFIXES_LENGTH
 		: undefined
 }
@@ -36,6 +36,7 @@ export default function buildLog(
 ) {
 	const { colors = {}, log, useColors } = options ?? {}
 	const { info = 'yellow', error = 'red' } = colors
+	let lastLogTimeMs = Date.now()
 
 	const pre = prefix ? `${prefix} ::` : undefined
 
@@ -102,12 +103,19 @@ export default function buildLog(
 			log ??
 			(level === 'ERROR'
 				? (...args: []) => {
-						process.stderr.write(args.join('\n') + '\n')
+						process.stderr.write(args.join(' ') + '\n')
 				  }
 				: console.log.bind(console))
 
-		const message =
+		let message =
 			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
+
+		if (process.env.SHOULD_LOG_TIME_DETLAS !== 'false') {
+			const now = Date.now()
+			const diff = now - lastLogTimeMs
+			lastLogTimeMs = now
+			message = `(${diff}ms) ${message}`
+		}
 
 		if (useColors === false) {
 			transport(message, ...args)

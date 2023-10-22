@@ -8,6 +8,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 	protected static async beforeEach(): Promise<void> {
 		await super.beforeEach()
 		delete process.env.MAXIMUM_LOG_PREFIXES_LENGTH
+		process.env.SHOULD_LOG_TIME_DETLAS = 'false'
 	}
 
 	@test()
@@ -207,5 +208,22 @@ export default class LoggingTest extends AbstractSpruceTest {
 		log.info('what the!?')
 
 		assert.isEqual(infoMessage, expected)
+	}
+
+	@test()
+	protected static async rendersTimeSinceLastRenderByDefault() {
+		delete process.env.SHOULD_LOG_TIME_DETLAS
+
+		const log = buildLog('TIMESTAMPS', { useColors: false })
+
+		log.error('first!')
+
+		await this.wait(1)
+
+		log.error('second!')
+
+		await this.wait(10)
+
+		log.error('third!')
 	}
 }
