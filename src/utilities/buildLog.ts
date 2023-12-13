@@ -105,7 +105,7 @@ export default function buildLog(
 			(level === 'ERROR'
 				? (...args: []) => {
 						process.stderr.write(args.join(' ') + '\n')
-				  }
+					}
 				: console.log.bind(console))
 
 		let message =
