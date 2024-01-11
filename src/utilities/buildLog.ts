@@ -120,7 +120,7 @@ export default function buildLog(
 				? (...args: []) => {
 						process.stderr.write(args.join(' ') + '\n')
 					}
-				: console[logMethod].bind(console))
+				: (console[logMethod] ?? console.log).bind(console))
 
 		let message =
 			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
