@@ -102,7 +102,7 @@ export default function buildLog(
 
 		transport =
 			log ??
-			(level === 'ERROR' && process && process.stderr && process.stderr.write
+			(level === 'ERROR' && process?.stderr?.write
 				? (...args: []) => {
 						process.stderr.write(args.join(' ') + '\n')
 					}
@@ -111,7 +111,7 @@ export default function buildLog(
 		let message =
 			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
 
-		if (process.env.SHOULD_LOG_TIME_DETLAS !== 'false') {
+		if (process?.env?.SHOULD_LOG_TIME_DETLAS !== 'false') {
 			const now = Date.now()
 			const diff = now - lastLogTimeMs
 			lastLogTimeMs = now
@@ -140,6 +140,6 @@ export const mockLog: Log = {
 
 export const testLog = buildLog('TEST', {
 	log: (...parts: any[]) => {
-		process.stderr.write(parts.join(' ') + '\n')
+		process?.stderr?.write?.(parts.join(' ') + '\n')
 	},
 })
