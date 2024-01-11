@@ -100,13 +100,27 @@ export default function buildLog(
 			return prefix
 		}
 
+		let logMethod: 'log' | 'warn' | 'error' = 'log'
+
+		switch (level) {
+			case 'ERROR':
+				logMethod = 'error'
+				break
+			case 'WARN':
+				logMethod = 'warn'
+				break
+			default:
+				logMethod = 'log'
+				break
+		}
+
 		transport =
 			log ??
 			(level === 'ERROR' && process?.stderr?.write
 				? (...args: []) => {
 						process.stderr.write(args.join(' ') + '\n')
 					}
-				: console.log.bind(console))
+				: console[logMethod].bind(console))
 
 		let message =
 			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
