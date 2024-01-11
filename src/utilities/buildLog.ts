@@ -102,7 +102,7 @@ export default function buildLog(
 
 		transport =
 			log ??
-			(level === 'ERROR'
+			(level === 'ERROR' && process && process.stderr && process.stderr.write
 				? (...args: []) => {
 						process.stderr.write(args.join(' ') + '\n')
 					}
