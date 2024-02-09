@@ -1,3 +1,53 @@
+## [30.1.91](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.90...v30.1.91) (2024-02-08)
+
+## [30.1.90](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.89...v30.1.90) (2024-02-04)
+
+## [30.1.89](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.88...v30.1.89) (2024-02-01)
+
+## [30.1.88](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.87...v30.1.88) (2024-02-01)
+
+## [30.1.87](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.86...v30.1.87) (2024-01-31)
+
+## [30.1.86](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.85...v30.1.86) (2024-01-30)
+
+## [30.1.85](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.84...v30.1.85) (2024-01-30)
+
+## [30.1.84](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.83...v30.1.84) (2024-01-28)
+
+## [30.1.83](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.82...v30.1.83) (2024-01-28)
+
+## [30.1.82](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.81...v30.1.82) (2024-01-27)
+
+## [30.1.81](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.80...v30.1.81) (2024-01-26)
+
+## [30.1.80](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.79...v30.1.80) (2024-01-26)
+
+## [30.1.79](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.78...v30.1.79) (2024-01-24)
+
+## [30.1.78](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.77...v30.1.78) (2024-01-24)
+
+## [30.1.77](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.76...v30.1.77) (2024-01-23)
+
+## [30.1.76](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.75...v30.1.76) (2024-01-19)
+
+## [30.1.75](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.74...v30.1.75) (2024-01-17)
+
+## [30.1.74](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.73...v30.1.74) (2024-01-17)
+
+## [30.1.73](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.72...v30.1.73) (2024-01-16)
+
+## [30.1.72](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.71...v30.1.72) (2024-01-15)
+
+## [30.1.71](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.70...v30.1.71) (2024-01-15)
+
+## [30.1.70](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.69...v30.1.70) (2024-01-15)
+
+## [30.1.69](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.68...v30.1.69) (2024-01-14)
+
+## [30.1.68](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.67...v30.1.68) (2024-01-12)
+
+## [30.1.67](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.66...v30.1.67) (2024-01-12)
+
 ## [30.1.66](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.65...v30.1.66) (2024-01-11)
 
 ## [30.1.65](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.64...v30.1.65) (2024-01-11)
