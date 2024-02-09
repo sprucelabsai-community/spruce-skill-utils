@@ -14,6 +14,13 @@ export type Level = 'ERROR' | 'INFO' | 'WARN'
 export type LogTransport = (...messageParts: string[]) => void
 type TransportMap = Record<Level, LogTransport | null | undefined>
 
+function getProcess() {
+	if (typeof process !== 'undefined') {
+		return process
+	}
+	return null
+}
+
 export interface Log {
 	readonly prefix: string | undefined
 	info: (...args: string[]) => string
@@ -27,8 +34,8 @@ type Color = keyof typeof chalk
 let lastLogTimeMs = Date.now()
 
 const getMaxLogPrefixesLength = () => {
-	return typeof process?.env?.MAXIMUM_LOG_PREFIXES_LENGTH === 'string'
-		? +process.env.MAXIMUM_LOG_PREFIXES_LENGTH
+	return typeof getProcess()?.env?.MAXIMUM_LOG_PREFIXES_LENGTH === 'string'
+		? +(getProcess()?.env?.MAXIMUM_LOG_PREFIXES_LENGTH as string)
 		: undefined
 }
 
@@ -116,16 +123,16 @@ export default function buildLog(
 
 		transport =
 			log ??
-			(level === 'ERROR' && process?.stderr?.write
+			(level === 'ERROR' && getProcess()?.stderr?.write
 				? (...args: []) => {
-						process.stderr.write(args.join(' ') + '\n')
+						getProcess()?.stderr.write(args.join(' ') + '\n')
 					}
 				: (console[logMethod] ?? console.log).bind(console))
 
 		let message =
 			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
 
-		if (process?.env?.SHOULD_LOG_TIME_DETLAS !== 'false') {
+		if (getProcess()?.env?.SHOULD_LOG_TIME_DETLAS !== 'false') {
 			const now = Date.now()
 			const diff = now - lastLogTimeMs
 			lastLogTimeMs = now
@@ -154,6 +161,6 @@ export const mockLog: Log = {
 
 export const testLog = buildLog('TEST', {
 	log: (...parts: any[]) => {
-		process?.stderr?.write?.(parts.join(' ') + '\n')
+		getProcess()?.stderr?.write?.(parts.join(' ') + '\n')
 	},
 })
