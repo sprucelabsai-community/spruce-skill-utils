@@ -139,6 +139,8 @@ export default function buildLog(
 			message = `(${diff}ms) ${message}`
 		}
 
+		message = `(${new Date().toISOString()}) ${message}`
+
 		if (useColors === false) {
 			transport(message, ...args)
 		} else {
