@@ -1,3 +1,10 @@
+# [30.2.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.108...v30.2.0) (2024-02-28)
+
+
+### Features
+
+* logi time included by default, can be disabled with SHOULD_LOG_TIME ([8a43c68](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/8a43c68))
+
 ## [30.1.108](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.107...v30.1.108) (2024-02-24)
 
 ## [30.1.107](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.1.106...v30.1.107) (2024-02-23)
