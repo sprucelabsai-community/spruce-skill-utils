@@ -107,6 +107,7 @@ export default function buildLog(
 			return prefix
 		}
 
+		const env = getProcess()?.env ?? {}
 		let logMethod: 'log' | 'warn' | 'error' = 'log'
 
 		switch (level) {
@@ -132,14 +133,16 @@ export default function buildLog(
 		let message =
 			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
 
-		if (getProcess()?.env?.SHOULD_LOG_TIME_DETLAS !== 'false') {
+		if (env.SHOULD_LOG_TIME_DETLAS !== 'false') {
 			const now = Date.now()
 			const diff = now - lastLogTimeMs
 			lastLogTimeMs = now
 			message = `(${diff}ms) ${message}`
 		}
 
-		message = `(${new Date().toISOString()}) ${message}`
+		if (env.SHOULD_LOG_TIME !== 'false') {
+			message = `(${new Date().toISOString()}) ${message}`
+		}
 
 		if (useColors === false) {
 			transport(message, ...args)

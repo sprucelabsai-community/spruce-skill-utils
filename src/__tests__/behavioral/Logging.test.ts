@@ -9,6 +9,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 		await super.beforeEach()
 		delete process.env.MAXIMUM_LOG_PREFIXES_LENGTH
 		process.env.SHOULD_LOG_TIME_DETLAS = 'false'
+		process.env.SHOULD_LOG_TIME = 'false'
 	}
 
 	@test()
