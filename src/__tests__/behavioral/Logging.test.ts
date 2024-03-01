@@ -205,9 +205,10 @@ export default class LoggingTest extends AbstractSpruceTest {
 		assert.isEqual(infoMessage, expected)
 	}
 
-	@test()
-	protected static async rendersTimeSinceLastRenderByDefault() {
+	@test('outputs time by default (always passes, check logs)')
+	protected static async rendersTimeSinceLastRenderAndDateTimeByDefault() {
 		delete process.env.SHOULD_LOG_TIME_DETLAS
+		delete process.env.SHOULD_LOG_TIME
 
 		const log = buildLog('TIMESTAMPS', { useColors: false })
 
