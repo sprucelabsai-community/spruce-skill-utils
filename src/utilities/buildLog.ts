@@ -21,11 +21,13 @@ function getProcess() {
 	return null
 }
 
+export type LoggableType = string | number | boolean | null | undefined | Error
+
 export interface Log {
 	readonly prefix: string | undefined
-	info: (...args: string[]) => string
-	error: (...args: string[]) => string
-	warn: (...args: string[]) => string
+	info: (...args: LoggableType[]) => string
+	error: (...args: LoggableType[]) => string
+	warn: (...args: LoggableType[]) => string
 	buildLog(prefix: string | undefined, options?: LogOptions): Log
 }
 
@@ -56,18 +58,17 @@ export default function buildLog(
 
 	const logUtil: Log = {
 		prefix,
-
-		info(...args: string[]) {
+		info(...args: LoggableType[]) {
 			//@ts-ignore
 			return write(chalk.green[info], args, 'INFO')
 		},
 
-		warn(...args: string[]) {
+		warn(...args: LoggableType[]) {
 			//@ts-ignore
 			return write(chalk.yellow[info], args, 'WARN')
 		},
 
-		error(...args: string[]) {
+		error(...args: LoggableType[]) {
 			//@ts-ignore
 			return write(chalk.red[error], args, 'ERROR')
 		},
@@ -88,7 +89,8 @@ export default function buildLog(
 		return transports[level] as LogTransport
 	}
 
-	function write(chalkMethod: Chalk, args: any[], level: Level) {
+	function write(chalkMethod: Chalk, rawArgs: any[], level: Level) {
+		const args = rawArgs.map((a) => a.toString())
 		let chalkArgs = [...args]
 		let builtPrefix = pre
 		if (pre) {
@@ -152,16 +154,6 @@ export default function buildLog(
 
 		return message
 	}
-}
-
-export const mockLog: Log = {
-	info: (m: string) => m,
-	error: (m: string) => m,
-	warn: (m: string) => m,
-	prefix: '',
-	buildLog() {
-		return mockLog
-	},
 }
 
 export const testLog = buildLog('TEST', {

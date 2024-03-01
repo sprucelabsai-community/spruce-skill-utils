@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test } from '@sprucelabs/test'
-import { assert } from '@sprucelabs/test-utils'
-import buildLog, { mockLog, testLog } from '../../utilities/buildLog'
+import { assert, generateId } from '@sprucelabs/test-utils'
+import buildLog, { testLog } from '../../utilities/buildLog'
 
 const ROOT_PREFIX = 'root prefix'
 
@@ -92,12 +92,6 @@ export default class LoggingTest extends AbstractSpruceTest {
 			m,
 			'(INFO) root prefix :: second level prefix :: information logged'
 		)
-	}
-
-	@test()
-	protected static mockLogsBuildMockLogs() {
-		const log = mockLog.buildLog('')
-		assert.isEqual(log, mockLog)
 	}
 
 	@test()
@@ -226,5 +220,25 @@ export default class LoggingTest extends AbstractSpruceTest {
 		await this.wait(10)
 
 		log.error('third!')
+	}
+
+	@test()
+	protected static async canLogErrorsBecauseTheyHaveToString() {
+		let errorMessage: string | undefined
+
+		const error = new Error(generateId())
+		const expected = error.toString()
+
+		const log = buildLog(undefined, {
+			useColors: true,
+			transportsByLevel: {
+				ERROR: (...messageParts: string[]) => {
+					errorMessage = messageParts.join(' ')
+				},
+			},
+		})
+
+		log.error(error)
+		assert.isEqual(errorMessage, expected)
 	}
 }
