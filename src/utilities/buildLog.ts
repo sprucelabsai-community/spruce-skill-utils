@@ -161,3 +161,8 @@ export const testLog = buildLog('TEST', {
 		getProcess()?.stderr?.write?.(parts.join(' ') + '\n')
 	},
 })
+
+export const stubLog = buildLog('STUB', {
+	log: () => {},
+	useColors: false,
+})
