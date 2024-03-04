@@ -1,3 +1,10 @@
+# [30.3.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.2.5...v30.3.0) (2024-03-04)
+
+
+### Features
+
+* stub log ([6df7375](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/6df7375))
+
 ## [30.2.5](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.2.4...v30.2.5) (2024-03-01)
 
 ## [30.2.4](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.2.3...v30.2.4) (2024-02-29)
