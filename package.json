@@ -8,12 +8,7 @@
     "namespace": "skill-utils",
     "upgradeIgnoreList": [
       "chalk",
-      "globby",
-      "@sprucelabs/jest-json-reporter",
-      "@sprucelabs/jest-sheets-reporter",
-      "@sprucelabs/resolve-path-aliases",
-      "@sprucelabs/spruce-test-fixtures",
-      "@sprucelabs/esm-postbuild"
+      "@sprucelabs/spruce-test-fixtures"
     ]
   },
   "files": [
@@ -72,19 +67,18 @@
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
-    "globby": "^11.0.4",
     "inflection": "^3.0.0",
     "lodash": "^4.17.21",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^2.0.22",
-    "@sprucelabs/jest-json-reporter": "^6.0.512",
-    "@sprucelabs/jest-sheets-reporter": "^2.0.20",
-    "@sprucelabs/resolve-path-aliases": "^1.1.122",
+    "@sprucelabs/esm-postbuild": "^5.0.163",
+    "@sprucelabs/jest-json-reporter": "^7.0.175",
+    "@sprucelabs/jest-sheets-reporter": "^3.0.26",
+    "@sprucelabs/resolve-path-aliases": "^1.1.284",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^8.0.42",
-    "@sprucelabs/test-utils": "^4.0.110",
+    "@sprucelabs/test": "^8.0.43",
+    "@sprucelabs/test-utils": "^4.0.111",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.14.202",
@@ -105,21 +99,6 @@
   "jest": {
     "maxWorkers": 4,
     "testTimeout": 300000,
-    "reporters": [
-      "default",
-      [
-        "@sprucelabs/jest-sheets-reporter",
-        {
-          "sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
-          "worksheetId": 843037832,
-          "testMap": {
-            "canUpdateTrackedHash": "I171",
-            "import many": "I253",
-            "Renders All Present Address Fields and Not Undefined 2": "1823878579:F81"
-          }
-        }
-      ]
-    ],
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "<rootDir>/tmp/",
@@ -136,8 +115,6 @@
     }
   },
   "yarn-upgrade-all": {
-    "ignore": [
-      "globby"
-    ]
+    "ignore": []
   }
 }
