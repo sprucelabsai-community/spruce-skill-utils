@@ -48,6 +48,9 @@ export default function buildLog(
 	const { colors = {}, log, useColors } = options ?? {}
 	const { info = 'yellow', error = 'red' } = colors
 
+	const isInteractive = process.stdout.isTTY && process.stderr.isTTY
+	const shouldUseColors = useColors !== false && isInteractive
+
 	const pre = prefix ? `${prefix} ::` : undefined
 
 	const transports: TransportMap = {
@@ -93,6 +96,7 @@ export default function buildLog(
 		const args = rawArgs.map((a) => a.toString())
 		let chalkArgs = [...args]
 		let builtPrefix = pre
+
 		if (pre) {
 			const length = getMaxLogPrefixesLength()
 			if (typeof length === 'number' && !isNaN(length)) {
@@ -133,7 +137,9 @@ export default function buildLog(
 				: (console[logMethod] ?? console.log).bind(console))
 
 		let message =
-			useColors === false ? `(${level})${prefix}` : chalkMethod(...chalkArgs)
+			shouldUseColors === false
+				? `(${level})${prefix}`
+				: chalkMethod(...chalkArgs)
 
 		if (env.SHOULD_LOG_TIME_DETLAS !== 'false') {
 			const now = Date.now()
@@ -146,7 +152,7 @@ export default function buildLog(
 			message = `(${new Date().toISOString()}) ${message}`
 		}
 
-		if (useColors === false) {
+		if (shouldUseColors === false) {
 			transport(message, ...args)
 		} else {
 			transport(message)

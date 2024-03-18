@@ -135,7 +135,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 		let errorMessage: string | undefined
 
 		const log = buildLog('TEST', {
-			useColors: true,
+			useColors: false,
 			transportsByLevel: {
 				INFO: (...messageParts: string[]) => {
 					infoMessage = messageParts.join(' ')
@@ -207,8 +207,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 
 	@test('outputs time by default (always passes, check logs)')
 	protected static async rendersTimeSinceLastRenderAndDateTimeByDefault() {
-		delete process.env.SHOULD_LOG_TIME_DETLAS
-		delete process.env.SHOULD_LOG_TIME
+		this.resetTimeLogEnv()
 
 		const log = buildLog('TIMESTAMPS', { useColors: false })
 
@@ -221,6 +220,24 @@ export default class LoggingTest extends AbstractSpruceTest {
 		await this.wait(10)
 
 		log.error('third!')
+	}
+
+	@test()
+	protected static async doesNotColorIfNotTty() {
+		process.env.SHOULD_LOG_TIME_DETLAS = 'false'
+		process.env.SHOULD_LOG_TIME = 'false'
+		process.stdout.isTTY = false
+
+		let lastMessage: string | undefined
+
+		console.log = (...message: any[]) => {
+			lastMessage = message.join(' ')
+		}
+
+		const log = buildLog('TTY', {})
+
+		log.info('go team')
+		assert.isEqual(lastMessage, '(INFO) TTY :: go team')
 	}
 
 	@test()
@@ -241,5 +258,10 @@ export default class LoggingTest extends AbstractSpruceTest {
 
 		log.error(error)
 		assert.isEqual(errorMessage, expected)
+	}
+
+	private static resetTimeLogEnv() {
+		delete process.env.SHOULD_LOG_TIME_DETLAS
+		delete process.env.SHOULD_LOG_TIME
 	}
 }
