@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "30.3.18",
+  "version": "30.3.21",
   "skill": {
     "namespace": "skill-utils",
     "upgradeIgnoreList": [
@@ -62,8 +62,8 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/globby": "^1.0.19",
-    "@sprucelabs/schema": "^29.4.24",
+    "@sprucelabs/globby": "^1.0.20",
+    "@sprucelabs/schema": "^29.4.26",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
@@ -72,13 +72,13 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^5.0.171",
-    "@sprucelabs/jest-json-reporter": "^7.0.183",
+    "@sprucelabs/esm-postbuild": "^5.0.172",
+    "@sprucelabs/jest-json-reporter": "^7.0.184",
     "@sprucelabs/jest-sheets-reporter": "^3.0.26",
     "@sprucelabs/resolve-path-aliases": "^1.1.288",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test": "^8.0.44",
-    "@sprucelabs/test-utils": "^4.0.123",
+    "@sprucelabs/test-utils": "^4.0.124",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.17.0",
