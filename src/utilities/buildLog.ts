@@ -48,7 +48,7 @@ export default function buildLog(
 	const { colors = {}, log, useColors } = options ?? {}
 	const { info = 'yellow', error = 'red' } = colors
 
-	const isInteractive = process.stdout.isTTY && process.stderr.isTTY
+	const isInteractive = getProcess()?.stdout?.isTTY
 	const shouldUseColors = useColors !== false && isInteractive
 
 	const pre = prefix ? `${prefix} ::` : undefined
