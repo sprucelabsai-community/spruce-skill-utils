@@ -62,7 +62,7 @@
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\""
   },
   "dependencies": {
-    "@sprucelabs/globby": "^1.0.19",
+    "@sprucelabs/globby": "^1.0.20",
     "@sprucelabs/schema": "^29.4.26",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
