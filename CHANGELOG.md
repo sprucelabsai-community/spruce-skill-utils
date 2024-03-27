@@ -1,3 +1,10 @@
+# [30.4.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.3.32...v30.4.0) (2024-03-27)
+
+
+### Features
+
+* can set file to save settings ([27de0ba](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/27de0ba))
+
 ## [30.3.32](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.3.31...v30.3.32) (2024-03-27)
 
 ## [30.3.31](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.3.30...v30.3.31) (2024-03-27)
