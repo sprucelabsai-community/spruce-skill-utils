@@ -1,5 +1,6 @@
 import AbstractSpruceTest from '@sprucelabs/test'
-import { assert, test } from '@sprucelabs/test-utils'
+import { assert, generateId, test } from '@sprucelabs/test-utils'
+import { HASH_SPRUCE_DIR } from '../../constants'
 import SettingsService from '../../services/SettingsService'
 import diskUtil from '../../utilities/disk.utility'
 
@@ -126,6 +127,19 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		this.markAsPermanentlySkipped('feature11')
 		this.assertInstalled('feature111')
 		this.assertNotInstalled('feature11')
+	}
+
+	@test()
+	protected static async canSaveToDifferentFile() {
+		const file = `${generateId()}.json`
+
+		this.settings.setFile(file)
+
+		const expected = diskUtil.resolvePath(this.cwd, HASH_SPRUCE_DIR, file)
+
+		//@ts-ignore
+		const actual = this.settings.getSettingsPath()
+		assert.isEqual(actual, expected)
 	}
 
 	private static assertNotInstalled(code: string) {

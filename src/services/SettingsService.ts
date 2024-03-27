@@ -4,15 +4,11 @@ import unset from 'lodash/unset'
 import { HASH_SPRUCE_DIR } from '../constants'
 import diskUtil from '../utilities/disk.utility'
 
-export interface Settings<FeatureCode extends string = string> {
-	installed?: FeatureCode[]
-	skipped?: FeatureCode[]
-	[key: string]: any
-}
-
 export default class SettingsService<FeatureCode extends string = string> {
 	private cwd: string
 	private settings?: Settings
+	private fileName = 'settings.json'
+
 	public constructor(cwd: string) {
 		this.cwd = cwd
 	}
@@ -87,7 +83,7 @@ export default class SettingsService<FeatureCode extends string = string> {
 	}
 
 	private getSettingsPath() {
-		return diskUtil.resolvePath(this.cwd, HASH_SPRUCE_DIR, 'settings.json')
+		return diskUtil.resolvePath(this.cwd, HASH_SPRUCE_DIR, this.fileName)
 	}
 
 	private saveSettings(settings: Settings) {
@@ -99,4 +95,14 @@ export default class SettingsService<FeatureCode extends string = string> {
 		const contents = JSON.stringify(settings, null, 2)
 		diskUtil.writeFile(path, contents)
 	}
+
+	public setFile(name: string) {
+		this.fileName = name
+	}
+}
+
+export interface Settings<FeatureCode extends string = string> {
+	installed?: FeatureCode[]
+	skipped?: FeatureCode[]
+	[key: string]: any
 }
