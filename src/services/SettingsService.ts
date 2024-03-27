@@ -82,7 +82,7 @@ export default class SettingsService<FeatureCode extends string = string> {
 		return this.settings as Settings
 	}
 
-	private getSettingsPath() {
+	protected getSettingsPath() {
 		return diskUtil.resolvePath(this.cwd, HASH_SPRUCE_DIR, this.fileName)
 	}
 
