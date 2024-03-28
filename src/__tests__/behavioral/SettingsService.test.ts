@@ -140,6 +140,13 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		//@ts-ignore
 		const actual = this.settings.getSettingsPath()
 		assert.isEqual(actual, expected)
+
+		//@ts-ignore
+		this.settings.write = (path: string, _contents: string) => {
+			assert.isEqual(path, expected)
+		}
+
+		this.settings.set('test', true)
 	}
 
 	private static assertNotInstalled(code: string) {
