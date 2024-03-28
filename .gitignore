@@ -24,3 +24,5 @@ esm/
 .env.*
 .env-*
 process.yml
+
+**/.spruce/*cache.json

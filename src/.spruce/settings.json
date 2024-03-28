@@ -11,7 +11,8 @@
   },
   "writer": {
     "skipped": [
-      ".nvmrc"
+      ".nvmrc",
+      ".gitignore"
     ],
     "skips": [
       "tsconfig.json",
