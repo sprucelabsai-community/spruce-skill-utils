@@ -82,7 +82,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.17.0",
-    "@types/node": "^20.12.4",
+    "@types/node": "^20.12.7",
     "@types/uuid": "^9.0.8",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.2",
@@ -93,7 +93,7 @@
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.0",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "yarn-upgrade-all": "^0.7.2"
   },
   "jest": {
