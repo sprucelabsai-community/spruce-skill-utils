@@ -63,6 +63,10 @@ export default class SettingsService<FeatureCode extends string = string> {
 	}
 
 	public unset(key: string) {
+		const doesFileExist = diskUtil.doesFileExist(this.getSettingsPath())
+		if (!doesFileExist) {
+			return
+		}
 		const settings = this.loadSettings()
 		unset(settings, key)
 		this.saveSettings(settings)

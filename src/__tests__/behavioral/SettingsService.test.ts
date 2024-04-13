@@ -65,8 +65,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 	@test()
 	protected static savesNestedObjects() {
 		this.settings.set('nested.object', { hey: 'there!' })
-		//@ts-ignore
-		const path = this.settings.getSettingsPath()
+		const path = this.getSettingsPath()
 		const contents = diskUtil.readFile(path)
 		const settings = JSON.parse(contents)
 
@@ -137,8 +136,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 
 		const expected = diskUtil.resolvePath(this.cwd, HASH_SPRUCE_DIR, file)
 
-		//@ts-ignore
-		const actual = this.settings.getSettingsPath()
+		const actual = this.getSettingsPath()
 		assert.isEqual(actual, expected)
 
 		//@ts-ignore
@@ -147,6 +145,13 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 		}
 
 		this.settings.set('test', true)
+	}
+
+	@test()
+	protected static async unsettingSomethingDoesNotCreateTheFile() {
+		this.settings.unset('test')
+		const path = this.getSettingsPath()
+		assert.isFalse(diskUtil.doesFileExist(path))
 	}
 
 	private static assertNotInstalled(code: string) {
@@ -163,5 +168,10 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 
 	private static markAsInstalled(code: string) {
 		this.settings.markAsInstalled(code)
+	}
+
+	private static getSettingsPath() {
+		//@ts-ignore
+		return this.settings.getSettingsPath()
 	}
 }
