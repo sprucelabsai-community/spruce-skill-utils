@@ -93,7 +93,7 @@
 		"prettier": "^3.2.5",
 		"ts-node": "^10.9.2",
 		"tsc-watch": "^6.2.0",
-		"typescript": "^5.4.4",
+		"typescript": "5.4.4",
 		"yarn-upgrade-all": "^0.7.2"
 	},
 	"jest": {
