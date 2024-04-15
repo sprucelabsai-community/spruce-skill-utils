@@ -1,3 +1,10 @@
+# [31.0.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.4.29...v31.0.0) (2024-04-15)
+
+
+### Breaking Changes
+
+* upgrade ([ea770b5](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/ea770b5))
+
 ## [30.4.29](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.4.28...v30.4.29) (2024-04-05)
 
 ## [30.4.28](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v30.4.27...v30.4.28) (2024-04-04)
