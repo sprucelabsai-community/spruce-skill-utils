@@ -5,9 +5,9 @@ export const HASH_SPRUCE_BUILD_DIR = `build/.spruce` as const
 export const LATEST_TOKEN = '@latest' as const
 export const LATEST_HANDLEBARS = `{{${LATEST_TOKEN}}}`
 export const CORE_SCHEMA_VERSION = {
-	intValue: 20200623,
-	constValue: 'v2020_07_22',
-	dirValue: 'v2020_07_22',
+    intValue: 20200623,
+    constValue: 'v2020_07_22',
+    dirValue: 'v2020_07_22',
 } as const
 
 export const CORE_NAMESPACE = 'Spruce' as const

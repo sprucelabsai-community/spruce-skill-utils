@@ -1,3 +1,3 @@
 export default () => {
-	return 'yes!'
+    return 'yes!'
 }
