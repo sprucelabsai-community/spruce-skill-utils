@@ -21,7 +21,9 @@ function getProcess() {
     return null
 }
 
-export type LoggableType = string | number | boolean | null | undefined | Error
+type Anything = string | number | boolean | null | undefined | Error
+
+export type LoggableType = Anything | Anything[] | Record<string, Anything>
 
 export interface Log {
     readonly prefix: string | undefined
