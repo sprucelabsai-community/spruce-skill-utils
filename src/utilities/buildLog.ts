@@ -93,7 +93,7 @@ export default function buildLog(
     }
 
     function write(chalkMethod: Chalk, rawArgs: any[], level: Level) {
-        const args = rawArgs.map((a) => a.toString())
+        const args = rawArgs.map((a) => a?.toString?.() ?? 'undefined')
         let chalkArgs = [...args]
         let builtPrefix = pre
 

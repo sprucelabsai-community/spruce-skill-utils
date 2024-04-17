@@ -226,6 +226,12 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
+    protected static async doesNotCrashWhenLoggingUndefined() {
+        const log = buildLog()
+        log.info('test', undefined, 'test')
+    }
+
+    @test()
     protected static async doesNotColorIfNotTty() {
         process.env.SHOULD_LOG_TIME_DETLAS = 'false'
         process.env.SHOULD_LOG_TIME = 'false'
