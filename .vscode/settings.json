@@ -66,6 +66,6 @@
 	},
 	"circleci.filters.branchFilter": "allBranches",
 	"circleci.persistedProjectSelection": [
-		"gh/sprucelabsai/spruce-skills-skill"
+		"gh/sprucelabsai-community/spruce-skill-utils"
 	]
 }
