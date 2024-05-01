@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.11",
-    "@sprucelabs/schema": "^30.0.22",
+    "@sprucelabs/schema": "^30.0.23",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
@@ -71,13 +71,13 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^6.0.12",
-    "@sprucelabs/jest-json-reporter": "^8.0.15",
+    "@sprucelabs/esm-postbuild": "^6.0.13",
+    "@sprucelabs/jest-json-reporter": "^8.0.16",
     "@sprucelabs/jest-sheets-reporter": "^3.0.26",
-    "@sprucelabs/resolve-path-aliases": "^2.0.14",
+    "@sprucelabs/resolve-path-aliases": "^2.0.15",
     "@sprucelabs/semantic-release": "^5.0.1",
     "@sprucelabs/test": "^9.0.11",
-    "@sprucelabs/test-utils": "^5.0.14",
+    "@sprucelabs/test-utils": "^5.0.15",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.17.0",
