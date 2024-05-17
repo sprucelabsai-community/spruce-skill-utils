@@ -1,3 +1,5 @@
+## [31.0.60](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.0.59...v31.0.60) (2024-05-17)
+
 ## [31.0.59](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.0.58...v31.0.59) (2024-05-17)
 
 ## [31.0.58](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.0.57...v31.0.58) (2024-05-17)
