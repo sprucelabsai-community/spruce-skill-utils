@@ -68,8 +68,8 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^6.0.169",
-    "@sprucelabs/jest-json-reporter": "^8.0.187",
+    "@sprucelabs/esm-postbuild": "^6.0.170",
+    "@sprucelabs/jest-json-reporter": "^8.0.188",
     "@sprucelabs/jest-sheets-reporter": "^3.0.86",
     "@sprucelabs/resolve-path-aliases": "^2.0.165",
     "@sprucelabs/semantic-release": "^5.0.2",
@@ -78,7 +78,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.17.7",
-    "@types/node": "^20.14.12",
+    "@types/node": "^22.0.2",
     "@types/uuid": "^10.0.0",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.8.0",

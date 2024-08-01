@@ -28,7 +28,7 @@ export default class PkgService {
         const updated = set(contents, path, value)
         const destination = this.buildPath()
 
-        fs.outputFileSync(destination, JSON.stringify(updated, null, 2))
+        fs.outputFileSync(destination, JSON.stringify(updated, null, 2) + '\n')
         this._parsedPkg = undefined
     }
 
