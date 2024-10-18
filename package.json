@@ -58,8 +58,8 @@
     "lint.tsc": "tsc -p . --noEmit"
   },
   "dependencies": {
-    "@sprucelabs/globby": "^2.0.446",
-    "@sprucelabs/schema": "^30.0.495",
+    "@sprucelabs/globby": "^2.0.447",
+    "@sprucelabs/schema": "^30.0.496",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
@@ -68,16 +68,16 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^6.0.467",
-    "@sprucelabs/jest-json-reporter": "^8.0.485",
+    "@sprucelabs/esm-postbuild": "^6.0.468",
+    "@sprucelabs/jest-json-reporter": "^8.0.486",
     "@sprucelabs/jest-sheets-reporter": "^3.0.157",
-    "@sprucelabs/resolve-path-aliases": "^2.0.462",
+    "@sprucelabs/resolve-path-aliases": "^2.0.463",
     "@sprucelabs/semantic-release": "^5.0.2",
-    "@sprucelabs/test": "^9.0.51",
-    "@sprucelabs/test-utils": "^5.1.439",
+    "@sprucelabs/test": "^9.0.52",
+    "@sprucelabs/test-utils": "^5.1.440",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
-    "@types/lodash": "^4.17.10",
+    "@types/lodash": "^4.17.11",
     "@types/node": "^22.7.6",
     "@types/uuid": "^10.0.0",
     "chokidar-cli": "^3.0.0",
