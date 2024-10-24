@@ -64,5 +64,7 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always"
 	},
-	"circleci.persistedProjectSelection": []
+	"circleci.persistedProjectSelection": [
+		"gh/sprucelabsai-community/spruce-skill-utils"
+	]
 }
