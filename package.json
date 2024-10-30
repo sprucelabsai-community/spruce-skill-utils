@@ -58,8 +58,8 @@
     "lint.tsc": "tsc -p . --noEmit"
   },
   "dependencies": {
-    "@sprucelabs/globby": "^2.0.488",
-    "@sprucelabs/schema": "^30.0.536",
+    "@sprucelabs/globby": "^2.0.489",
+    "@sprucelabs/schema": "^30.0.537",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
