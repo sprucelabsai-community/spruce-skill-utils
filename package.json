@@ -59,13 +59,13 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.499",
-    "@sprucelabs/schema": "^30.0.558",
+    "@sprucelabs/schema": "^30.0.559",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
     "inflection": "^3.0.0",
     "lodash": "^4.17.21",
-    "uuid": "^11.0.2"
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^6.0.520",
@@ -73,8 +73,8 @@
     "@sprucelabs/jest-sheets-reporter": "^3.0.185",
     "@sprucelabs/resolve-path-aliases": "^2.0.514",
     "@sprucelabs/semantic-release": "^5.0.2",
-    "@sprucelabs/test": "^9.0.57",
-    "@sprucelabs/test-utils": "^5.1.500",
+    "@sprucelabs/test": "^9.0.58",
+    "@sprucelabs/test-utils": "^5.1.501",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.17.13",
@@ -87,7 +87,7 @@
     "jest-circus": "^29.7.0",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "tsc-watch": "^6.2.0",
+    "tsc-watch": "^6.2.1",
     "typescript": "^5.6.3"
   },
   "jest": {
