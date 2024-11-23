@@ -73,12 +73,12 @@
     "@sprucelabs/jest-sheets-reporter": "^3.0.187",
     "@sprucelabs/resolve-path-aliases": "^2.0.516",
     "@sprucelabs/semantic-release": "^5.0.2",
-    "@sprucelabs/test": "^9.0.59",
-    "@sprucelabs/test-utils": "^5.1.507",
+    "@sprucelabs/test": "^9.0.60",
+    "@sprucelabs/test-utils": "^5.1.508",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.17.13",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.9.3",
     "@types/uuid": "^10.0.0",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.15.0",
@@ -88,7 +88,7 @@
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "jest": {
     "maxWorkers": 4,
