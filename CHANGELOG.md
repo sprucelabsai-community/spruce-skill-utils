@@ -1,3 +1,10 @@
+# [31.1.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.0.656...v31.1.0) (2024-12-16)
+
+
+### Features
+
+* can set multiple log transports per log level ([007457a](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/007457a))
+
 ## [31.0.656](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.0.655...v31.0.656) (2024-12-12)
 
 ## [31.0.655](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.0.654...v31.0.655) (2024-12-11)
