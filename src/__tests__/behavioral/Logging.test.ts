@@ -158,6 +158,44 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
+    protected static async canSetMupltipleTransportsPerType() {
+        let info1Message: string | undefined
+        let info2Message: string | undefined
+        let error1Message: string | undefined
+        let error2Message: string | undefined
+
+        const log = buildLog('TEST', {
+            useColors: false,
+            transportsByLevel: {
+                INFO: [
+                    (...messageParts: string[]) => {
+                        info1Message = messageParts.join(' ')
+                    },
+                    (...messageParts: string[]) => {
+                        info2Message = messageParts.join(' ')
+                    },
+                ],
+                ERROR: [
+                    (...messageParts: string[]) => {
+                        error1Message = messageParts.join(' ')
+                    },
+                    (...messageParts: string[]) => {
+                        error2Message = messageParts.join(' ')
+                    },
+                ],
+            },
+        })
+
+        log.info('go team')
+        assert.isEqual(info1Message, 'TEST :: go team')
+        assert.isEqual(info2Message, 'TEST :: go team')
+
+        log.error('error me scotty')
+        assert.isEqual(error1Message, 'TEST :: error me scotty')
+        assert.isEqual(error2Message, 'TEST :: error me scotty')
+    }
+
+    @test()
     protected static transportGetsMessagesWithoutPaddingWhenNoPrefixSupplied() {
         let infoMessage: string | undefined
 

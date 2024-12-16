@@ -12,7 +12,10 @@ export interface LogOptions {
 
 export type Level = 'ERROR' | 'INFO' | 'WARN'
 export type LogTransport = (...messageParts: string[]) => void
-type TransportMap = Record<Level, LogTransport | null | undefined>
+type TransportMap = Record<
+    Level,
+    LogTransport | LogTransport[] | null | undefined
+>
 
 function getProcess() {
     if (typeof process !== 'undefined') {
@@ -90,8 +93,16 @@ export default function buildLog(
 
     return logUtil
 
-    function getTransport(level: Level): LogTransport {
-        return transports[level] as LogTransport
+    function getTransports(level: Level): LogTransport[] {
+        const t = transports[level]
+        if (!t) {
+            return []
+        }
+        if (!Array.isArray(t)) {
+            return [t] as LogTransport[]
+        }
+
+        return t as LogTransport[]
     }
 
     function write(chalkMethod: Chalk, rawArgs: any[], level: Level) {
@@ -111,11 +122,13 @@ export default function buildLog(
         }
         const prefix = `${builtPrefix ? ` ${builtPrefix}` : ''}`
 
-        let transport = getTransport(level)
-        if (transport) {
-            transport(
-                ...[prefix.trim(), ...args].filter((t) => t && t.length > 0)
-            )
+        let transports = getTransports(level)
+        if (transports.length > 0) {
+            for (const transport of transports) {
+                transport(
+                    ...[prefix.trim(), ...args].filter((t) => t && t.length > 0)
+                )
+            }
             return prefix
         }
 
@@ -134,7 +147,7 @@ export default function buildLog(
                 break
         }
 
-        transport =
+        const transport =
             log ??
             (level === 'ERROR' && getProcess()?.stderr?.write
                 ? (...args: []) => {
