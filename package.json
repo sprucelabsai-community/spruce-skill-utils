@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.501",
-    "@sprucelabs/schema": "^31.0.1",
+    "@sprucelabs/schema": "^31.0.3",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.7",
     "fs-extra": "^11.2.0",
