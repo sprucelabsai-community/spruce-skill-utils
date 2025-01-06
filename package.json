@@ -59,13 +59,13 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.501",
-    "@sprucelabs/schema": "^31.0.6",
+    "@sprucelabs/schema": "^31.0.7",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.7",
     "fs-extra": "^11.2.0",
-    "inflection": "^3.0.0",
+    "inflection": "^3.0.1",
     "lodash": "^4.17.21",
-    "uuid": "^11.0.3"
+    "uuid": "^11.0.4"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^6.0.534",
@@ -73,12 +73,12 @@
     "@sprucelabs/jest-sheets-reporter": "^3.0.198",
     "@sprucelabs/resolve-path-aliases": "^2.0.523",
     "@sprucelabs/semantic-release": "^5.0.2",
-    "@sprucelabs/test": "^9.0.64",
+    "@sprucelabs/test": "^9.0.65",
     "@sprucelabs/test-utils": "^5.1.533",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
-    "@types/lodash": "^4.17.13",
-    "@types/node": "^22.10.3",
+    "@types/lodash": "^4.17.14",
+    "@types/node": "^22.10.5",
     "@types/uuid": "^10.0.0",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.17.0",
