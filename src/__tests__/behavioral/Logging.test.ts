@@ -307,8 +307,80 @@ export default class LoggingTest extends AbstractSpruceTest {
         assert.isEqual(errorMessage, expected)
     }
 
+    @test(
+        "When LOG_LEVEL is 'none', then console is silent after log.error()",
+        'none',
+        'error',
+        []
+    )
+    @test(
+        "When LOG_LEVEL is 'none', then console is silent after log.warn()",
+        'none',
+        'warn',
+        []
+    )
+    @test(
+        "When LOG_LEVEL is 'none', then console is silent after log.info()",
+        'none',
+        'info',
+        []
+    )
+    @test(
+        "When LOG_LEVEL is 'error', then console is used after log.error()",
+        'error',
+        'error',
+        ['(ERROR) go team\n']
+    )
+    @test(
+        "When LOG_LEVEL is 'error', then console is silent after log.warn()",
+        'error',
+        'warn',
+        []
+    )
+    @test(
+        "When LOG_LEVEL is 'error', then console is silent after log.info()",
+        'error',
+        'info',
+        []
+    )
+    @test(
+        "When LOG_LEVEL is 'info', then console is used after log.warn()",
+        'info',
+        'warn',
+        []
+    )
+    protected static doesLoggingWrite(
+        logLevel: string,
+        writtenLevel: 'error' | 'warn' | 'info',
+        expected: any[]
+    ) {
+        const stream = outputstream[writtenLevel]
+        const oldWrite = process[stream].write
+        const actual: any[] = []
+        process[stream].write = (data) => {
+            actual.push(data)
+            return true
+        }
+        try {
+            process.env.LOG_LEVEL = logLevel
+            const log = buildLog()
+            log[writtenLevel]('go team')
+            assert.isEqualDeep(actual, expected)
+        } catch (err) {
+            throw err
+        } finally {
+            process[stream].write = oldWrite
+        }
+    }
+
     private static resetTimeLogEnv() {
         delete process.env.SHOULD_LOG_TIME_DETLAS
         delete process.env.SHOULD_LOG_TIME
     }
 }
+
+const outputstream = {
+    error: 'stderr',
+    warn: 'stderr',
+    info: 'stdout',
+} as const
