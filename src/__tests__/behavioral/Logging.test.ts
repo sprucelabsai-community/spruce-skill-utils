@@ -1,5 +1,5 @@
-import AbstractSpruceTest, { test } from '@sprucelabs/test'
-import { assert, generateId } from '@sprucelabs/test-utils'
+import AbstractSpruceTest from '@sprucelabs/test'
+import { assert, generateId, test } from '@sprucelabs/test-utils'
 import buildLog, { testLog } from '../../utilities/buildLog'
 
 const ROOT_PREFIX = 'root prefix'
