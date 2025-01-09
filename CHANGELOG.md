@@ -1,3 +1,10 @@
+# [31.2.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.1.16...v31.2.0) (2025-01-09)
+
+
+### Features
+
+* filtered logs ([2e07cf2](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/2e07cf2))
+
 ## [31.1.16](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.1.15...v31.1.16) (2025-01-06)
 
 ## [31.1.15](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.1.14...v31.1.15) (2025-01-06)
