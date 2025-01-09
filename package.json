@@ -59,11 +59,11 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.501",
-    "@sprucelabs/schema": "^31.0.9",
+    "@sprucelabs/schema": "^31.0.10",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.7",
     "fs-extra": "^11.2.0",
-    "inflection": "^3.0.1",
+    "inflection": "^3.0.2",
     "lodash": "^4.17.21",
     "uuid": "^11.0.4"
   },
@@ -73,8 +73,8 @@
     "@sprucelabs/jest-sheets-reporter": "^3.0.198",
     "@sprucelabs/resolve-path-aliases": "^2.0.524",
     "@sprucelabs/semantic-release": "^5.0.2",
-    "@sprucelabs/test": "^9.0.65",
-    "@sprucelabs/test-utils": "^5.1.536",
+    "@sprucelabs/test": "^9.0.66",
+    "@sprucelabs/test-utils": "^5.1.537",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^1.13.2",
     "@types/lodash": "^4.17.14",
@@ -88,7 +88,7 @@
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.1",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "jest": {
     "maxWorkers": 4,
