@@ -200,7 +200,7 @@ const logLevels = ['INFO', 'WARN', 'ERROR', 'NONE']
 function shouldNotWrite(level: Level) {
     const requestedLogLevelStrength = logLevels.indexOf(level)
     const allowedLogLevelStrength = logLevels.indexOf(
-        process.env.LOG_LEVEL?.toUpperCase() ?? 'INFO'
+        getProcess()?.env?.LOG_LEVEL?.toUpperCase() ?? 'INFO'
     )
     if (allowedLogLevelStrength === -1) {
         return false
