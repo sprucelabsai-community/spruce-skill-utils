@@ -68,17 +68,17 @@ export default function buildLog(
         prefix,
         info(...args: LoggableType[]) {
             //@ts-ignore
-            return write(chalk.green[info], args, 'INFO')
+            return write(chalk?.green?.[info], args, 'INFO')
         },
 
         warn(...args: LoggableType[]) {
             //@ts-ignore
-            return write(chalk.yellow[info], args, 'WARN')
+            return write(chalk?.yellow?.[info], args, 'WARN')
         },
 
         error(...args: LoggableType[]) {
             //@ts-ignore
-            return write(chalk.red[error], args, 'ERROR')
+            return write(chalk?.red?.[error], args, 'ERROR')
         },
 
         buildLog(prefix: string | undefined = undefined, options?: LogOptions) {
