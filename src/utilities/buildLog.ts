@@ -106,7 +106,7 @@ export default function buildLog(
     }
 
     function write(chalkMethod: Chalk, rawArgs: any[], level: Level) {
-        if (shouldNotWrite(level)) {
+        if (!shouldWrite(level)) {
             return ''
         }
         const args = rawArgs.map((a) => a?.toString?.() ?? 'undefined')
@@ -197,13 +197,13 @@ export const stubLog = buildLog('STUB', {
 
 const logLevels = ['INFO', 'WARN', 'ERROR', 'NONE']
 
-function shouldNotWrite(level: Level) {
+function shouldWrite(level: Level) {
     const requestedLogLevelStrength = logLevels.indexOf(level)
     const allowedLogLevelStrength = logLevels.indexOf(
         getProcess()?.env?.LOG_LEVEL?.toUpperCase() ?? 'INFO'
     )
     if (allowedLogLevelStrength === -1) {
-        return false
+        return true
     }
-    return requestedLogLevelStrength < allowedLogLevelStrength
+    return requestedLogLevelStrength >= allowedLogLevelStrength
 }
