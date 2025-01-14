@@ -105,7 +105,10 @@ export default function buildLog(
         return t as LogTransport[]
     }
 
-    function write(chalkMethod: Chalk, rawArgs: any[], level: Level) {
+    function write(chalkMethod: Chalk, rawArgs: any[], level: Level): string {
+        if (!shouldWrite(process.env.LOG_LEVEL, level)) {
+            return ''
+        }
         const args = rawArgs.map((a) => a?.toString?.() ?? 'undefined')
         let chalkArgs = [...args]
         let builtPrefix = pre
@@ -120,7 +123,7 @@ export default function buildLog(
             }
             chalkArgs = [builtPrefix, ...chalkArgs]
         }
-        const prefix = `${builtPrefix ? ` ${builtPrefix}` : ''}`
+        const prefix = builtPrefix ? ` ${builtPrefix}` : ''
 
         let transports = getTransports(level)
         if (transports.length > 0) {
@@ -191,3 +194,18 @@ export const stubLog = buildLog('STUB', {
     log: () => {},
     useColors: false,
 })
+
+function shouldWrite(maxLogLevel: string | undefined, level: Level): boolean {
+    if (process.env.LOG_LEVEL) {
+        if (process.env.LOG_LEVEL == 'none') {
+            return false
+        }
+        if (process.env.LOG_LEVEL == 'error' && level !== 'ERROR') {
+            return false
+        }
+        if (process.env.LOG_LEVEL == 'warn' && level === 'INFO') {
+            return false
+        }
+    }
+    return true
+}

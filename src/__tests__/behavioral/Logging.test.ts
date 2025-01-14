@@ -8,6 +8,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     protected static async beforeEach(): Promise<void> {
         await super.beforeEach()
         delete process.env.MAXIMUM_LOG_PREFIXES_LENGTH
+        delete process.env.LOG_LEVEL
         process.env.SHOULD_LOG_TIME_DETLAS = 'false'
         process.env.SHOULD_LOG_TIME = 'false'
     }
@@ -305,6 +306,60 @@ export default class LoggingTest extends AbstractSpruceTest {
 
         log.error(error)
         assert.isEqual(errorMessage, expected)
+    }
+
+    @test()
+    protected static doesNotLogWithNoneLogLevel() {
+        process.env.LOG_LEVEL = 'none'
+        let m = ''
+        const log = buildLog(ROOT_PREFIX, {
+            useColors: false,
+            log: (...message: any) => {
+                m += message.join(' ')
+            },
+        })
+
+        log.info('info message')
+        log.warn('warn message')
+        log.error('error message')
+        assert.isEqual('', m)
+    }
+
+    @test()
+    protected static onlyLogsErrorOnError() {
+        process.env.LOG_LEVEL = 'error'
+        let m = ''
+        const log = buildLog(ROOT_PREFIX, {
+            useColors: false,
+            log: (...message: any) => {
+                m += message.join(' ')
+            },
+        })
+
+        log.info('info message')
+        log.warn('warn message')
+        log.error('error message')
+        assert.isEqual(m, '(ERROR) root prefix :: error message')
+    }
+
+    @test()
+    protected static onlyLogsErrorAndWarnOnWarn() {
+        process.env.LOG_LEVEL = 'warn'
+        let m = ''
+        const log = buildLog(ROOT_PREFIX, {
+            useColors: false,
+            log: (...message: any) => {
+                m += message.join(' ')
+            },
+        })
+
+        log.info('info message')
+        log.warn('warn message')
+        log.error('error message')
+        assert.isEqual(
+            m,
+            '(WARN) root prefix :: warn message(ERROR) root prefix :: error message'
+        )
     }
 
     private static resetTimeLogEnv() {
