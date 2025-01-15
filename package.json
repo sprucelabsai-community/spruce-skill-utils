@@ -59,10 +59,10 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.501",
-    "@sprucelabs/schema": "^31.0.16",
+    "@sprucelabs/schema": "^31.0.17",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.7",
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.0",
     "inflection": "^3.0.2",
     "lodash": "^4.17.21",
     "uuid": "^11.0.5"
