@@ -106,7 +106,7 @@ export default function buildLog(
     }
 
     function write(chalkMethod: Chalk, rawArgs: any[], level: Level): string {
-        if (!shouldWrite(getProcess()?.env?.LOG_LEVEL ?? '', level)) {
+        if (!shouldWrite(getProcess()?.env?.LOG_LEVEL ?? undefined, level)) {
             return ''
         }
         const args = rawArgs.map((a) => a?.toString?.() ?? 'undefined')
@@ -196,7 +196,7 @@ export const stubLog = buildLog('STUB', {
 })
 
 function shouldWrite(maxLogLevel: string | undefined, level: Level): boolean {
-    if (process.env.LOG_LEVEL) {
+    if (maxLogLevel) {
         if (process.env.LOG_LEVEL == 'none') {
             return false
         }
