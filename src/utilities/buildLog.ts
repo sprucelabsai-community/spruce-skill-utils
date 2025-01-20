@@ -106,7 +106,7 @@ export default function buildLog(
     }
 
     function write(chalkMethod: Chalk, rawArgs: any[], level: Level): string {
-        if (!shouldWrite(process.env.LOG_LEVEL, level)) {
+        if (!shouldWrite(getProcess()?.env?.LOG_LEVEL ?? '', level)) {
             return ''
         }
         const args = rawArgs.map((a) => a?.toString?.() ?? 'undefined')
