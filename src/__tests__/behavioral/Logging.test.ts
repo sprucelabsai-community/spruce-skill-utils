@@ -9,7 +9,7 @@ export default class LoggingTest extends AbstractSpruceTest {
         await super.beforeEach()
         delete process.env.MAXIMUM_LOG_PREFIXES_LENGTH
         delete process.env.LOG_LEVEL
-        process.env.SHOULD_LOG_TIME_DETLAS = 'false'
+        process.env.SHOULD_LOG_TIME_DELTAS = 'false'
         process.env.SHOULD_LOG_TIME = 'false'
     }
 
@@ -272,7 +272,7 @@ export default class LoggingTest extends AbstractSpruceTest {
 
     @test()
     protected static async doesNotColorIfNotTty() {
-        process.env.SHOULD_LOG_TIME_DETLAS = 'false'
+        process.env.SHOULD_LOG_TIME_DELTAS = 'false'
         process.env.SHOULD_LOG_TIME = 'false'
         process.stdout.isTTY = false
 
@@ -363,7 +363,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     private static resetTimeLogEnv() {
-        delete process.env.SHOULD_LOG_TIME_DETLAS
+        delete process.env.SHOULD_LOG_TIME_DELTAS
         delete process.env.SHOULD_LOG_TIME
     }
 }

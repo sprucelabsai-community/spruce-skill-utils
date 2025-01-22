@@ -53,7 +53,7 @@ export default function buildLog(
     const { colors = {}, log, useColors } = options ?? {}
     const { info = 'yellow', error = 'red' } = colors
 
-    const isInteractive = getProcess()?.stdout?.isTTY
+    const isInteractive = getProcess()?.stdout?.isTTY ?? false
     const shouldUseColors = useColors !== false && isInteractive
 
     const pre = prefix ? `${prefix} ::` : undefined
@@ -163,7 +163,7 @@ export default function buildLog(
                 ? `(${level})${prefix}`
                 : chalkMethod(...chalkArgs)
 
-        if (env.SHOULD_LOG_TIME_DETLAS !== 'false') {
+        if (env.SHOULD_LOG_TIME_DELTAS !== 'false') {
             const now = Date.now()
             const diff = now - lastLogTimeMs
             lastLogTimeMs = now
@@ -197,13 +197,13 @@ export const stubLog = buildLog('STUB', {
 
 function shouldWrite(maxLogLevel: string | undefined, level: Level): boolean {
     if (maxLogLevel) {
-        if (process.env.LOG_LEVEL == 'none') {
+        if (getProcess()?.env?.LOG_LEVEL == 'none') {
             return false
         }
-        if (process.env.LOG_LEVEL == 'error' && level !== 'ERROR') {
+        if (getProcess()?.env?.LOG_LEVEL == 'error' && level !== 'ERROR') {
             return false
         }
-        if (process.env.LOG_LEVEL == 'warn' && level === 'INFO') {
+        if (getProcess()?.env?.LOG_LEVEL == 'warn' && level === 'INFO') {
             return false
         }
     }
