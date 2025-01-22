@@ -161,7 +161,7 @@ export default function buildLog(
         let message =
             shouldUseColors === false
                 ? `(${level})${prefix}`
-                : chalkMethod(...chalkArgs)
+                : chalkMethod?.(...chalkArgs)
 
         if (env.SHOULD_LOG_TIME_DELTAS !== 'false') {
             const now = Date.now()
