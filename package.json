@@ -65,7 +65,7 @@
     "fs-extra": "^11.3.0",
     "inflection": "^3.0.2",
     "lodash": "^4.17.21",
-    "uuid": "^11.0.5"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^6.0.547",
