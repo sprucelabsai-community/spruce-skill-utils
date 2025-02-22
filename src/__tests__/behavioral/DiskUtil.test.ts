@@ -1,5 +1,8 @@
-import AbstractSpruceTest from '@sprucelabs/test'
-import { assert, generateId, test } from '@sprucelabs/test-utils'
+import AbstractSpruceTest, {
+    assert,
+    generateId,
+    test,
+} from '@sprucelabs/test-utils'
 import diskUtil from '../../utilities/disk.utility'
 
 export default class DiskUtilTest extends AbstractSpruceTest {
@@ -21,6 +24,7 @@ export default class DiskUtilTest extends AbstractSpruceTest {
     @test('resolves to file that exists', ['test.ts'])
     @test('resolves to file that exists 2', ['pathitem', 'test.ts'])
     protected static findsFileThatExists(fileItems: string[]) {
+        debugger
         const destinationDir = diskUtil.createRandomTempDir()
         const filepath = this.resolvePath(destinationDir, ...fileItems)
 
