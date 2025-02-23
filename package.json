@@ -58,7 +58,7 @@
     "lint.tsc": "tsc -p . --noEmit"
   },
   "dependencies": {
-    "@sprucelabs/globby": "^2.0.501",
+    "@sprucelabs/globby": "^2.0.502",
     "@sprucelabs/schema": "^31.0.53",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.7",
