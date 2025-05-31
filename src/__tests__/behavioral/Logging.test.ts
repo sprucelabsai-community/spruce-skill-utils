@@ -67,6 +67,17 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
+    protected static testingBetterObjectLogging() {
+        const log = buildLog(undefined, {
+            useColors: false,
+        })
+        debugger
+        const message = log.info('hello', { name: 'world' })
+        debugger
+        this.log(`Message: ${message}`)
+    }
+
+    @test()
     protected static logsbuildLogs() {
         let m: any
 

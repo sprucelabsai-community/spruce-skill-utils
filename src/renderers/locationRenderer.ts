@@ -1,7 +1,7 @@
 import { AddressFieldValue } from '@sprucelabs/schema'
 
 const locationRenderer = {
-    renderAddress(address?: AddressFieldValue) {
+    renderAddress(address?: AddressFieldValue | null) {
         return `${
             address
                 ? `${address.street1 ?? ''} ${address.street2 ?? ''} ${
