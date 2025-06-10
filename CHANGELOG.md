@@ -1,3 +1,10 @@
+# [32.0.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.2.114...v32.0.0) (2025-06-10)
+
+
+### Breaking Changes
+
+* jest update ([471530b](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/471530b))
+
 ## [31.2.114](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.2.113...v31.2.114) (2025-06-06)
 
 ## [31.2.113](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v31.2.112...v31.2.113) (2025-06-05)
