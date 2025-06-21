@@ -31,7 +31,7 @@
     "url": "https://github.com/sprucelabsai/spruce-skill-utils/issues"
   },
   "scripts": {
-    "build": "yarn build.dev",
+    "build": "yarn run build.tsc --sourceMap ; yarn run resolve-paths",
     "build.ci": "yarn run build.tsc && yarn run build.resolve-paths && yarn run lint",
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
     "build.dev": "yarn run build.tsc --sourceMap ; yarn run resolve-paths.lint",
@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.505",
-    "@sprucelabs/schema": "^32.0.16",
+    "@sprucelabs/schema": "^32.0.18",
     "chalk": "^4.1.2",
     "dotenv": "^16.5.0",
     "fs-extra": "^11.3.0",
@@ -68,13 +68,13 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^7.0.6",
-    "@sprucelabs/jest-json-reporter": "^9.0.11",
+    "@sprucelabs/esm-postbuild": "^7.0.7",
+    "@sprucelabs/jest-json-reporter": "^9.0.12",
     "@sprucelabs/jest-sheets-reporter": "^4.0.6",
-    "@sprucelabs/resolve-path-aliases": "^3.0.6",
+    "@sprucelabs/resolve-path-aliases": "^3.0.7",
     "@sprucelabs/semantic-release": "^5.0.2",
     "@sprucelabs/test": "^10.0.5",
-    "@sprucelabs/test-utils": "^6.0.16",
+    "@sprucelabs/test-utils": "^6.0.17",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^2.0.0",
     "@types/lodash": "^4.17.18",
