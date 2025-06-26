@@ -60,7 +60,7 @@
     "@sprucelabs/globby": "^2.0.505",
     "@sprucelabs/schema": "^32.0.23",
     "chalk": "^4.1.2",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.0",
     "fs-extra": "^11.3.0",
     "inflection": "^3.0.2",
     "lodash": "^4.17.21",
