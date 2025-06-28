@@ -58,7 +58,7 @@
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.505",
-    "@sprucelabs/schema": "^32.0.27",
+    "@sprucelabs/schema": "^32.0.28",
     "chalk": "^4.1.2",
     "dotenv": "^17.0.0",
     "fs-extra": "^11.3.0",
@@ -73,7 +73,7 @@
     "@sprucelabs/resolve-path-aliases": "^3.0.10",
     "@sprucelabs/semantic-release": "^5.0.2",
     "@sprucelabs/test": "^10.0.8",
-    "@sprucelabs/test-utils": "^6.0.26",
+    "@sprucelabs/test-utils": "^6.0.27",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^2.0.0",
     "@types/lodash": "^4.17.19",
