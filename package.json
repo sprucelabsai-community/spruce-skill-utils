@@ -73,7 +73,7 @@
     "@sprucelabs/resolve-path-aliases": "^3.0.16",
     "@sprucelabs/semantic-release": "^5.0.2",
     "@sprucelabs/test": "^10.0.13",
-    "@sprucelabs/test-utils": "^6.0.47",
+    "@sprucelabs/test-utils": "^6.0.48",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^2.0.0",
     "@types/lodash": "^4.17.20",
