@@ -61,7 +61,7 @@
     "@sprucelabs/schema": "^32.1.5",
     "chalk": "^4.1.2",
     "dotenv": "^17.2.1",
-    "fs-extra": "^11.3.0",
+    "fs-extra": "^11.3.1",
     "inflection": "^3.0.2",
     "lodash": "^4.17.21",
     "uuid": "^11.1.0"
