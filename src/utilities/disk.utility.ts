@@ -10,6 +10,10 @@ import {
     HASH_SPRUCE_DIR_NAME,
 } from '../constants'
 
+function existsSync(path: string): boolean {
+    return !!fsUtil.statSync(path, { throwIfNoEntry: false })
+}
+
 export interface CreateFile {
     /** The relative path from the cwd, without a leading forward slash */
     relativePath: string
@@ -27,14 +31,14 @@ const diskUtil = {
     },
 
     readFile(source: string) {
-        if (!fsUtil.existsSync(source)) {
+        if (!existsSync(source)) {
             throw new Error(`No file to read at ${source}`)
         }
         return fsUtil.readFileSync(source).toString()
     },
 
     deleteFile(destination: string) {
-        if (fsUtil.existsSync(destination)) {
+        if (existsSync(destination)) {
             fsUtil.removeSync(destination)
         }
     },
@@ -70,14 +74,14 @@ const diskUtil = {
 
     deleteDir(target: string) {
         const resolved = this.resolvePath(target)
-        if (fsUtil.existsSync(resolved)) {
+        if (existsSync(resolved)) {
             fsUtil.removeSync(resolved)
         }
     },
 
     doesFileExist(target: string) {
         const resolved = this.resolvePath(target)
-        return fsUtil.existsSync(resolved)
+        return existsSync(resolved)
     },
 
     isDir(target: string) {
@@ -109,7 +113,7 @@ const diskUtil = {
 
     doesDirExist(target: string) {
         const resolved = this.resolvePath(target)
-        return fsUtil.existsSync(resolved)
+        return existsSync(resolved)
     },
 
     resolveHashSprucePath(cwd: string, ...filePath: string[]): string {
