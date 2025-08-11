@@ -24,7 +24,7 @@ function getProcess() {
     return null
 }
 
-type Anything = string | number | boolean | null | undefined | Error
+type Anything = string | number | boolean | null | undefined | Error | unknown
 
 export type LoggableType = Anything | Anything[] | Record<string, Anything>
 
