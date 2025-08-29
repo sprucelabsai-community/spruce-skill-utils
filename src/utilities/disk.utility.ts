@@ -22,7 +22,7 @@ export interface CreateFile {
 }
 
 const diskUtil = {
-    writeFile(destination: string, contents: string) {
+    writeFile(destination: string, contents: string | NodeJS.ArrayBufferView) {
         fsUtil.outputFileSync(destination, contents)
     },
 
