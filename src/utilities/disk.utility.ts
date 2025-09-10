@@ -3,7 +3,6 @@ import os from 'os'
 import pathUtil from 'path'
 import { SchemaError } from '@sprucelabs/schema'
 import fsUtil from 'fs-extra'
-import * as uuid from 'uuid'
 import {
     HASH_SPRUCE_BUILD_DIR,
     HASH_SPRUCE_DIR,
@@ -263,7 +262,7 @@ const diskUtil = {
     },
 
     createRandomTempDir() {
-        return this.createTempDir(uuid.v4())
+        return this.createTempDir(uuid())
     },
 
     hasFileChanged(...filePath: string[]): boolean {
@@ -365,3 +364,14 @@ const diskUtil = {
     },
 }
 export default diskUtil
+
+function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+        /[xy]/g,
+        function (c) {
+            let r = (Math.random() * 16) | 0,
+                v = c == 'x' ? r : (r & 0x3) | 0x8
+            return v.toString(16)
+        }
+    )
+}

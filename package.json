@@ -63,8 +63,7 @@
     "dotenv": "^17.2.2",
     "fs-extra": "^11.3.1",
     "inflection": "^3.0.2",
-    "lodash": "^4.17.21",
-    "uuid": "^11.1.0"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^7.0.29",
@@ -78,7 +77,6 @@
     "@types/inflection": "^2.0.0",
     "@types/lodash": "^4.17.20",
     "@types/node": "^24.3.1",
-    "@types/uuid": "^10.0.0",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.35.0",
     "eslint-config-spruce": "^11.2.26",
