@@ -1,5 +1,330 @@
 import chalk, { Chalk } from 'chalk'
 
+class Logger implements Log {
+    public readonly prefix: string | undefined
+
+    private readonly baseLog?: (...args: any[]) => void
+    private readonly useColorsOption?: boolean
+    private readonly transports: TransportMap
+    private readonly colors: { info: Color; error: Color }
+    private readonly pre: string | undefined
+    private readonly shouldUseColors: boolean
+
+    public constructor(
+        prefix: string | undefined = undefined,
+        options?: LogOptions
+    ) {
+        const { colors = {}, log, useColors, transportsByLevel } = options ?? {}
+        const { info = 'yellow', error = 'red' } = colors
+
+        this.prefix = prefix
+        this.baseLog = log
+        this.useColorsOption = useColors
+        this.transports = {
+            ERROR: transportsByLevel?.ERROR,
+            INFO: transportsByLevel?.INFO,
+            WARN: transportsByLevel?.WARN,
+        }
+        this.colors = { info, error }
+        this.pre = prefix ? `${prefix} ::` : undefined
+        const isInteractive = getProcess()?.stdout?.isTTY ?? false
+        this.shouldUseColors = useColors !== false && isInteractive
+    }
+
+    public info(...args: LoggableType[]): string {
+        return this.write(
+            this.resolveChalk('green', this.colors.info),
+            args,
+            'INFO'
+        )
+    }
+
+    public warn(...args: LoggableType[]): string {
+        return this.write(
+            this.resolveChalk('yellow', this.colors.info),
+            args,
+            'WARN'
+        )
+    }
+
+    public error(...args: LoggableType[]): string {
+        return this.write(
+            this.resolveChalk('red', this.colors.error),
+            args,
+            'ERROR'
+        )
+    }
+
+    public buildLog(
+        prefix: string | undefined = undefined,
+        options?: LogOptions
+    ): Log {
+        const childPrefix = this.combinePrefixes(prefix)
+
+        return new Logger(childPrefix, {
+            log: this.baseLog,
+            useColors: this.useColorsOption,
+            transportsByLevel: this.transports,
+            ...options,
+        })
+    }
+
+    private write(
+        chalkMethod: Chalk | undefined,
+        rawArgs: LoggableType[],
+        level: Level
+    ): string {
+        if (!this.shouldWrite(level)) {
+            return ''
+        }
+
+        const args = this.formatArgs(rawArgs)
+        const { prefix, chalkArgs } = this.buildPrefixes(args)
+
+        if (this.dispatchToTransports(level, prefix, args)) {
+            return prefix
+        }
+
+        const transport = this.resolveTransport(
+            level,
+            this.resolveConsoleMethod(level)
+        )
+        const message = this.buildMessage(chalkMethod, chalkArgs, level, prefix)
+
+        this.emit(transport, message, args)
+
+        return message
+    }
+
+    private resolveChalk(base: Color, modifier: Color): Chalk | undefined {
+        const baseMethod = (chalk as any)?.[base] as Chalk | undefined
+        if (!baseMethod) {
+            return undefined
+        }
+        const styled = (baseMethod as any)?.[modifier]
+        return (styled as Chalk | undefined) ?? baseMethod
+    }
+
+    private combinePrefixes(next: string | undefined): string | undefined {
+        if (next === undefined) {
+            return this.prefix
+        }
+
+        if (!this.pre) {
+            return next
+        }
+
+        return `${this.pre} ${next}`
+    }
+
+    private formatArgs(rawArgs: LoggableType[]): string[] {
+        return rawArgs.map((arg) => this.formatArg(arg))
+    }
+
+    private buildPrefixes(args: string[]): {
+        prefix: string
+        chalkArgs: string[]
+    } {
+        if (!this.pre) {
+            return {
+                prefix: '',
+                chalkArgs: [...args],
+            }
+        }
+
+        const reducedPrefix = this.reducePrefix(this.pre)
+        const prefixValue = reducedPrefix.length > 0 ? ` ${reducedPrefix}` : ''
+        const chalkArgs =
+            reducedPrefix.length > 0 ? [reducedPrefix, ...args] : [...args]
+        return {
+            prefix: prefixValue,
+            chalkArgs,
+        }
+    }
+
+    private reducePrefix(prefix: string): string {
+        const length = getMaxLogPrefixesLength()
+        if (typeof length === 'number' && !Number.isNaN(length)) {
+            if (length <= 0) {
+                return ''
+            }
+            const parts = prefix.split(' :: ')
+            return parts.slice(-length).join(' :: ')
+        }
+        return prefix
+    }
+
+    private dispatchToTransports(
+        level: Level,
+        prefix: string,
+        args: string[]
+    ): boolean {
+        const transports = this.getTransports(level)
+        if (transports.length === 0) {
+            return false
+        }
+
+        const payload = [prefix.trim(), ...args].filter(
+            (part): part is string => part.length > 0
+        )
+
+        for (const transport of transports) {
+            transport(...payload)
+        }
+
+        return true
+    }
+
+    private buildMessage(
+        chalkMethod: Chalk | undefined,
+        chalkArgs: string[],
+        level: Level,
+        prefix: string
+    ): string {
+        const baseMessage =
+            this.shouldUseColors && chalkMethod
+                ? chalkMethod(...chalkArgs)
+                : this.buildPlainMessage(level, prefix)
+
+        const withDelta = this.shouldLogTimeDeltas
+            ? this.decorateWithTimeDelta(baseMessage)
+            : baseMessage
+
+        return this.shouldLogTime
+            ? this.decorateWithTimestamp(withDelta)
+            : withDelta
+    }
+
+    private buildPlainMessage(level: Level, prefix: string): string {
+        return `(${level})${prefix}`
+    }
+
+    private decorateWithTimeDelta(message: string): string {
+        const now = Date.now()
+        const diff = now - lastLogTimeMs
+        lastLogTimeMs = now
+        return `(${diff}ms) ${message}`
+    }
+
+    private decorateWithTimestamp(message: string): string {
+        return `(${new Date().toISOString()}) ${message}`
+    }
+
+    private emit(
+        transport: LogTransport,
+        message: string,
+        args: string[]
+    ): void {
+        if (this.shouldUseColors === false) {
+            transport(message, ...args)
+            return
+        }
+        transport(message)
+    }
+
+    private getTransports(level: Level): LogTransport[] {
+        const transport = this.transports[level]
+        if (!transport) {
+            return []
+        }
+        return Array.isArray(transport) ? transport : [transport]
+    }
+
+    private resolveConsoleMethod(level: Level): 'log' | 'warn' | 'error' {
+        switch (level) {
+            case 'ERROR':
+                return 'error'
+            case 'WARN':
+                return 'warn'
+            default:
+                return 'log'
+        }
+    }
+
+    private resolveTransport(
+        level: Level,
+        logMethod: 'log' | 'warn' | 'error'
+    ): LogTransport {
+        if (this.baseLog) {
+            const logFn = this.baseLog
+            return (...parts: string[]) => {
+                logFn(...parts)
+            }
+        }
+
+        if (level === 'ERROR' && getProcess()?.stderr?.write) {
+            return (...parts: string[]) => {
+                getProcess()?.stderr?.write?.(parts.join(' ') + '\n')
+            }
+        }
+
+        const consoleMethod = (console[logMethod] ?? console.log).bind(console)
+        return (...parts: string[]) => {
+            consoleMethod(...parts)
+        }
+    }
+
+    private get env(): NodeJS.ProcessEnv {
+        return getProcess()?.env ?? {}
+    }
+
+    private get logLevel(): string | undefined {
+        return this.env.LOG_LEVEL ?? undefined
+    }
+
+    private get shouldWrite(): (level: Level) => boolean {
+        const levelSetting = this.logLevel
+        return (level: Level) => shouldWrite(levelSetting, level)
+    }
+
+    private get shouldLogTimeDeltas(): boolean {
+        return this.env.SHOULD_LOG_TIME_DELTAS !== 'false'
+    }
+
+    private get shouldLogTime(): boolean {
+        return this.env.SHOULD_LOG_TIME !== 'false'
+    }
+
+    private formatArg(value: LoggableType): string {
+        const formatter = (value as any)?.toString
+        if (typeof formatter === 'function') {
+            return formatter.call(value)
+        }
+        return 'undefined'
+    }
+}
+
+export default function buildLog(
+    prefix: string | undefined = undefined,
+    options?: LogOptions
+): Log {
+    return new Logger(prefix, options)
+}
+
+export const testLog = buildLog('TEST', {
+    log: (...parts: any[]) => {
+        getProcess()?.stderr?.write?.(parts.join(' ') + '\n')
+    },
+})
+
+export const stubLog = buildLog('STUB', {
+    log: () => {},
+    useColors: false,
+})
+
+function shouldWrite(logLevel: string | undefined, level: Level): boolean {
+    switch (logLevel?.toLowerCase()) {
+        case 'none':
+            return false
+        case 'error':
+            return level === 'ERROR'
+        case 'warn':
+            return level !== 'INFO'
+        default:
+            return true
+    }
+}
+
 export interface LogOptions {
     log?: (...args: any[]) => void
     useColors?: boolean
@@ -44,168 +369,4 @@ const getMaxLogPrefixesLength = () => {
     return typeof getProcess()?.env?.MAXIMUM_LOG_PREFIXES_LENGTH === 'string'
         ? +(getProcess()?.env?.MAXIMUM_LOG_PREFIXES_LENGTH as string)
         : undefined
-}
-
-export default function buildLog(
-    prefix: string | undefined = undefined,
-    options?: LogOptions
-) {
-    const { colors = {}, log, useColors } = options ?? {}
-    const { info = 'yellow', error = 'red' } = colors
-
-    const isInteractive = getProcess()?.stdout?.isTTY ?? false
-    const shouldUseColors = useColors !== false && isInteractive
-
-    const pre = prefix ? `${prefix} ::` : undefined
-
-    const transports: TransportMap = {
-        ERROR: options?.transportsByLevel?.ERROR,
-        INFO: options?.transportsByLevel?.INFO,
-        WARN: options?.transportsByLevel?.WARN,
-    }
-
-    const logUtil: Log = {
-        prefix,
-        info(...args: LoggableType[]) {
-            //@ts-ignore
-            return write(chalk?.green?.[info], args, 'INFO')
-        },
-
-        warn(...args: LoggableType[]) {
-            //@ts-ignore
-            return write(chalk?.yellow?.[info], args, 'WARN')
-        },
-
-        error(...args: LoggableType[]) {
-            //@ts-ignore
-            return write(chalk?.red?.[error], args, 'ERROR')
-        },
-
-        buildLog(prefix: string | undefined = undefined, options?: LogOptions) {
-            return buildLog(`${pre ? `${pre} ` : ''}${prefix}`, {
-                log,
-                useColors,
-                transportsByLevel: transports,
-                ...options,
-            })
-        },
-    }
-
-    return logUtil
-
-    function getTransports(level: Level): LogTransport[] {
-        const t = transports[level]
-        if (!t) {
-            return []
-        }
-        if (!Array.isArray(t)) {
-            return [t] as LogTransport[]
-        }
-
-        return t as LogTransport[]
-    }
-
-    function write(chalkMethod: Chalk, rawArgs: any[], level: Level): string {
-        if (!shouldWrite(getProcess()?.env?.LOG_LEVEL ?? undefined, level)) {
-            return ''
-        }
-        const args = rawArgs.map((a) => a?.toString?.() ?? 'undefined')
-        let chalkArgs = [...args]
-        let builtPrefix = pre
-
-        if (pre) {
-            const length = getMaxLogPrefixesLength()
-            if (typeof length === 'number' && !isNaN(length)) {
-                const parts = pre.split(' :: ')
-                builtPrefix = parts
-                    .splice(parts.length - length, length)
-                    .join(' :: ')
-            }
-            chalkArgs = [builtPrefix, ...chalkArgs]
-        }
-        const prefix = builtPrefix ? ` ${builtPrefix}` : ''
-
-        let transports = getTransports(level)
-        if (transports.length > 0) {
-            for (const transport of transports) {
-                transport(
-                    ...[prefix.trim(), ...args].filter((t) => t && t.length > 0)
-                )
-            }
-            return prefix
-        }
-
-        const env = getProcess()?.env ?? {}
-        let logMethod: 'log' | 'warn' | 'error' = 'log'
-
-        switch (level) {
-            case 'ERROR':
-                logMethod = 'error'
-                break
-            case 'WARN':
-                logMethod = 'warn'
-                break
-            default:
-                logMethod = 'log'
-                break
-        }
-
-        const transport =
-            log ??
-            (level === 'ERROR' && getProcess()?.stderr?.write
-                ? (...args: []) => {
-                      getProcess()?.stderr.write(args.join(' ') + '\n')
-                  }
-                : (console[logMethod] ?? console.log).bind(console))
-
-        let message =
-            shouldUseColors === false
-                ? `(${level})${prefix}`
-                : chalkMethod?.(...chalkArgs)
-
-        if (env.SHOULD_LOG_TIME_DELTAS !== 'false') {
-            const now = Date.now()
-            const diff = now - lastLogTimeMs
-            lastLogTimeMs = now
-            message = `(${diff}ms) ${message}`
-        }
-
-        if (env.SHOULD_LOG_TIME !== 'false') {
-            message = `(${new Date().toISOString()}) ${message}`
-        }
-
-        if (shouldUseColors === false) {
-            transport(message, ...args)
-        } else {
-            transport(message)
-        }
-
-        return message
-    }
-}
-
-export const testLog = buildLog('TEST', {
-    log: (...parts: any[]) => {
-        getProcess()?.stderr?.write?.(parts.join(' ') + '\n')
-    },
-})
-
-export const stubLog = buildLog('STUB', {
-    log: () => {},
-    useColors: false,
-})
-
-function shouldWrite(maxLogLevel: string | undefined, level: Level): boolean {
-    if (maxLogLevel) {
-        if (getProcess()?.env?.LOG_LEVEL == 'none') {
-            return false
-        }
-        if (getProcess()?.env?.LOG_LEVEL == 'error' && level !== 'ERROR') {
-            return false
-        }
-        if (getProcess()?.env?.LOG_LEVEL == 'warn' && level === 'INFO') {
-            return false
-        }
-    }
-    return true
 }
