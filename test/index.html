@@ -4,19 +4,196 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Spruce Skill Utils Browser Log Test</title>
+        <title>Spruce Skill Utils Browser Log Showcase</title>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                margin: 2rem;
+                line-height: 1.6;
+            }
+            code {
+                background: #f4f4f4;
+                padding: 0.2rem 0.4rem;
+                border-radius: 4px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Spruce Skill Utils Browser Log Test</h1>
-        <p>Open your browser console to see the logger output.</p>
+        <h1>Spruce Skill Utils Browser Log Showcase</h1>
+        <p>
+            This page runs a series of log scenarios so you can observe how arguments render
+            in the browser console. Open DevTools and watch the grouped logs as they stream in.
+        </p>
 
         <script type="module">
             import buildLog from './assets/buildLog.js'
 
-            const log = buildLog('BROWSER', { useColors: false })
-            log.info('hello world')
-			log.info("this is an info message", { some: "additional", data: 123 });
-			log.error('this is an error message', new Error('Something went wrong'))
+            const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+            if (!globalThis.process) {
+                globalThis.process = {
+                    env: {},
+                    stdout: { isTTY: true },
+                    stderr: {
+                        write: (...parts) => console.warn('[stderr]', parts.join(' ')),
+                    },
+                }
+            }
+
+            const defaultLog = buildLog('BROWSER')
+            const plainLog = buildLog(undefined, { useColors: false })
+            const childLog = defaultLog.buildLog('CHILD')
+            const grandChildLog = childLog.buildLog('GRANDCHILD')
+
+            class CustomError extends Error {
+                constructor(message, metadata) {
+                    super(message)
+                    this.name = 'CustomError'
+                    this.metadata = metadata
+                }
+            }
+
+            const customToStringObject = {
+                value: 42,
+                toString() {
+                    return `[custom toString -> value=${this.value}]`
+                },
+            }
+
+            const scenarios = [
+                {
+                    label: 'Info with single scalar',
+                    run: () => plainLog.info('hello world'),
+                },
+                {
+                    label: 'Info with multiple scalars',
+                    run: () => plainLog.info('multiple scalars', 42, true, 3.14),
+                },
+                {
+                    label: 'Info with plain object',
+                    run: () =>
+                        defaultLog.info('object payload', {
+                            id: 'widget-123',
+                            name: 'Spruce Skill Utils',
+                            enabled: true,
+                        }),
+                },
+                {
+                    label: 'Info with nested object & array',
+                    run: () =>
+                        defaultLog.info('nested payload', {
+                            user: {
+                                id: 'user-1',
+                                profile: {
+                                    name: 'Avery Spruce',
+                                    roles: ['admin', 'builder'],
+                                },
+                            },
+                            locations: [
+                                { id: 'loc-1', name: 'HQ' },
+                                { id: 'loc-2', name: 'Remote' },
+                            ],
+                        }),
+                },
+                {
+                    label: 'Info with arrays and primitives',
+                    run: () =>
+                        defaultLog.info('array payload', [1, 2, 3, { nested: ['a', 'b', 'c'] }]),
+                },
+                {
+                    label: 'Info with Date & Map/Set',
+                    run: () =>
+                        defaultLog.info(
+                            'date/map/set',
+                            new Date(),
+                            new Map([
+                                ['alpha', 1],
+                                ['beta', 2],
+                            ]),
+                            new Set(['red', 'green', 'blue'])
+                        ),
+                },
+                {
+                    label: 'Info with custom toString object',
+                    run: () => defaultLog.info('custom toString', customToStringObject),
+                },
+                {
+                    label: 'Info with undefined and null',
+                    run: () => defaultLog.info('undefined/null', undefined, null, 'fin'),
+                },
+                {
+                    label: 'Warn with mixed values',
+                    run: () => childLog.warn('warn example', { warning: true }, 99, false),
+                },
+                {
+                    label: 'Error with Error instance',
+                    run: () => defaultLog.error('caught error', new Error('Something went boom')), 
+                },
+                {
+                    label: 'Error with CustomError subclass',
+                    run: () =>
+                        defaultLog.error(
+                            'custom error',
+                            new CustomError('Custom failure', { code: 'E_CUSTOM', retry: false })
+                        ),
+                },
+                {
+                    label: 'Hierarchy prefixes',
+                    run: () => grandChildLog.info('deep info', { depth: 3 }),
+                },
+                {
+                    label: 'Error with multiple arguments',
+                    run: () =>
+                        defaultLog.error(
+                            'multi-arg error',
+                            new Error('Primary error'),
+                            { context: 'additional data' },
+                            ['list', 'of', 'things']
+                        ),
+                },
+                {
+                    label: 'Info with Promise resolution payload',
+                    run: async () => {
+                        const payload = await Promise.resolve({ async: true, resolvedAt: new Date() })
+                        defaultLog.info('async payload', payload)
+                    },
+                },
+                {
+                    label: 'Error from rejected promise',
+                    run: async () => {
+                        try {
+                            await Promise.reject(new Error('Rejected promise'))
+                        } catch (err) {
+                            defaultLog.error('async error', err)
+                        }
+                    },
+                },
+            ]
+
+            const runScenarios = async () => {
+                console.clear()
+                console.group('Spruce Skill Utils Browser Scenarios')
+                console.info(
+                    'Starting showcase... each scenario waits briefly before running so you can inspect output.'
+                )
+
+                for (const scenario of scenarios) {
+                    console.group(`Scenario: ${scenario.label}`)
+                    try {
+                        await scenario.run()
+                        console.info('✔️ Logged')
+                    } catch (error) {
+                        console.error('Scenario error:', error)
+                    }
+                    console.groupEnd()
+                    await sleep(600)
+                }
+
+                console.groupEnd()
+                console.info('All scenarios complete!')
+            }
+
+            runScenarios()
         </script>
     </body>
 </html>
