@@ -26,3 +26,5 @@ esm/
 process.yml
 
 **/.spruce/*cache.json
+
+test/assets/
