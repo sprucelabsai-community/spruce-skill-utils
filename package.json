@@ -54,7 +54,8 @@
     "watch.tsc": "tsc -w",
     "post.watch.build": "yarn run build.copy-files && yarn run build.resolve-paths",
     "watch.build.dev": "tsc-watch --sourceMap --onCompilationComplete 'yarn run post.watch.build'",
-    "lint.tsc": "tsc -p . --noEmit"
+    "lint.tsc": "tsc -p . --noEmit",
+    "test.browser": "support/test-browser.sh"
   },
   "dependencies": {
     "@sprucelabs/globby": "^2.0.506",

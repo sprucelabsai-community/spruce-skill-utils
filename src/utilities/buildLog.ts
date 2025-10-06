@@ -78,10 +78,10 @@ class Logger implements Log {
             return ''
         }
 
-        const args = this.formatArgs(rawArgs)
-        const { prefix, chalkArgs } = this.buildPrefixes(args)
+        const formattedArgs = this.formatArgs(rawArgs)
+        const { prefix, chalkArgs } = this.buildPrefixes(formattedArgs)
 
-        if (this.dispatchToTransports(level, prefix, args)) {
+        if (this.dispatchToTransports(level, prefix, formattedArgs)) {
             return prefix
         }
 
@@ -91,7 +91,7 @@ class Logger implements Log {
         )
         const message = this.buildMessage(chalkMethod, chalkArgs, level, prefix)
 
-        this.emit(transport, message, args)
+        this.emit(transport, message, formattedArgs, rawArgs)
 
         return message
     }
@@ -211,15 +211,22 @@ class Logger implements Log {
     }
 
     private emit(
-        transport: LogTransport,
+        transport: TransportDescriptor,
         message: string,
-        args: string[]
+        formattedArgs: string[],
+        rawArgs: LoggableType[]
     ): void {
-        if (this.shouldUseColors === false) {
-            transport(message, ...args)
+        if (transport.isConsole) {
+            transport.fn(message, ...rawArgs)
             return
         }
-        transport(message)
+
+        if (this.shouldUseColors === false) {
+            transport.fn(message, ...formattedArgs)
+            return
+        }
+
+        transport.fn(message)
     }
 
     private getTransports(level: Level): LogTransport[] {
@@ -244,23 +251,35 @@ class Logger implements Log {
     private resolveTransport(
         level: Level,
         logMethod: 'log' | 'warn' | 'error'
-    ): LogTransport {
+    ): TransportDescriptor {
         if (this.baseLog) {
             const logFn = this.baseLog
-            return (...parts: string[]) => {
-                logFn(...parts)
+            return {
+                fn: (...parts: LoggableType[]) => {
+                    logFn(...parts)
+                },
+                isConsole: false,
             }
         }
 
         if (level === 'ERROR' && getProcess()?.stderr?.write) {
-            return (...parts: string[]) => {
-                getProcess()?.stderr?.write?.(parts.join(' ') + '\n')
+            return {
+                fn: (...parts: LoggableType[]) => {
+                    const stringParts = parts.map((part) =>
+                        typeof part === 'string' ? part : this.formatArg(part)
+                    )
+                    getProcess()?.stderr?.write?.(stringParts.join(' ') + '\n')
+                },
+                isConsole: false,
             }
         }
 
         const consoleMethod = (console[logMethod] ?? console.log).bind(console)
-        return (...parts: string[]) => {
-            consoleMethod(...parts)
+        return {
+            fn: (...parts: LoggableType[]) => {
+                consoleMethod(...parts)
+            },
+            isConsole: true,
         }
     }
 
@@ -336,11 +355,20 @@ export interface LogOptions {
 }
 
 export type Level = 'ERROR' | 'INFO' | 'WARN'
+type Anything = string | number | boolean | null | undefined | Error | unknown
+
+export type LoggableType = Anything | Anything[] | Record<string, Anything>
+
 export type LogTransport = (...messageParts: string[]) => void
 type TransportMap = Record<
     Level,
     LogTransport | LogTransport[] | null | undefined
 >
+
+interface TransportDescriptor {
+    fn: (...messageParts: LoggableType[]) => void
+    isConsole: boolean
+}
 
 function getProcess() {
     if (typeof process !== 'undefined') {
@@ -348,10 +376,6 @@ function getProcess() {
     }
     return null
 }
-
-type Anything = string | number | boolean | null | undefined | Error | unknown
-
-export type LoggableType = Anything | Anything[] | Record<string, Anything>
 
 export interface Log {
     readonly prefix: string | undefined

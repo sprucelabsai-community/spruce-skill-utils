@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Spruce Skill Utils Browser Log Test</title>
+    </head>
+    <body>
+        <h1>Spruce Skill Utils Browser Log Test</h1>
+        <p>Open your browser console to see the logger output.</p>
+
+        <script type="module">
+            import buildLog from './assets/buildLog.js'
+
+            const log = buildLog('BROWSER', { useColors: false })
+            log.info('hello world')
+			log.info("this is an info message", { some: "additional", data: 123 });
+			log.error('this is an error message', new Error('Something went wrong'))
+        </script>
+    </body>
+</html>
