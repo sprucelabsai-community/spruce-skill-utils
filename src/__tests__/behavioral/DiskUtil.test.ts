@@ -127,6 +127,21 @@ export default class DiskUtilTest extends AbstractSpruceTest {
         this.assertProjectLanguageEquals('ts')
     }
 
+    @test()
+    protected async resolvesToTsIfHasEverything() {
+        this.randomizeCwd()
+        this.writePackageJson()
+        this.writeTsConfig()
+        diskUtil.writeFile(this.resolvePath('go.mod'), '')
+        this.assertProjectLanguageEquals('ts')
+    }
+
+    @test()
+    protected async resolvesToUnknownIfNothingExists() {
+        this.randomizeCwd()
+        this.assertProjectLanguageEquals('unknown')
+    }
+
     private assertProjectLanguageEquals(expected: ProjectLanguage) {
         const lang = diskUtil.detectProjectLanguage(this.cwd)
         assert.isEqual(

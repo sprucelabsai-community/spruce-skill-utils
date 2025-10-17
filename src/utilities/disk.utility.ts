@@ -131,11 +131,6 @@ const diskUtil = {
     },
 
     detectProjectLanguage(cwd: string): ProjectLanguage {
-        const isInGoProject = this.doesDirExist(this.resolvePath(cwd, 'go.mod'))
-        if (isInGoProject) {
-            return 'go'
-        }
-
         const isInTypescript = this.doesFileExist(
             this.resolvePath(cwd, 'tsconfig.json')
         )
@@ -144,7 +139,20 @@ const diskUtil = {
             return 'ts'
         }
 
-        return 'js'
+        const isInGoProject = this.doesDirExist(this.resolvePath(cwd, 'go.mod'))
+        if (isInGoProject) {
+            return 'go'
+        }
+
+        const isInJsProject = this.doesFileExist(
+            this.resolvePath(cwd, 'package.json')
+        )
+
+        if (isInJsProject) {
+            return 'js'
+        }
+
+        return 'unknown'
     },
 
     doesHashSprucePathExist(cwd: string, ...filePath: string[]): boolean {
