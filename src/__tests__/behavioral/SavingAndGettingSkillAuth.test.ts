@@ -1,17 +1,18 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
 import { errorAssert } from '@sprucelabs/test-utils'
 import AuthService from '../../services/AuthService'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
-    protected static async beforeEach() {
+    protected async beforeEach() {
         await super.beforeEach()
         this.cwd = diskUtil.createRandomTempDir()
         AuthService.homeDir = this.resolvePath(diskUtil.createRandomTempDir())
     }
 
     @test()
-    protected static throwsWhenNotPassedCwd() {
+    protected throwsWhenNotPassedCwd() {
         //@ts-ignore
         const err = assert.doesThrow(() => AuthService.Auth())
 
@@ -21,7 +22,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static throwsWhenNoPackageJson() {
+    protected throwsWhenNoPackageJson() {
         //@ts-ignore
         const err = assert.doesThrow(() => AuthService.Auth(this.cwd))
 
@@ -31,14 +32,14 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static doesNotWhenSkillHasNoNamespaceDefined() {
+    protected doesNotWhenSkillHasNoNamespaceDefined() {
         const pkg = {}
         this.writePackageJson(pkg)
         AuthService.Auth(this.cwd)
     }
 
     @test()
-    protected static canGetAuth() {
+    protected canGetAuth() {
         this.writeValidPackageJson()
 
         const auth = AuthService.Auth(this.cwd)
@@ -46,19 +47,19 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async hasLoggedInPersonMethod() {
+    protected async hasLoggedInPersonMethod() {
         this.writeValidPackageJson()
         assert.isFunction(this.Auth().getLoggedInPerson)
     }
 
     @test()
-    protected static async loggedInPersonIsNullWhenNotLoggedIn() {
+    protected async loggedInPersonIsNullWhenNotLoggedIn() {
         this.writeValidPackageJson()
         assert.isNull(this.Auth().getLoggedInPerson())
     }
 
     @test()
-    protected static async cantSaveBadLoggedInPerson() {
+    protected async cantSaveBadLoggedInPerson() {
         this.writeValidPackageJson()
         const err = assert.doesThrow(() =>
             //@ts-ignore
@@ -69,7 +70,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canSaveLoggedInPerson() {
+    protected canSaveLoggedInPerson() {
         this.writeValidPackageJson()
         const person = {
             id: 'test',
@@ -86,7 +87,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canLogOut() {
+    protected canLogOut() {
         this.writeValidPackageJson()
         const person = {
             id: 'test',
@@ -103,7 +104,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async loggingOutTwiceDoesNotTHrough() {
+    protected async loggingOutTwiceDoesNotTHrough() {
         this.writeValidPackageJson()
         const auth = this.Auth()
 
@@ -112,13 +113,13 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static getCurrentSkillReturnsNull() {
+    protected getCurrentSkillReturnsNull() {
         this.writeValidPackageJson()
         assert.isNull(this.Auth().getCurrentSkill())
     }
 
     @test()
-    protected static canSetCurrentSkill() {
+    protected canSetCurrentSkill() {
         this.writeValidPackageJson()
         const skill = {
             id: '123467aaoeuaoeu',
@@ -134,7 +135,7 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
         assert.isEqualDeep(auth.getCurrentSkill(), skill)
     }
 
-    private static writeValidPackageJson() {
+    private writeValidPackageJson() {
         this.writePackageJson({
             skill: {
                 namespace: 'test',
@@ -142,10 +143,10 @@ export default class SavingAndGettingSkillAuthTest extends AbstractSpruceTest {
         })
     }
 
-    private static Auth() {
+    private Auth() {
         return AuthService.Auth(this.cwd)
     }
-    private static writePackageJson(pkg: Record<string, any> = {}) {
+    private writePackageJson(pkg: Record<string, any> = {}) {
         diskUtil.writeFile(
             this.resolvePath('package.json'),
             JSON.stringify(pkg)

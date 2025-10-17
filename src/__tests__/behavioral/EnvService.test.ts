@@ -1,19 +1,20 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
 import EnvService from '../../services/EnvService'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class EnvServiceTest extends AbstractSpruceTest {
-    protected static async beforeEach() {
+    protected async beforeEach() {
         await super.beforeEach()
         this.cwd = diskUtil.createRandomTempDir()
     }
 
-    protected static Service() {
+    protected Service() {
         return new EnvService(this.cwd)
     }
 
     @test()
-    protected static async envService() {
+    protected async envService() {
         const service = this.Service()
         assert.isTruthy(service)
     }
@@ -30,7 +31,7 @@ export default class EnvServiceTest extends AbstractSpruceTest {
         '5fdaccbd40a09d00459b0e71',
         'MY_KEY="5fdaccbd40a09d00459b0e71"'
     )
-    protected static async canGetAndSet(
+    protected async canGetAndSet(
         key: string,
         value: string | boolean | number,
         expected: string
@@ -45,14 +46,14 @@ export default class EnvServiceTest extends AbstractSpruceTest {
         assert.isEqual(process.env[key], `${value}`)
     }
 
-    private static assertEnvIsExpected(expected: string) {
+    private assertEnvIsExpected(expected: string) {
         const envPath = this.resolvePath('.env')
         const fileContents = diskUtil.readFile(envPath)
         assert.isEqual(fileContents, expected)
     }
 
     @test()
-    protected static async canSetTwoUniqueKeys() {
+    protected async canSetTwoUniqueKeys() {
         const service = this.Service()
         service.set('MY_KEY', 'MY_VALUE')
         service.set('OTHER_KEY', -1)
@@ -64,14 +65,14 @@ export default class EnvServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static gettingSomethingNeverSetReturnsUndefined() {
+    protected gettingSomethingNeverSetReturnsUndefined() {
         const service = this.Service()
         const value = service.get('NEVER_BEEN_SET')
         assert.isUndefined(value)
     }
 
     @test()
-    protected static async canSetTwoUniqueKeysAndChangeThem() {
+    protected async canSetTwoUniqueKeysAndChangeThem() {
         const service = this.Service()
         service.set('MY_KEY', 'MY_VALUE')
         service.set('OTHER_KEY', -1)
@@ -85,14 +86,14 @@ export default class EnvServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async getUnsetKeyReturnsUndefned() {
+    protected async getUnsetKeyReturnsUndefned() {
         const service = this.Service()
         const result = service.get('NOT_A_REAL_KEY')
         assert.isUndefined(result)
     }
 
     @test()
-    protected static async canSetAndRetrieveJsonEncodedStrings() {
+    protected async canSetAndRetrieveJsonEncodedStrings() {
         const service = this.Service()
 
         service.set(
@@ -109,7 +110,7 @@ export default class EnvServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async canSaveWithNewlines() {
+    protected async canSaveWithNewlines() {
         const service = this.Service()
         const expected = `hey
 
@@ -122,7 +123,7 @@ there!`
     }
 
     @test()
-    protected static async honorsNonEnvFileEnv() {
+    protected async honorsNonEnvFileEnv() {
         const service = this.Service()
         service.set('NEW_KEY', 'firstValue')
         const found = service.get('NEW_KEY')
@@ -134,7 +135,7 @@ there!`
     }
 
     @test()
-    protected static async processEnvRetainsTypes() {
+    protected async processEnvRetainsTypes() {
         const input = 'true'
         const expected = true
 
@@ -146,7 +147,7 @@ there!`
     }
 
     @test()
-    protected static canUnset() {
+    protected canUnset() {
         const service = this.Service()
         service.set('TEST', true)
         service.unset('TEST')

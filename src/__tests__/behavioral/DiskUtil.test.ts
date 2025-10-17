@@ -2,29 +2,31 @@ import AbstractSpruceTest, {
     assert,
     generateId,
     test,
+    suite,
 } from '@sprucelabs/test-utils'
 import { ProjectLanguage } from '../../types/skill.types'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class DiskUtilTest extends AbstractSpruceTest {
     @test()
-    protected static canCreateDiskUtil() {
+    protected canCreateDiskUtil() {
         assert.isTruthy(diskUtil)
     }
 
     @test()
-    protected static hasResolveFiles() {
+    protected hasResolveFiles() {
         assert.isFunction(diskUtil.resolveFile)
     }
 
     @test()
-    protected static resolvingToAFileThatDoesNotExistReturnsFalse() {
+    protected resolvingToAFileThatDoesNotExistReturnsFalse() {
         assert.isFalse(diskUtil.resolveFile('not', 'found') as boolean)
     }
 
     @test('resolves to file that exists', ['test.ts'])
     @test('resolves to file that exists 2', ['pathitem', 'test.ts'])
-    protected static findsFileThatExists(fileItems: string[]) {
+    protected findsFileThatExists(fileItems: string[]) {
         const destinationDir = diskUtil.createRandomTempDir()
         const filepath = this.resolvePath(destinationDir, ...fileItems)
 
@@ -36,7 +38,7 @@ export default class DiskUtilTest extends AbstractSpruceTest {
 
     @test('resolves to ts files', '.ts')
     @test('resolves to ts files', '.js')
-    protected static resolveFileExtensions(extension: string) {
+    protected resolveFileExtensions(extension: string) {
         const destinationDir = diskUtil.createRandomTempDir()
         const filepath = this.resolvePath(destinationDir, 'test' + extension)
 
@@ -48,7 +50,7 @@ export default class DiskUtilTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static resolvesToJsFilesFirst() {
+    protected resolvesToJsFilesFirst() {
         const destinationDir = diskUtil.createRandomTempDir()
         const tsFile = this.resolvePath(destinationDir, 'test.ts')
         const jsFile = this.resolvePath(destinationDir, 'test.js')
@@ -69,7 +71,7 @@ export default class DiskUtilTest extends AbstractSpruceTest {
         '/test/what/support/hey',
         './support/hey'
     )
-    protected static canResolveRelativePaths(
+    protected canResolveRelativePaths(
         path1: string,
         path2: string,
         expected: string
@@ -79,13 +81,13 @@ export default class DiskUtilTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static throwsWhenPassedBadPath() {
+    protected throwsWhenPassedBadPath() {
         this.randomizeCwd()
         assert.doesThrow(() => this.resolveFileInHashSpruce('test'))
     }
 
     @test()
-    protected static async canResolveFileInHashSpruceDir() {
+    protected async canResolveFileInHashSpruceDir() {
         this.assertResolvesFile(['build', '.spruce', 'test.ts'], 'test')
         this.assertResolvesFile(['src', '.spruce', 'test.js'], 'test')
         this.assertResolvesFile(
@@ -104,28 +106,28 @@ export default class DiskUtilTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async languageResolvesToTypescriptIfTsConfigExists() {
+    protected async languageResolvesToTypescriptIfTsConfigExists() {
         this.randomizeCwd()
         this.writeTsConfig()
         this.assertProjectLanguageEquals('ts')
     }
 
     @test()
-    protected static async languageResolvesToJavaScriptIfNoTsConfigButPackageJsonExists() {
+    protected async languageResolvesToJavaScriptIfNoTsConfigButPackageJsonExists() {
         this.randomizeCwd()
         this.writePackageJson()
         this.assertProjectLanguageEquals('js')
     }
 
     @test()
-    protected static async resolvesToTsIfBothTsConfigAndPackageJsonExist() {
+    protected async resolvesToTsIfBothTsConfigAndPackageJsonExist() {
         this.randomizeCwd()
         this.writePackageJson()
         this.writeTsConfig()
         this.assertProjectLanguageEquals('ts')
     }
 
-    private static assertProjectLanguageEquals(expected: ProjectLanguage) {
+    private assertProjectLanguageEquals(expected: ProjectLanguage) {
         const lang = diskUtil.detectProjectLanguage(this.cwd)
         assert.isEqual(
             lang,
@@ -134,28 +136,28 @@ export default class DiskUtilTest extends AbstractSpruceTest {
         )
     }
 
-    private static writePackageJson() {
+    private writePackageJson() {
         const packageJsonPath = this.resolvePath('package.json')
         diskUtil.writeFile(packageJsonPath, '{}')
     }
 
-    private static writeTsConfig() {
+    private writeTsConfig() {
         const tsConfigPath = this.resolvePath('tsconfig.json')
         diskUtil.writeFile(tsConfigPath, '{}')
     }
 
-    private static assertResolvesFile(filepath: string[], filename: string) {
+    private assertResolvesFile(filepath: string[], filename: string) {
         this.randomizeCwd()
         const file = this.resolvePath(...filepath)
         diskUtil.writeFile(file, generateId())
         this.resolveFileInHashSpruce(filename)
     }
 
-    private static randomizeCwd() {
+    private randomizeCwd() {
         this.cwd = diskUtil.createRandomTempDir()
     }
 
-    private static resolveFileInHashSpruce(file: string): any {
+    private resolveFileInHashSpruce(file: string): any {
         return diskUtil.resolveFileInHashSpruceDir(this.cwd, file)
     }
 }

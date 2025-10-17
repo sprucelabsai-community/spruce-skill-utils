@@ -1,7 +1,8 @@
 import { AddressFieldValue } from '@sprucelabs/schema'
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
 import locationRenderer from '../../renderers/locationRenderer'
 
+@suite()
 export default class RenderingLocationsTest extends AbstractSpruceTest {
     @test('Renders All Present Address Fields and Not Undefined 1', {
         city: 'Denver',
@@ -27,7 +28,7 @@ export default class RenderingLocationsTest extends AbstractSpruceTest {
         street2: undefined,
         zip: undefined,
     })
-    protected static async rendersAllPresentAddressFieldsAndNotUndefined(
+    protected async rendersAllPresentAddressFieldsAndNotUndefined(
         address: AddressFieldValue
     ) {
         const actual = locationRenderer.renderAddress(address)

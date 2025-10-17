@@ -1,11 +1,12 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
 import { errorAssert } from '@sprucelabs/test-utils'
 import fsUtil from 'fs-extra'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class CleaningEmptyDirsTest extends AbstractSpruceTest {
     @test()
-    protected static throwsWhenMissingDir() {
+    protected throwsWhenMissingDir() {
         //@ts-ignore
         const err = assert.doesThrow(() => diskUtil.deleteEmptyDirs())
 
@@ -15,7 +16,7 @@ export default class CleaningEmptyDirsTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static throwsWhenDirNotFound() {
+    protected throwsWhenDirNotFound() {
         const err = assert.doesThrow(() =>
             diskUtil.deleteEmptyDirs('/aoseuthaosenuthaosneuth')
         )
@@ -26,7 +27,7 @@ export default class CleaningEmptyDirsTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async cleansEmptyDirs() {
+    protected async cleansEmptyDirs() {
         this.cwd = diskUtil.createRandomTempDir()
 
         for (const name of ['one', 'two', 'three']) {

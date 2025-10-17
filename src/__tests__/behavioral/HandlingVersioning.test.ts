@@ -1,15 +1,16 @@
 import pathUtil from 'path'
-import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
+import AbstractSpruceTest, { assert, test, suite } from '@sprucelabs/test-utils'
 import versionUtil, { formatDate } from '../../utilities/version.utility'
 
+@suite()
 export default class HandlesVersioningTest extends AbstractSpruceTest {
     @test()
-    protected static hasResolvePathFunction() {
+    protected hasResolvePathFunction() {
         assert.isFunction(versionUtil.resolvePath)
     }
 
     @test()
-    protected static canResolveLatest() {
+    protected canResolveLatest() {
         const expected = this.resolveTestPath('services/v2020_01_10/index.md')
 
         const resolved = versionUtil.resolvePath(
@@ -21,7 +22,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canResolveLatestOnDifferentDirectory() {
+    protected canResolveLatestOnDifferentDirectory() {
         const expected = this.resolveTestPath('utilities/v2020_02_15/index.md')
 
         const resolved = versionUtil.resolvePath(
@@ -33,7 +34,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canGenerateLatestPath() {
+    protected canGenerateLatestPath() {
         const date = formatDate(new Date())
         const expected = this.resolveTestPath(`utilities/v${date}/index.md`)
 
@@ -46,7 +47,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canGetLatestVersionBasedOnDir() {
+    protected canGetLatestVersionBasedOnDir() {
         const resolved = versionUtil.latestVersionAtPath(
             this.resolveTestPath('utilities')
         )
@@ -59,12 +60,12 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static getAllVersionsReturnsEmptyArrayOnDirThatDoesNotExist() {
+    protected getAllVersionsReturnsEmptyArrayOnDirThatDoesNotExist() {
         assert.isEqualDeep(versionUtil.getAllVersions('/does-not-exist'), [])
     }
 
     @test()
-    protected static passingPatternThatFindsNothingReturnsEmptyArray() {
+    protected passingPatternThatFindsNothingReturnsEmptyArray() {
         const path = this.resolveTestPath('utilities', 'nothing', '**')
 
         const version = versionUtil.getAllVersions(path)
@@ -81,7 +82,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
         ['**', 'events', '**', '*'],
         ['2019_11_25', '2020_01_01', '2021_11_25']
     )
-    protected static versionsInSingleDir(
+    protected versionsInSingleDir(
         pattern: string[],
         expectedMatches: string[]
     ) {
@@ -102,7 +103,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
         assert.isEqualDeep(versions, allExpected)
     }
 
-    protected static resolveTestPath(...pathAfterTestDirsAndFiles: string[]) {
+    protected resolveTestPath(...pathAfterTestDirsAndFiles: string[]) {
         return pathUtil.join(
             __dirname,
             '..',

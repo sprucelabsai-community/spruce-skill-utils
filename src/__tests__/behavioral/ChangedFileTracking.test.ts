@@ -1,15 +1,16 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
 import { errorAssert } from '@sprucelabs/test-utils'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     @test()
-    protected static async hasHasFileChangedMethod() {
+    protected async hasHasFileChangedMethod() {
         assert.isFunction(diskUtil.hasFileChanged)
     }
 
     @test()
-    protected static async throwsWhenMissingFileParamForHasFileChanged() {
+    protected async throwsWhenMissingFileParamForHasFileChanged() {
         //@ts-ignore
         const err = assert.doesThrow(() => diskUtil.hasFileChanged())
 
@@ -19,7 +20,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async returnsTrueForNewFile() {
+    protected async returnsTrueForNewFile() {
         this.cwd = diskUtil.createRandomTempDir()
         const file = this.resolvePath('somefile')
 
@@ -30,7 +31,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async returnsTrueIfFileDoesntExist() {
+    protected async returnsTrueIfFileDoesntExist() {
         this.cwd = diskUtil.createRandomTempDir()
         const file = this.resolvePath('somefile')
 
@@ -40,7 +41,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async returnsFalseForUnchangedFile() {
+    protected async returnsFalseForUnchangedFile() {
         this.cwd = diskUtil.createRandomTempDir()
         const file = this.resolvePath('somefile')
         diskUtil.writeFile(file, 'panda')
@@ -52,7 +53,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async returnsTrueForChangedFile() {
+    protected async returnsTrueForChangedFile() {
         this.cwd = diskUtil.createRandomTempDir()
         const file = this.resolvePath('somefile')
         diskUtil.writeFile(file, 'panda')
@@ -68,7 +69,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async returnsFalseIfDifferentFileIsChanged() {
+    protected async returnsFalseIfDifferentFileIsChanged() {
         this.cwd = diskUtil.createRandomTempDir()
         const file1 = this.resolvePath('somefile')
 
@@ -89,7 +90,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async returnsTrueIfBothFilesAreChanged() {
+    protected async returnsTrueIfBothFilesAreChanged() {
         this.cwd = diskUtil.createRandomTempDir()
         const file1 = this.resolvePath('somefile')
 
@@ -113,7 +114,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async trackingFolderShouldHaveGitIgnore() {
+    protected async trackingFolderShouldHaveGitIgnore() {
         this.cwd = diskUtil.createRandomTempDir()
         const file = this.resolvePath('somefile')
         diskUtil.writeFile(file, 'panda')
@@ -132,7 +133,7 @@ export default class ChangedFileTrackingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async canUpdateTrackedHash() {
+    protected async canUpdateTrackedHash() {
         this.cwd = diskUtil.createRandomTempDir()
         const file = this.resolvePath('somefile')
         diskUtil.writeFile(file, 'panda')

@@ -1,15 +1,16 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
 import { errorAssert } from '@sprucelabs/test-utils'
 import pluginUtil from '../../utilities/plugin.utility'
 
+@suite()
 export default class ImportingPluginsTest extends AbstractSpruceTest {
     @test()
-    protected static hasImportSyncFunction() {
+    protected hasImportSyncFunction() {
         assert.isFunction(pluginUtil.importSync)
     }
 
     @test()
-    protected static importRequiresArrayToStart() {
+    protected importRequiresArrayToStart() {
         //@ts-ignore
         const err = assert.doesThrow(() => pluginUtil.importSync())
         errorAssert.assertError(err, 'MISSING_PARAMETERS', {
@@ -18,7 +19,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static importRequiresPathToStart() {
+    protected importRequiresPathToStart() {
         const err = assert.doesThrow(() => pluginUtil.importSync([]))
         errorAssert.assertError(err, 'MISSING_PARAMETERS', {
             parameters: ['path'],
@@ -26,7 +27,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static throwsWithBadArgs() {
+    protected throwsWithBadArgs() {
         //@ts-ignore
         const err = assert.doesThrow(() => pluginUtil.importSync(true, 'test'))
         errorAssert.assertError(err, 'INVALID_PARAMETERS', {
@@ -36,7 +37,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
 
     @test('throws with bad path 1', ['/test'])
     @test('throws with bad path 2', ['/whatever'])
-    protected static throwsWithBadPath(path: string[]) {
+    protected throwsWithBadPath(path: string[]) {
         //@ts-ignore
         const err = assert.doesThrow(() => pluginUtil.importSync([], ...path))
         errorAssert.assertError(err, 'INVALID_PARAMETERS', {
@@ -45,7 +46,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static returnsEmptyResultsToStart() {
+    protected returnsEmptyResultsToStart() {
         const results = pluginUtil.importSync(
             [],
             this.cwd,
@@ -59,7 +60,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static throwsWithPluginThatIsNotExportedAsDefaultAsAFunction() {
+    protected throwsWithPluginThatIsNotExportedAsDefaultAsAFunction() {
         const path = [
             this.cwd,
             'build',
@@ -77,7 +78,7 @@ export default class ImportingPluginsTest extends AbstractSpruceTest {
 
     @test('import many', 'plugins', ['no!', 'ooka!', 'yes!'])
     @test('import many 2', 'plugins-2', ['no!', 'first!', 'ooka!', 'yes!'])
-    protected static canImportManyPlugins(testDir: string, matches: string[]) {
+    protected canImportManyPlugins(testDir: string, matches: string[]) {
         const path = [
             this.cwd,
             'build',

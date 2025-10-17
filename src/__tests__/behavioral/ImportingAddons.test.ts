@@ -1,26 +1,27 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
 import addonUtil from '../../utilities/addon.utility'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class ImportingAddonsTest extends AbstractSpruceTest {
-    protected static async beforeEach(): Promise<void> {
+    protected async beforeEach(): Promise<void> {
         await super.beforeEach()
         this.cwd = diskUtil.createRandomTempDir()
     }
 
     @test()
-    protected static async returnsZeroIfNoAddons() {
+    protected async returnsZeroIfNoAddons() {
         await this.assertExpectedCount(0)
     }
 
     @test()
-    protected static returnsZeroIfNoAddonsSync() {
+    protected returnsZeroIfNoAddonsSync() {
         const total = addonUtil.importSync({}, this.cwd)
         assert.isEqual(total, 0)
     }
 
     @test()
-    protected static async returnsOneIfOneFile() {
+    protected async returnsOneIfOneFile() {
         diskUtil.writeFile(
             this.resolvePath('test.addon.js'),
             'module.exports = {}'
@@ -29,7 +30,7 @@ export default class ImportingAddonsTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static returnsOneIfOneFileSync() {
+    protected returnsOneIfOneFileSync() {
         diskUtil.writeFile(
             this.resolvePath('test.addon.js'),
             'module.exports = {}'
@@ -37,12 +38,12 @@ export default class ImportingAddonsTest extends AbstractSpruceTest {
         this.assertExpectedCountSync(1)
     }
 
-    private static async assertExpectedCount(expectedCount: number) {
+    private async assertExpectedCount(expectedCount: number) {
         const total = await addonUtil.import({}, this.cwd)
         assert.isEqual(total, expectedCount)
     }
 
-    private static assertExpectedCountSync(expectedCount: number) {
+    private assertExpectedCountSync(expectedCount: number) {
         const total = addonUtil.importSync({}, this.cwd)
         assert.isEqual(total, expectedCount)
     }

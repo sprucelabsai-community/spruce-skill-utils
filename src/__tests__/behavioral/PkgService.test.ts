@@ -1,10 +1,11 @@
-import AbstractSpruceTest, { assert, test } from '@sprucelabs/test-utils'
+import AbstractSpruceTest, { assert, test, suite } from '@sprucelabs/test-utils'
 import PkgService from '../../services/PkgService'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class PkgServiceTest extends AbstractSpruceTest {
     @test()
-    protected static async leavesNewlineAtEnd() {
+    protected async leavesNewlineAtEnd() {
         this.cwd = diskUtil.createRandomTempDir()
 
         const path = this.resolvePath('package.json')

@@ -1,44 +1,45 @@
-import AbstractSpruceTest from '@sprucelabs/test'
-import { assert, generateId, test } from '@sprucelabs/test-utils'
+import AbstractSpruceTest from '@sprucelabs/test-utils'
+import { assert, generateId, test, suite } from '@sprucelabs/test-utils'
 import { HASH_SPRUCE_DIR, HASH_SPRUCE_DIR_NAME } from '../../constants'
 import SettingsService from '../../services/SettingsService'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class SettingsServiceTest extends AbstractSpruceTest {
-    private static settings: SettingsService
+    private settings!: SettingsService
 
-    protected static async beforeEach() {
+    protected async beforeEach() {
         await super.beforeEach()
         this.cwd = diskUtil.createRandomTempDir()
         this.settings = new SettingsService(this.cwd)
     }
 
     @test()
-    protected static async canInstantiate() {
+    protected async canInstantiate() {
         assert.isTruthy(this.settings)
     }
 
     @test()
-    protected static defaultsFeatureAsNotInstalled() {
+    protected defaultsFeatureAsNotInstalled() {
         const actual = this.settings.isMarkedAsInstalled('feature')
         assert.isFalse(actual)
     }
 
     @test()
-    protected static canMarkFeatureAsInstalled() {
+    protected canMarkFeatureAsInstalled() {
         this.settings.markAsInstalled('feature')
         const actual = this.settings.isMarkedAsInstalled('feature')
         assert.isTrue(actual)
     }
 
     @test()
-    protected static isNotSkippedToStart() {
+    protected isNotSkippedToStart() {
         const actual = this.settings.isMarkedAsPermanentlySkipped('feature')
         assert.isFalse(actual)
     }
 
     @test()
-    protected static canMarkAsSkipped() {
+    protected canMarkAsSkipped() {
         let actual = this.settings.isMarkedAsPermanentlySkipped('feature')
         assert.isFalse(actual)
         this.settings.markAsPermanentlySkipped('feature')
@@ -47,7 +48,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canSetAndGetArbitrarySettings() {
+    protected canSetAndGetArbitrarySettings() {
         this.settings.set('test', true)
         assert.isTrue(this.settings.get('test'))
 
@@ -56,14 +57,14 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canUnsetArbitrarySetting() {
+    protected canUnsetArbitrarySetting() {
         this.settings.set('test', true)
         this.settings.unset('test')
         assert.isUndefined(this.settings.get('test'))
     }
 
     @test()
-    protected static savesNestedObjects() {
+    protected savesNestedObjects() {
         this.settings.set('nested.object', { hey: 'there!' })
         const path = this.getSettingsPath()
         const contents = diskUtil.readFile(path)
@@ -79,14 +80,14 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canGetNestedObject() {
+    protected canGetNestedObject() {
         this.settings.set('nested.object', { hey: 'there!' })
         const actual = this.settings.get('nested.object.hey')
         assert.isEqual(actual, 'there!')
     }
 
     @test()
-    protected static canUnsetNestedObjects() {
+    protected canUnsetNestedObjects() {
         this.settings.set('nested.object', { hey: 'there!' })
         this.settings.unset('nested.object.hey')
         const actual = this.settings.get('nested.object.hey')
@@ -94,7 +95,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static unsettingClearsCache() {
+    protected unsettingClearsCache() {
         this.settings.set('nested.object', { hey: 'there!' })
         this.settings.unset('nested.object.hey')
         //@ts-ignore
@@ -102,14 +103,14 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async markingAsSkippedMeansNoLongerInstalled() {
+    protected async markingAsSkippedMeansNoLongerInstalled() {
         this.markAsInstalled('events')
         this.markAsPermanentlySkipped('events')
         this.assertNotInstalled('events')
     }
 
     @test()
-    protected static async onlyDisablesTheInstalledCodeWhenSkipped() {
+    protected async onlyDisablesTheInstalledCodeWhenSkipped() {
         this.markAsInstalled('feature1')
         this.markAsInstalled('feature2')
         this.markAsPermanentlySkipped('feature2')
@@ -118,7 +119,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async disablesEvenIfFeatureInMiddleOfOthers() {
+    protected async disablesEvenIfFeatureInMiddleOfOthers() {
         this.markAsPermanentlySkipped('feature1111')
         this.markAsInstalled('feature1')
         this.markAsInstalled('feature11')
@@ -129,7 +130,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async canSaveToDifferentFile() {
+    protected async canSaveToDifferentFile() {
         const file = `${generateId()}.json`
 
         this.settings.setFile(file)
@@ -148,14 +149,14 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async unsettingSomethingDoesNotCreateTheFile() {
+    protected async unsettingSomethingDoesNotCreateTheFile() {
         this.settings.unset('test')
         const path = this.getSettingsPath()
         assert.isFalse(diskUtil.doesFileExist(path))
     }
 
     @test()
-    protected static async usesExpectedDirForGoProject() {
+    protected async usesExpectedDirForGoProject() {
         diskUtil.writeFile(this.resolvePath('go.mod'), '')
         const path = this.getSettingsPath()
         const expected = this.resolvePath(
@@ -170,23 +171,23 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
         )
     }
 
-    private static assertNotInstalled(code: string) {
+    private assertNotInstalled(code: string) {
         assert.isFalse(this.settings.isMarkedAsInstalled(code))
     }
 
-    private static assertInstalled(code: string) {
+    private assertInstalled(code: string) {
         assert.isTrue(this.settings.isMarkedAsInstalled(code))
     }
 
-    private static markAsPermanentlySkipped(code: string) {
+    private markAsPermanentlySkipped(code: string) {
         this.settings.markAsPermanentlySkipped(code)
     }
 
-    private static markAsInstalled(code: string) {
+    private markAsInstalled(code: string) {
         this.settings.markAsInstalled(code)
     }
 
-    private static getSettingsPath() {
+    private getSettingsPath() {
         //@ts-ignore
         return this.settings.getSettingsPath()
     }

@@ -1,11 +1,16 @@
-import AbstractSpruceTest from '@sprucelabs/test'
-import { assert, generateId, test } from '@sprucelabs/test-utils'
+import AbstractSpruceTest, {
+    assert,
+    generateId,
+    suite,
+    test,
+} from '@sprucelabs/test-utils'
 import buildLog, { testLog } from '../../utilities/buildLog'
 
 const ROOT_PREFIX = 'root prefix'
 
+@suite()
 export default class LoggingTest extends AbstractSpruceTest {
-    protected static async beforeEach(): Promise<void> {
+    protected async beforeEach(): Promise<void> {
         await super.beforeEach()
         delete process.env.MAXIMUM_LOG_PREFIXES_LENGTH
         delete process.env.LOG_LEVEL
@@ -14,24 +19,24 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canGetLogger() {
+    protected canGetLogger() {
         assert.isFunction(buildLog)
     }
 
     @test()
-    protected static canBuildLog() {
+    protected canBuildLog() {
         const log = buildLog()
         assert.isTruthy(log)
     }
 
     @test()
-    protected static canBuildLogWithPrefix() {
+    protected canBuildLogWithPrefix() {
         const log = buildLog(ROOT_PREFIX)
         assert.isEqual(log.prefix, ROOT_PREFIX)
     }
 
     @test()
-    protected static logsWithPrefix() {
+    protected logsWithPrefix() {
         let m: any
         const log = buildLog(ROOT_PREFIX, {
             useColors: false,
@@ -45,7 +50,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static logsWithoutPrefix() {
+    protected logsWithoutPrefix() {
         let m: any
         const log = buildLog(undefined, {
             useColors: false,
@@ -67,7 +72,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static testingBetterObjectLogging() {
+    protected testingBetterObjectLogging() {
         const log = buildLog(undefined, {
             useColors: false,
         })
@@ -76,7 +81,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static logsbuildLogs() {
+    protected logsbuildLogs() {
         let m: any
 
         const log = buildLog(ROOT_PREFIX, {
@@ -105,7 +110,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static testLogLogsToStdErr() {
+    protected testLogLogsToStdErr() {
         const old = process.stderr.write
         let lastWrite: any[] = []
 
@@ -122,7 +127,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static testLogBuildsLogThatLogsToStdErr() {
+    protected testLogBuildsLogThatLogsToStdErr() {
         const old = process.stderr.write
         let lastWrite: any[] = []
 
@@ -140,7 +145,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static canSetTransportForErrorType() {
+    protected canSetTransportForErrorType() {
         let infoMessage: string | undefined
         let errorMessage: string | undefined
 
@@ -168,7 +173,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async canSetMupltipleTransportsPerType() {
+    protected async canSetMupltipleTransportsPerType() {
         let info1Message: string | undefined
         let info2Message: string | undefined
         let error1Message: string | undefined
@@ -206,7 +211,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static transportGetsMessagesWithoutPaddingWhenNoPrefixSupplied() {
+    protected transportGetsMessagesWithoutPaddingWhenNoPrefixSupplied() {
         let infoMessage: string | undefined
 
         const log = buildLog(undefined, {
@@ -234,10 +239,7 @@ export default class LoggingTest extends AbstractSpruceTest {
         undefined,
         'TEST :: AGAIN :: Last time :: what the!?'
     )
-    protected static canSetMaximumPrefixesLength(
-        max: string,
-        expected: string
-    ) {
+    protected canSetMaximumPrefixesLength(max: string, expected: string) {
         process.env.MAXIMUM_LOG_PREFIXES_LENGTH = max
 
         let infoMessage = ''
@@ -257,7 +259,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test('outputs time by default (always passes, check logs)')
-    protected static async rendersTimeSinceLastRenderAndDateTimeByDefault() {
+    protected async rendersTimeSinceLastRenderAndDateTimeByDefault() {
         this.resetTimeLogEnv()
 
         const log = buildLog('TIMESTAMPS', { useColors: false })
@@ -274,13 +276,13 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async doesNotCrashWhenLoggingUndefined() {
+    protected async doesNotCrashWhenLoggingUndefined() {
         const log = buildLog()
         log.info('test', undefined, 'test')
     }
 
     @test()
-    protected static async doesNotColorIfNotTty() {
+    protected async doesNotColorIfNotTty() {
         process.env.SHOULD_LOG_TIME_DELTAS = 'false'
         process.env.SHOULD_LOG_TIME = 'false'
         process.stdout.isTTY = false
@@ -298,7 +300,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async canLogErrorsBecauseTheyHaveToString() {
+    protected async canLogErrorsBecauseTheyHaveToString() {
         let errorMessage: string | undefined
 
         const error = new Error(generateId())
@@ -318,7 +320,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static doesNotLogWithNoneLogLevel() {
+    protected doesNotLogWithNoneLogLevel() {
         process.env.LOG_LEVEL = 'none'
         let m = ''
         const log = buildLog(ROOT_PREFIX, {
@@ -335,7 +337,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static onlyLogsErrorOnError() {
+    protected onlyLogsErrorOnError() {
         process.env.LOG_LEVEL = 'error'
         let m = ''
         const log = buildLog(ROOT_PREFIX, {
@@ -352,7 +354,7 @@ export default class LoggingTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static onlyLogsErrorAndWarnOnWarn() {
+    protected onlyLogsErrorAndWarnOnWarn() {
         process.env.LOG_LEVEL = 'warn'
         let m = ''
         const log = buildLog(ROOT_PREFIX, {
@@ -371,7 +373,7 @@ export default class LoggingTest extends AbstractSpruceTest {
         )
     }
 
-    private static resetTimeLogEnv() {
+    private resetTimeLogEnv() {
         delete process.env.SHOULD_LOG_TIME_DELTAS
         delete process.env.SHOULD_LOG_TIME
     }

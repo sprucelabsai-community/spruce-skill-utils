@@ -1,6 +1,7 @@
 import os from 'os'
 import AbstractSpruceTest, {
     test,
+    suite,
     assert,
     generateId,
 } from '@sprucelabs/test-utils'
@@ -8,11 +9,12 @@ import AuthService from '../../services/AuthService'
 import { PersonWithToken } from '../../types/skill.types'
 import diskUtil from '../../utilities/disk.utility'
 
+@suite()
 export default class AuthServiceTest extends AbstractSpruceTest {
-    private static auth: SpyAuthService
-    private static person: PersonWithToken
+    private auth!: SpyAuthService
+    private person!: PersonWithToken
 
-    protected static async beforeEach() {
+    protected async beforeEach() {
         await super.beforeEach()
         AuthService.Class = SpyAuthService
         this.auth = AuthService.Auth(this.cwd) as SpyAuthService
@@ -25,26 +27,26 @@ export default class AuthServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async defaultHomeDirEqualsExpected() {
+    protected async defaultHomeDirEqualsExpected() {
         const expected = this.resolvePath(os.homedir())
         assert.isEqual(SpyAuthService.getHomeDir(), expected)
     }
 
     @test()
-    protected static async shouldSaveLoggedInPersonInHomeDir() {
+    protected async shouldSaveLoggedInPersonInHomeDir() {
         this.setRandomHomeAndLoginAsPerson()
         assert.isTrue(diskUtil.doesFileExist(this.personJsonPath))
     }
 
     @test()
-    protected static async contentsOfPersonJsonMatchesWhatIsSet() {
+    protected async contentsOfPersonJsonMatchesWhatIsSet() {
         this.setRandomHomeAndLoginAsPerson()
         const person = this.loadSavedPersonFromJson()
         assert.isEqualDeep(person, this.person)
     }
 
     @test()
-    protected static async defaultsLoggedInToTrue() {
+    protected async defaultsLoggedInToTrue() {
         delete this.person.isLoggedIn
         this.setRandomHomeAndLoginAsPerson()
         const person = this.loadSavedPersonFromJson()
@@ -52,7 +54,7 @@ export default class AuthServiceTest extends AbstractSpruceTest {
     }
 
     @test()
-    protected static async getsLoggedInPersonFromJson() {
+    protected async getsLoggedInPersonFromJson() {
         const person = this.person
         this.setRandomHomeDir()
         const contents = JSON.stringify(person)
@@ -61,24 +63,24 @@ export default class AuthServiceTest extends AbstractSpruceTest {
         assert.isEqualDeep(loggedInPerson, person)
     }
 
-    private static loadSavedPersonFromJson() {
+    private loadSavedPersonFromJson() {
         const contents = diskUtil.readFile(this.personJsonPath)
         const person = JSON.parse(contents)
         return person as PersonWithToken
     }
 
-    private static setRandomHomeAndLoginAsPerson() {
+    private setRandomHomeAndLoginAsPerson() {
         this.setRandomHomeDir()
         this.auth.setLoggedInPerson(this.person)
     }
 
-    private static setRandomHomeDir() {
+    private setRandomHomeDir() {
         SpyAuthService.setHomeDir(
             this.resolvePath(diskUtil.createRandomTempDir())
         )
     }
 
-    private static get personJsonPath() {
+    private get personJsonPath() {
         return this.resolvePath(
             SpyAuthService.getHomeDir(),
             '.spruce',
