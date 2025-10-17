@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "32.1.4",
+  "version": "32.1.5",
   "skill": {
     "namespace": "skill-utils",
     "upgradeIgnoreList": [
