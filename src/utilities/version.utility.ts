@@ -72,7 +72,6 @@ const versionUtil = {
         const latest = version.pop()
 
         if (!latest) {
-            debugger
             throw new SpruceError({
                 //@ts-ignore
                 code: 'NO_VERSIONING_FOUND',
@@ -109,7 +108,6 @@ const versionUtil = {
         const latest = allDateIsh.pop()
 
         if (!latest) {
-            debugger
             throw new Error('no versioning found!')
         }
 

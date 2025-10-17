@@ -87,9 +87,7 @@ export default class SettingsService<FeatureCode extends string = string> {
     }
 
     protected getSettingsPath() {
-        const isInGoProject = diskUtil.doesFileExist(
-            diskUtil.resolvePath(this.cwd, 'go.mod')
-        )
+        const isInGoProject = diskUtil.detectProjectLanguage(this.cwd) === 'go'
 
         if (isInGoProject) {
             return diskUtil.resolvePath(

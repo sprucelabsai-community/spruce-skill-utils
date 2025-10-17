@@ -3,6 +3,7 @@ import AbstractSpruceTest, {
     generateId,
     test,
 } from '@sprucelabs/test-utils'
+import { ProjectLanguage } from '../../types/skill.types'
 import diskUtil from '../../utilities/disk.utility'
 
 export default class DiskUtilTest extends AbstractSpruceTest {
@@ -24,7 +25,6 @@ export default class DiskUtilTest extends AbstractSpruceTest {
     @test('resolves to file that exists', ['test.ts'])
     @test('resolves to file that exists 2', ['pathitem', 'test.ts'])
     protected static findsFileThatExists(fileItems: string[]) {
-        debugger
         const destinationDir = diskUtil.createRandomTempDir()
         const filepath = this.resolvePath(destinationDir, ...fileItems)
 
@@ -80,7 +80,7 @@ export default class DiskUtilTest extends AbstractSpruceTest {
 
     @test()
     protected static throwsWhenPassedBadPath() {
-        this.randomCwd()
+        this.randomizeCwd()
         assert.doesThrow(() => this.resolveFileInHashSpruce('test'))
     }
 
@@ -103,14 +103,55 @@ export default class DiskUtilTest extends AbstractSpruceTest {
         )
     }
 
+    @test()
+    protected static async languageResolvesToTypescriptIfTsConfigExists() {
+        this.randomizeCwd()
+        this.writeTsConfig()
+        this.assertProjectLanguageEquals('ts')
+    }
+
+    @test()
+    protected static async languageResolvesToJavaScriptIfNoTsConfigButPackageJsonExists() {
+        this.randomizeCwd()
+        this.writePackageJson()
+        this.assertProjectLanguageEquals('js')
+    }
+
+    @test()
+    protected static async resolvesToTsIfBothTsConfigAndPackageJsonExist() {
+        this.randomizeCwd()
+        this.writePackageJson()
+        this.writeTsConfig()
+        this.assertProjectLanguageEquals('ts')
+    }
+
+    private static assertProjectLanguageEquals(expected: ProjectLanguage) {
+        const lang = diskUtil.detectProjectLanguage(this.cwd)
+        assert.isEqual(
+            lang,
+            expected,
+            `diskUtil.detectProjectLanguage did not return expected language.`
+        )
+    }
+
+    private static writePackageJson() {
+        const packageJsonPath = this.resolvePath('package.json')
+        diskUtil.writeFile(packageJsonPath, '{}')
+    }
+
+    private static writeTsConfig() {
+        const tsConfigPath = this.resolvePath('tsconfig.json')
+        diskUtil.writeFile(tsConfigPath, '{}')
+    }
+
     private static assertResolvesFile(filepath: string[], filename: string) {
-        this.randomCwd()
+        this.randomizeCwd()
         const file = this.resolvePath(...filepath)
         diskUtil.writeFile(file, generateId())
         this.resolveFileInHashSpruce(filename)
     }
 
-    private static randomCwd() {
+    private static randomizeCwd() {
         this.cwd = diskUtil.createRandomTempDir()
     }
 

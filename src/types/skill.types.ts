@@ -87,3 +87,5 @@ export interface PersonWithToken {
     token: string
     isLoggedIn?: boolean | undefined | null
 }
+
+export type ProjectLanguage = 'ts' | 'go' | 'unknown' | 'js'

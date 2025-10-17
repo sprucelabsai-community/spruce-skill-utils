@@ -71,9 +71,7 @@ export default class LoggingTest extends AbstractSpruceTest {
         const log = buildLog(undefined, {
             useColors: false,
         })
-        debugger
         const message = log.info('hello', { name: 'world' })
-        debugger
         this.log(`Message: ${message}`)
     }
 

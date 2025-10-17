@@ -8,6 +8,7 @@ import {
     HASH_SPRUCE_DIR,
     HASH_SPRUCE_DIR_NAME,
 } from '../constants'
+import { ProjectLanguage } from '../types/skill.types'
 
 function existsSync(path: string): boolean {
     return !!fsUtil.statSync(path, { throwIfNoEntry: false })
@@ -127,6 +128,23 @@ const diskUtil = {
         } while (parts.length > 0)
 
         throw new Error(`.spruce directory not found at ${cwd}`)
+    },
+
+    detectProjectLanguage(cwd: string): ProjectLanguage {
+        const isInGoProject = this.doesDirExist(this.resolvePath(cwd, 'go.mod'))
+        if (isInGoProject) {
+            return 'go'
+        }
+
+        const isInTypescript = this.doesFileExist(
+            this.resolvePath(cwd, 'tsconfig.json')
+        )
+
+        if (isInTypescript) {
+            return 'ts'
+        }
+
+        return 'js'
     },
 
     doesHashSprucePathExist(cwd: string, ...filePath: string[]): boolean {
