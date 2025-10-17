@@ -74,9 +74,9 @@ export default class SettingsService<FeatureCode extends string = string> {
     }
 
     private loadSettings(): Settings {
-        const path = this.getSettingsPath()
         if (!this.settings) {
             try {
+                const path = this.getSettingsPath()
                 const contents = diskUtil.readFile(path)
                 this.settings = JSON.parse(contents)
             } catch {
