@@ -1,7 +1,7 @@
 import get from 'lodash/get'
 import set from 'lodash/set'
 import unset from 'lodash/unset'
-import { HASH_SPRUCE_DIR } from '../constants'
+import { HASH_SPRUCE_DIR, HASH_SPRUCE_DIR_NAME } from '../constants'
 import diskUtil from '../utilities/disk.utility'
 
 export default class SettingsService<FeatureCode extends string = string> {
@@ -87,6 +87,17 @@ export default class SettingsService<FeatureCode extends string = string> {
     }
 
     protected getSettingsPath() {
+        const isInGoProject = diskUtil.doesFileExist(
+            diskUtil.resolvePath(this.cwd, 'go.mod')
+        )
+
+        if (isInGoProject) {
+            return diskUtil.resolvePath(
+                this.cwd,
+                HASH_SPRUCE_DIR_NAME,
+                this.fileName
+            )
+        }
         return diskUtil.resolvePath(this.cwd, HASH_SPRUCE_DIR, this.fileName)
     }
 

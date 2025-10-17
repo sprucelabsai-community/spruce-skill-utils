@@ -1,6 +1,6 @@
 import AbstractSpruceTest from '@sprucelabs/test'
 import { assert, generateId, test } from '@sprucelabs/test-utils'
-import { HASH_SPRUCE_DIR } from '../../constants'
+import { HASH_SPRUCE_DIR, HASH_SPRUCE_DIR_NAME } from '../../constants'
 import SettingsService from '../../services/SettingsService'
 import diskUtil from '../../utilities/disk.utility'
 
@@ -152,6 +152,22 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
         this.settings.unset('test')
         const path = this.getSettingsPath()
         assert.isFalse(diskUtil.doesFileExist(path))
+    }
+
+    @test()
+    protected static async usesExpectedDirForGoProject() {
+        diskUtil.writeFile(this.resolvePath('go.mod'), '')
+        const path = this.getSettingsPath()
+        const expected = this.resolvePath(
+            this.cwd,
+            HASH_SPRUCE_DIR_NAME,
+            'settings.json'
+        )
+        assert.isEqual(
+            path,
+            expected,
+            'Did not use expected path in Go project'
+        )
     }
 
     private static assertNotInstalled(code: string) {
