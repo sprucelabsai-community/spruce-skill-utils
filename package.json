@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "32.1.2",
+  "version": "32.1.4",
   "skill": {
     "namespace": "skill-utils",
     "upgradeIgnoreList": [
@@ -66,13 +66,13 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^7.0.45",
-    "@sprucelabs/jest-json-reporter": "^9.0.66",
+    "@sprucelabs/esm-postbuild": "^7.0.46",
+    "@sprucelabs/jest-json-reporter": "^9.0.67",
     "@sprucelabs/jest-sheets-reporter": "^4.0.49",
     "@sprucelabs/resolve-path-aliases": "^3.0.28",
     "@sprucelabs/semantic-release": "^5.0.2",
     "@sprucelabs/test": "^10.0.24",
-    "@sprucelabs/test-utils": "^6.0.107",
+    "@sprucelabs/test-utils": "^6.0.109",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^2.0.0",
     "@types/lodash": "^4.17.20",
