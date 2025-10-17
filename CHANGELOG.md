@@ -1,3 +1,10 @@
+# [32.1.0](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v32.0.134...v32.1.0) (2025-10-17)
+
+
+### Features
+
+* settings can now automatically handle go projects ([bf52a0e](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/bf52a0e))
+
 ## [32.0.134](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v32.0.133...v32.0.134) (2025-10-16)
 
 ## [32.0.133](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v32.0.132...v32.0.133) (2025-10-16)
