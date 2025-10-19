@@ -161,7 +161,7 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
 
     @test()
     protected async usesExpectedDirForGoProject() {
-        diskUtil.writeFile(this.resolvePath('go.mod'), '')
+        this.simulateGoModule()
         const path = this.getSettingsPath()
         const expected = this.resolvePath(
             this.cwd,
@@ -175,6 +175,24 @@ export default class SettingsServiceTest extends AbstractSpruceTest {
         )
     }
 
+    @test()
+    protected async savesAndLoadsSettingsInGoProject() {
+        this.simulateGoModule()
+
+        this.settings.set('goFeature', 'enabled')
+        this.settings = new SettingsService(this.cwd)
+
+        const actual = this.settings.get('goFeature')
+        assert.isEqual(
+            actual,
+            'enabled',
+            'Settings did not persist in Go project'
+        )
+    }
+
+    private simulateGoModule() {
+        diskUtil.writeFile(this.resolvePath('go.mod'), '')
+    }
     private assertNotInstalled(code: string) {
         assert.isFalse(this.settings.isMarkedAsInstalled(code))
     }

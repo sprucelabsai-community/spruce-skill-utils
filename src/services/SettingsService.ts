@@ -100,11 +100,7 @@ export default class SettingsService<FeatureCode extends string = string> {
     }
 
     private saveSettings(settings: Settings) {
-        const path = diskUtil.resolvePath(
-            this.cwd,
-            HASH_SPRUCE_DIR,
-            this.fileName
-        )
+        const path = this.getSettingsPath()
         const contents = JSON.stringify(settings, null, 2)
         this.write(path, contents)
     }
