@@ -139,8 +139,18 @@ const diskUtil = {
             return 'ts'
         }
 
-        const isInGoProject = this.doesDirExist(this.resolvePath(cwd, 'go.mod'))
+        const isInGoProject = this.doesFileExist(
+            this.resolvePath(cwd, 'go.mod')
+        )
         if (isInGoProject) {
+            return 'go'
+        }
+
+        const isChildOfGoProject = this.doesFileExist(
+            this.resolvePath(cwd, '../go.mod')
+        )
+
+        if (isChildOfGoProject) {
             return 'go'
         }
 

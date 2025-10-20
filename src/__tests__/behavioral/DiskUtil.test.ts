@@ -132,7 +132,7 @@ export default class DiskUtilTest extends AbstractSpruceTest {
         this.randomizeCwd()
         this.writePackageJson()
         this.writeTsConfig()
-        diskUtil.writeFile(this.resolvePath('go.mod'), '')
+        this.writeGoDotMod()
         this.assertProjectLanguageEquals('ts')
     }
 
@@ -140,6 +140,20 @@ export default class DiskUtilTest extends AbstractSpruceTest {
     protected async resolvesToUnknownIfNothingExists() {
         this.randomizeCwd()
         this.assertProjectLanguageEquals('unknown')
+    }
+
+    @test()
+    protected async resolvesToGoIfChildOfGoProject() {
+        this.randomizeCwd()
+        this.writeGoDotMod()
+        const pkgDir = this.resolvePath(this.cwd, generateId())
+        diskUtil.createDir(pkgDir)
+        this.cwd = pkgDir
+        this.assertProjectLanguageEquals('go')
+    }
+
+    private writeGoDotMod() {
+        diskUtil.writeFile(this.resolvePath('go.mod'), '')
     }
 
     private assertProjectLanguageEquals(expected: ProjectLanguage) {
