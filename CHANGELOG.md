@@ -1,3 +1,8 @@
+## <small>32.1.23 (2025-11-08)</small>
+
+* chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([e7d35e5](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/e7d35e5))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([2ee28c5](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/2ee28c5))
+
 ## <small>32.1.22 (2025-11-08)</small>
 
 * Automated CI/CD permissions update ([514d212](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/514d212))
