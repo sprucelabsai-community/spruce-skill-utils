@@ -1,3 +1,8 @@
+## <small>32.1.22 (2025-11-08)</small>
+
+* Automated CI/CD permissions update ([514d212](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/514d212))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([f2af158](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/f2af158))
+
 ## [32.1.21](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v32.1.20...v32.1.21) (2025-10-31)
 
 ## [32.1.20](https://github.com/sprucelabsai-community/spruce-skill-utils/compare/v32.1.19...v32.1.20) (2025-10-29)
