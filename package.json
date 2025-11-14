@@ -57,7 +57,7 @@
     "test.browser": "support/test-browser.sh"
   },
   "dependencies": {
-    "@sprucelabs/globby": "^2.0.510",
+    "@sprucelabs/globby": "^2.0.511",
     "@sprucelabs/schema": "^33.0.7",
     "chalk": "^4.1.2",
     "dotenv": "^17.2.3",
