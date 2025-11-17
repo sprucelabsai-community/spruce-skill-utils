@@ -66,13 +66,13 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^9.0.3",
-    "@sprucelabs/jest-json-reporter": "^10.0.4",
-    "@sprucelabs/jest-sheets-reporter": "^5.0.3",
-    "@sprucelabs/resolve-path-aliases": "^4.0.3",
+    "@sprucelabs/esm-postbuild": "^9.0.4",
+    "@sprucelabs/jest-json-reporter": "^10.0.5",
+    "@sprucelabs/jest-sheets-reporter": "^5.0.4",
+    "@sprucelabs/resolve-path-aliases": "^4.0.4",
     "@sprucelabs/semantic-release": "^6.0.0",
     "@sprucelabs/test": "^11.0.0",
-    "@sprucelabs/test-utils": "^7.0.7",
+    "@sprucelabs/test-utils": "^7.0.8",
     "@types/fs-extra": "^11.0.4",
     "@types/inflection": "^2.0.0",
     "@types/lodash": "^4.17.20",
