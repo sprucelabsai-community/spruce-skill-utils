@@ -1,3 +1,8 @@
+## <small>33.0.19 (2025-12-01)</small>
+
+* chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([4a0bf3f](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/4a0bf3f))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([25361cc](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/25361cc))
+
 ## <small>33.0.18 (2025-11-29)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([b1e197d](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/b1e197d))
