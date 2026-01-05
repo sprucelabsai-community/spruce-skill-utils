@@ -1,6 +1,6 @@
 import chalk, { Chalk } from 'chalk'
 
-class Logger implements Log {
+export class Logger implements Log {
     public readonly prefix: string | undefined
 
     private readonly baseLog?: (...args: any[]) => void
@@ -78,22 +78,38 @@ class Logger implements Log {
             return ''
         }
 
-        const formattedArgs = this.formatArgs(rawArgs)
-        const { prefix, chalkArgs } = this.buildPrefixes(formattedArgs)
+        const shouldLog = this.shouldLog()
 
-        if (this.dispatchToTransports(level, prefix, formattedArgs)) {
-            return prefix
+        const formattedArgs = this.formatArgs(rawArgs)
+        const { prefix, logArgs: logArgs } = this.buildPrefixes(formattedArgs)
+
+        if (
+            !shouldLog ||
+            this.dispatchToTransports(level, prefix, formattedArgs)
+        ) {
+            const joined = rawArgs.join(' ')
+            return prefix ? prefix + ' ' + joined : joined
         }
 
         const transport = this.resolveTransport(
             level,
             this.resolveConsoleMethod(level)
         )
-        const message = this.buildMessage(chalkMethod, chalkArgs, level, prefix)
+        const message = this.buildMessage(chalkMethod, logArgs, level, prefix)
 
         this.emit(transport, message, formattedArgs, rawArgs)
 
         return message
+    }
+
+    private shouldLog() {
+        return (
+            this.isMainModule() ||
+            (this.prefix &&
+                this.env.SPRUCE_LOGS?.split(',')
+                    .map((s) => s.trim())
+                    .includes(this.prefix))
+        )
     }
 
     private resolveChalk(base: Color, modifier: Color): Chalk | undefined {
@@ -123,22 +139,22 @@ class Logger implements Log {
 
     private buildPrefixes(args: string[]): {
         prefix: string
-        chalkArgs: string[]
+        logArgs: string[]
     } {
         if (!this.pre) {
             return {
                 prefix: '',
-                chalkArgs: [...args],
+                logArgs: [...args],
             }
         }
 
         const reducedPrefix = this.reducePrefix(this.pre)
         const prefixValue = reducedPrefix.length > 0 ? ` ${reducedPrefix}` : ''
-        const chalkArgs =
+        const logArgs =
             reducedPrefix.length > 0 ? [reducedPrefix, ...args] : [...args]
         return {
-            prefix: prefixValue,
-            chalkArgs,
+            prefix: prefixValue.trim(),
+            logArgs,
         }
     }
 
@@ -164,7 +180,7 @@ class Logger implements Log {
             return false
         }
 
-        const payload = [prefix.trim(), ...args].filter(
+        const payload = [prefix, ...args].filter(
             (part): part is string => part.length > 0
         )
 
@@ -177,13 +193,13 @@ class Logger implements Log {
 
     private buildMessage(
         chalkMethod: Chalk | undefined,
-        chalkArgs: string[],
+        logArgs: string[],
         level: Level,
         prefix: string
     ): string {
         const baseMessage =
             this.shouldUseColors && chalkMethod
-                ? chalkMethod(...chalkArgs)
+                ? chalkMethod(...logArgs)
                 : this.buildPlainMessage(level, prefix)
 
         const withDelta = this.shouldLogTimeDeltas
@@ -196,7 +212,7 @@ class Logger implements Log {
     }
 
     private buildPlainMessage(level: Level, prefix: string): string {
-        return `(${level})${prefix}`
+        return `(${level})${prefix ? ' ' + prefix : ''}`
     }
 
     private decorateWithTimeDelta(message: string): string {
@@ -310,6 +326,10 @@ class Logger implements Log {
             return formatter.call(value)
         }
         return 'undefined'
+    }
+
+    protected isMainModule(): boolean {
+        return true
     }
 }
 
