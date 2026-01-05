@@ -1,3 +1,7 @@
+## 33.1.0 (2026-01-05)
+
+* minor: can control which prefixes log using SPRUCE_LOGS ([8052f40](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/8052f40))
+
 ## <small>33.0.28 (2025-12-30)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([1d512f7](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/1d512f7))
