@@ -9,6 +9,8 @@ export class Logger implements Log {
     private readonly colors: { info: Color; error: Color }
     private readonly pre: string | undefined
     private readonly shouldUseColors: boolean
+    private history: string[] = []
+    private historyLimit = 0
 
     public constructor(
         prefix: string | undefined = undefined,
@@ -29,6 +31,9 @@ export class Logger implements Log {
         this.pre = prefix ? `${prefix} ::` : undefined
         const isInteractive = getProcess()?.stdout?.isTTY ?? false
         this.shouldUseColors = useColors !== false && isInteractive
+    }
+    public startTrackingHistory(limit: number): void {
+        this.historyLimit = limit
     }
 
     public info(...args: LoggableType[]): string {
@@ -69,6 +74,10 @@ export class Logger implements Log {
         })
     }
 
+    public getHistory() {
+        return this.history
+    }
+
     private write(
         chalkMethod: Chalk | undefined,
         rawArgs: LoggableType[],
@@ -83,12 +92,21 @@ export class Logger implements Log {
         const formattedArgs = this.formatArgs(rawArgs)
         const { prefix, logArgs: logArgs } = this.buildPrefixes(formattedArgs)
 
+        const joined = rawArgs.join(' ')
+        const flattened = prefix ? prefix + ' ' + joined : joined
+
+        if (this.historyLimit > 0) {
+            this.history.push(flattened)
+            if (this.history.length > this.historyLimit) {
+                this.history.shift()
+            }
+        }
+
         if (
             !shouldLog ||
             this.dispatchToTransports(level, prefix, formattedArgs)
         ) {
-            const joined = rawArgs.join(' ')
-            return prefix ? prefix + ' ' + joined : joined
+            return flattened
         }
 
         const transport = this.resolveTransport(
@@ -398,6 +416,8 @@ function getProcess() {
 }
 
 export interface Log {
+    startTrackingHistory(limit: number): void
+    getHistory(): string[]
     readonly prefix: string | undefined
     info: (...args: LoggableType[]) => string
     error: (...args: LoggableType[]) => string
