@@ -9,8 +9,8 @@ export class Logger implements Log {
     private readonly colors: { info: Color; error: Color }
     private readonly pre: string | undefined
     private readonly shouldUseColors: boolean
-    private history: string[] = []
-    private historyLimit = 0
+    private static history: string[] = []
+    private static historyLimit = 0
 
     public constructor(
         prefix: string | undefined = undefined,
@@ -27,12 +27,15 @@ export class Logger implements Log {
             INFO: transportsByLevel?.INFO,
             WARN: transportsByLevel?.WARN,
         }
+
         this.colors = { info, error }
         this.pre = prefix ? `${prefix} ::` : undefined
+
         const isInteractive = getProcess()?.stdout?.isTTY ?? false
         this.shouldUseColors = useColors !== false && isInteractive
     }
-    public startTrackingHistory(limit: number): void {
+
+    public static startTrackingHistory(limit: number): void {
         this.historyLimit = limit
     }
 
@@ -74,7 +77,15 @@ export class Logger implements Log {
         })
     }
 
-    public getHistory() {
+    private get history() {
+        return Logger.history
+    }
+
+    private get historyLimit() {
+        return Logger.historyLimit
+    }
+
+    public static getHistory() {
         return this.history
     }
 
@@ -416,8 +427,6 @@ function getProcess() {
 }
 
 export interface Log {
-    startTrackingHistory(limit: number): void
-    getHistory(): string[]
     readonly prefix: string | undefined
     info: (...args: LoggableType[]) => string
     error: (...args: LoggableType[]) => string

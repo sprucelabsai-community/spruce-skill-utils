@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
-import buildLog from '../../utilities/buildLog'
+import buildLog, { Logger } from '../../utilities/buildLog'
 
 @suite()
 export default class CanTrackMemoryTest extends AbstractSpruceTest {
@@ -38,8 +38,23 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
         this.assertHistoryEquals(['two', 'three'])
     }
 
+    @test()
+    protected async tracksHistoryBetweenInstances() {
+        this.startTrackingHistory(4)
+        const logger = buildLog()
+
+        this.info('item 1')
+        logger.info('item 2')
+        this.info('item 3')
+        logger.info('item 4')
+
+        this.assertHistoryEquals(['item 1', 'item 2', 'item 3', 'item 4'])
+        this.logger = logger
+        this.assertHistoryEquals(['item 1', 'item 2', 'item 3', 'item 4'])
+    }
+
     private startTrackingHistory(length: number) {
-        this.logger.startTrackingHistory(length)
+        Logger.startTrackingHistory(length)
     }
 
     private assertHistoryEquals(expected: string[]) {
@@ -56,6 +71,6 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
     }
 
     private getHistory() {
-        return this.logger.getHistory()
+        return Logger.getHistory()
     }
 }
