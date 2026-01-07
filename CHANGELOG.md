@@ -1,3 +1,7 @@
+## 33.4.0 (2026-01-07)
+
+* minor: better history access on Logger ([21be6df](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/21be6df))
+
 ## 33.3.0 (2026-01-07)
 
 * Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([ee4b27e](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/ee4b27e))
