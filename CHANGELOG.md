@@ -1,3 +1,9 @@
+## 33.3.0 (2026-01-07)
+
+* Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([ee4b27e](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/ee4b27e))
+* patch: restored ([b630b74](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/b630b74))
+* feat: add exports field for proper ESM support in Node.js ([c299e8a](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/c299e8a))
+
 ## 33.2.0 (2026-01-06)
 
 * Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([137cb00](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/137cb00))
