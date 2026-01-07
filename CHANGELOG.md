@@ -1,3 +1,8 @@
+## 33.2.0 (2026-01-06)
+
+* Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([137cb00](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/137cb00))
+* minor: can track history on the logger ([ffc536b](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/ffc536b))
+
 ## 33.1.0 (2026-01-05)
 
 * minor: can control which prefixes log using SPRUCE_LOGS ([8052f40](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/8052f40))
