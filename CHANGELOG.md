@@ -1,3 +1,7 @@
+## <small>34.0.1 (2026-01-07)</small>
+
+* patch: upgrade dependencies ([1e89450](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/1e89450))
+
 ## 34.0.0 (2026-01-07)
 
 * Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([c7ded7f](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/c7ded7f))
