@@ -7,7 +7,7 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
 
     protected async beforeEach() {
         await super.beforeEach()
-        Logger.stopTrackingHistory()
+        this.logger.stopTrackingHistory()
     }
 
     @test()
@@ -70,7 +70,7 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
 
     private assertHistoryLimitEquals(expected: number) {
         assert.isEqual(
-            Logger.getHistoryLimit(),
+            this.logger.getHistoryLimit(),
             expected,
             'History limit not equal to expected.'
         )
@@ -78,7 +78,7 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
 
     private assertIsNotTrackingHistory() {
         assert.isEqual(
-            Logger.getIsTrackingHistory(),
+            this.logger.getIsTrackingHistory(),
             false,
             'Should not be tracking history.'
         )
@@ -86,14 +86,14 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
 
     private assertIsTrackingHistory() {
         assert.isEqual(
-            Logger.getIsTrackingHistory(),
+            this.logger.getIsTrackingHistory(),
             true,
             'Should be tracking history.'
         )
     }
 
     private startTrackingHistory(length: number) {
-        Logger.startTrackingHistory(length)
+        this.logger.startTrackingHistory(length)
     }
 
     private assertHistoryEquals(expected: string[]) {

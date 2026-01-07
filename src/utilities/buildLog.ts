@@ -81,6 +81,10 @@ export class Logger implements Log {
         return Logger.historyLimit
     }
 
+    private set historyLimit(value: number) {
+        Logger.historyLimit = value
+    }
+
     public static getHistory() {
         return this.history
     }
@@ -357,19 +361,19 @@ export class Logger implements Log {
         return true
     }
 
-    public static startTrackingHistory(limit: number): void {
+    public startTrackingHistory(limit: number): void {
         this.historyLimit = limit
     }
 
-    public static stopTrackingHistory() {
+    public stopTrackingHistory() {
         this.historyLimit = 0
     }
 
-    public static getIsTrackingHistory() {
+    public getIsTrackingHistory() {
         return this.historyLimit > 0
     }
 
-    public static getHistoryLimit() {
+    public getHistoryLimit() {
         return this.historyLimit
     }
 }
@@ -440,6 +444,10 @@ function getProcess() {
 
 export interface Log {
     readonly prefix: string | undefined
+    stopTrackingHistory: () => void
+    getIsTrackingHistory: () => boolean
+    getHistoryLimit: () => number
+    startTrackingHistory: (limit: number) => void
     info: (...args: LoggableType[]) => string
     error: (...args: LoggableType[]) => string
     warn: (...args: LoggableType[]) => string
