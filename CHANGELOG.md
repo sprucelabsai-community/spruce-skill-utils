@@ -1,3 +1,8 @@
+## 34.0.0 (2026-01-07)
+
+* Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([c7ded7f](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/c7ded7f))
+* major: logger tweak ([fc42a46](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/fc42a46))
+
 ## <small>33.4.1 (2026-01-07)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([1ec9ef1](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/1ec9ef1))
