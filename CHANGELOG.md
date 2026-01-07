@@ -1,3 +1,8 @@
+## <small>33.4.1 (2026-01-07)</small>
+
+* chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([1ec9ef1](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/1ec9ef1))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([8767773](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/8767773))
+
 ## 33.4.0 (2026-01-07)
 
 * minor: better history access on Logger ([21be6df](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/21be6df))
