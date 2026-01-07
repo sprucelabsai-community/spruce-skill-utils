@@ -5,6 +5,11 @@ import buildLog, { Logger } from '../../utilities/buildLog'
 export default class CanTrackMemoryTest extends AbstractSpruceTest {
     private logger = buildLog()
 
+    protected async beforeEach() {
+        await super.beforeEach()
+        Logger.stopTrackingHistory()
+    }
+
     @test()
     protected async tracksNothingByDefault() {
         this.info('howdy')
@@ -51,6 +56,40 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
         this.assertHistoryEquals(['item 1', 'item 2', 'item 3', 'item 4'])
         this.logger = logger
         this.assertHistoryEquals(['item 1', 'item 2', 'item 3', 'item 4'])
+    }
+
+    @test()
+    protected async canGetIsTrackingAndHistoryLimit() {
+        this.assertIsNotTrackingHistory()
+        this.startTrackingHistory(10)
+        this.assertIsTrackingHistory()
+        this.assertHistoryLimitEquals(10)
+        this.startTrackingHistory(5)
+        this.assertHistoryLimitEquals(5)
+    }
+
+    private assertHistoryLimitEquals(expected: number) {
+        assert.isEqual(
+            Logger.getHistoryLimit(),
+            expected,
+            'History limit not equal to expected.'
+        )
+    }
+
+    private assertIsNotTrackingHistory() {
+        assert.isEqual(
+            Logger.getIsTrackingHistory(),
+            false,
+            'Should not be tracking history.'
+        )
+    }
+
+    private assertIsTrackingHistory() {
+        assert.isEqual(
+            Logger.getIsTrackingHistory(),
+            true,
+            'Should be tracking history.'
+        )
     }
 
     private startTrackingHistory(length: number) {

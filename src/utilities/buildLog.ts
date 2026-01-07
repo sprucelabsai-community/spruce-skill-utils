@@ -35,10 +35,6 @@ export class Logger implements Log {
         this.shouldUseColors = useColors !== false && isInteractive
     }
 
-    public static startTrackingHistory(limit: number): void {
-        this.historyLimit = limit
-    }
-
     public info(...args: LoggableType[]): string {
         return this.write(
             this.resolveChalk('green', this.colors.info),
@@ -359,6 +355,22 @@ export class Logger implements Log {
 
     protected isMainModule(): boolean {
         return true
+    }
+
+    public static startTrackingHistory(limit: number): void {
+        this.historyLimit = limit
+    }
+
+    public static stopTrackingHistory() {
+        this.historyLimit = 0
+    }
+
+    public static getIsTrackingHistory() {
+        return this.historyLimit > 0
+    }
+
+    public static getHistoryLimit() {
+        return this.historyLimit
     }
 }
 
