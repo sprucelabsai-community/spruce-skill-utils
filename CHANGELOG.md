@@ -1,3 +1,9 @@
+## <small>34.0.2 (2026-01-08)</small>
+
+* patch: log miss ([a8bf4ce](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/a8bf4ce))
+* patch: type fix ([7f737e2](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/7f737e2))
+* Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([ad04c18](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/ad04c18))
+
 ## <small>34.0.1 (2026-01-07)</small>
 
 * patch: upgrade dependencies ([1e89450](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/1e89450))
