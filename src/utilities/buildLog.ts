@@ -448,6 +448,7 @@ export interface Log {
     getIsTrackingHistory: () => boolean
     getHistoryLimit: () => number
     startTrackingHistory: (limit: number) => void
+    getHistory: () => string[]
     info: (...args: LoggableType[]) => string
     error: (...args: LoggableType[]) => string
     warn: (...args: LoggableType[]) => string
