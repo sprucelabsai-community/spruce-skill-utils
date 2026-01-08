@@ -85,7 +85,7 @@ export class Logger implements Log {
         Logger.historyLimit = value
     }
 
-    public static getHistory() {
+    public getHistory() {
         return this.history
     }
 

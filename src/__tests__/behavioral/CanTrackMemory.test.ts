@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, suite, assert } from '@sprucelabs/test-utils'
-import buildLog, { Logger } from '../../utilities/buildLog'
+import buildLog from '../../utilities/buildLog'
 
 @suite()
 export default class CanTrackMemoryTest extends AbstractSpruceTest {
@@ -110,6 +110,6 @@ export default class CanTrackMemoryTest extends AbstractSpruceTest {
     }
 
     private getHistory() {
-        return Logger.getHistory()
+        return this.logger.getHistory()
     }
 }
