@@ -1,3 +1,8 @@
+## <small>34.0.3 (2026-01-12)</small>
+
+* Merge branch 'master' of github.com:sprucelabsai/spruce-skill-utils ([a06b8fd](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/a06b8fd))
+* patch: pkg service type fixes ([5e8645e](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/5e8645e))
+
 ## <small>34.0.2 (2026-01-08)</small>
 
 * patch: log miss ([a8bf4ce](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/a8bf4ce))
