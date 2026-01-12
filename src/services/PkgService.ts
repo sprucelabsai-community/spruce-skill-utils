@@ -21,7 +21,7 @@ export default class PkgService {
 
     public set(options: {
         path: string | string[]
-        value: string | Record<string, any> | undefined
+        value: string | Record<string, any> | undefined | boolean | number
     }) {
         const { path, value } = options
         const contents = this.readPackage()
