@@ -1,3 +1,7 @@
+## <small>34.0.6 (2026-02-02)</small>
+
+* patch: readme update ([eb404cd](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/eb404cd))
+
 ## <small>34.0.5 (2026-01-27)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([6a0b3d4](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/6a0b3d4))
