@@ -1,3 +1,8 @@
+## <small>34.0.8 (2026-02-17)</small>
+
+* chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([d01875a](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/d01875a))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([e7b3d40](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/e7b3d40))
+
 ## <small>34.0.7 (2026-02-17)</small>
 
 * patch: upgrade dependencies and fix lint errors ([013682a](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/013682a))
