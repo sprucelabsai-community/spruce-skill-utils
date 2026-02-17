@@ -74,7 +74,7 @@ export default class PkgService {
                 !!contents.dependencies?.[pkg] ||
                 !!contents.devDependencies?.[pkg]
             )
-        } catch (e) {
+        } catch {
             return false
         }
     }

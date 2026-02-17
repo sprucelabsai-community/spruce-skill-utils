@@ -316,14 +316,14 @@ const diskUtil = {
         let fileStat
         try {
             fileStat = fsUtil.statSync(file)
-        } catch (err) {
+        } catch {
             return true
         }
 
         let cacheFileStat
         try {
             cacheFileStat = fsUtil.statSync(cacheFile)
-        } catch (err) {
+        } catch {
             //@ts-ignore
         }
 
