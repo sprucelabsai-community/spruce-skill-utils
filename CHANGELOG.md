@@ -1,3 +1,7 @@
+## <small>34.0.7 (2026-02-17)</small>
+
+* patch: upgrade dependencies and fix lint errors ([013682a](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/013682a))
+
 ## <small>34.0.6 (2026-02-02)</small>
 
 * patch: readme update ([eb404cd](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/eb404cd))
