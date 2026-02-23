@@ -1,6 +1,8 @@
+import dotenv from 'dotenv'
 import { EnvValue } from '../types/skill.types'
 import diskUtil from '../utilities/disk.utility'
-const dotenv = require('dotenv')
+
+type EnvMap = Record<string, EnvValue>
 
 export default class EnvService {
     private cwd: string
@@ -18,7 +20,7 @@ export default class EnvService {
         this.writeConfig(env)
     }
 
-    private writeConfig(env: any) {
+    private writeConfig(env: EnvMap) {
         const path = this.getEnvPath()
         const lines: string[] = []
 
@@ -63,14 +65,13 @@ export default class EnvService {
         delete process.env[key]
     }
 
-    private parseEnv() {
+    private parseEnv(): EnvMap {
         const path = this.getEnvPath()
         if (!diskUtil.doesFileExist(path)) {
             return {}
         }
         const contents = diskUtil.readFile(path)
-        const config = dotenv.parse(contents)
-        return config
+        return dotenv.parse(contents) as EnvMap
     }
 
     private generateValueLiteral(value: string | number | boolean) {
