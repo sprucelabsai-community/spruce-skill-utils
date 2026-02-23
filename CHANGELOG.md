@@ -1,3 +1,8 @@
+## <small>34.0.17 (2026-02-23)</small>
+
+* chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([3297f39](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/3297f39))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([7d85569](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/7d85569))
+
 ## <small>34.0.16 (2026-02-23)</small>
 
 * patch: fix EnvService ESM dotenv import and align upgraded dev deps ([39db9eb](https://github.com/sprucelabsai-community/spruce-skill-utils/commit/39db9eb))
